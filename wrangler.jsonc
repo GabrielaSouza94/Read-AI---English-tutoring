@@ -1,0 +1,27 @@
+/**
+ * Wrangler configuration: https://developers.cloudflare.com/workers/wrangler/configuration/
+ *
+ * The top level is the local (`npm run dev`) environment. `staging` and `production` are
+ * selected at build time with CLOUDFLARE_ENV (see the deploy scripts in package.json).
+ * `vars` are not inherited by environments, so each one repeats them.
+ * D1, KV and secrets arrive in T0.2.
+ */
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "read-ai",
+  "compatibility_date": "2026-10-19",
+  "main": "./workers/app.ts",
+  "observability": { "enabled": true },
+  "upload_source_maps": true,
+  "vars": { "APP_ENV": "local" },
+  "env": {
+    "staging": {
+      "name": "read-ai-staging",
+      "vars": { "APP_ENV": "staging" },
+    },
+    "production": {
+      "name": "read-ai-production",
+      "vars": { "APP_ENV": "production" },
+    },
+  },
+}

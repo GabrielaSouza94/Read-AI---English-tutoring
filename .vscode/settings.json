@@ -1,0 +1,9 @@
+{
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": { "source.fixAll.eslint": "explicit" },
+  "files.autoSave": "afterDelay",
+  "files.associations": { "wrangler.json": "jsonc" },
+  "files.exclude": { "**/.react-router": true, "**/.wrangler": true },
+  "typescript.tsdk": "node_modules/typescript/lib"
+}

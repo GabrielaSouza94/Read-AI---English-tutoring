@@ -1,0 +1,32 @@
+# Node
+/node_modules/
+*.tsbuildinfo
+
+# React Router
+/.react-router/
+/build/
+
+# Cloudflare
+.mf
+.wrangler
+worker-configuration.d.ts
+
+# Tests
+/test-results/
+/playwright-report/
+/coverage/
+
+# Secrets
+.env
+.env.*
+.dev.vars*
+!.env.example
+!.dev.vars.example
+
+# Claude Code personal files
+.claude/settings.local.json
+CLAUDE.local.md
+
+# OS / editor
+.DS_Store
+Thumbs.db
