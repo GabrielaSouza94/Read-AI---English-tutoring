@@ -5,14 +5,14 @@
 
 ## Sprint 1: Setup and data model (weeks 1-2)
 
-- [ ] **T0.1 Repository, tooling and CI/CD**
+- [x] **T0.1 Repository, tooling and CI/CD**
   - [x] React Router + Tailwind CSS 4 app on Cloudflare Workers, TypeScript strict
   - [x] ESLint, Prettier, Vitest, Playwright, Drizzle Kit
   - [x] GitHub Actions: lint → tests → staging on `main` → production after approval
   - [x] Rollback and forward-only migration policy documented (`docs/DEPLOYMENT.md`)
-  - [ ] Push to GitHub, add Cloudflare secrets and environments; "hello" page deploys to staging from CI
-  - [ ] Push a deliberately failing test and confirm CI blocks the deploy
-  - [ ] Deploy twice, then `wrangler rollback --env staging` once
+  - [x] Push to GitHub, add Cloudflare secrets and environments; "hello" page deploys to staging from CI
+  - [x] Push a deliberately failing test and confirm CI blocks the deploy
+  - [x] Deploy twice, then `wrangler rollback --env staging` once
 - [ ] T0.2 Cloudflare environments and secrets
 - [ ] T0.3 Database schema, migrations and seed
 - [ ] T0.4 Logging, monitoring and alerts
