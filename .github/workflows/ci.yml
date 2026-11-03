@@ -63,6 +63,9 @@ jobs:
     needs: [check, e2e, secret-scan]
     runs-on: ubuntu-latest
     environment: staging
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-node@v5
@@ -70,10 +73,10 @@ jobs:
           node-version: 24
           cache: npm
       - run: npm ci
+      # Migrations first: they must work with the code that is still live (docs/DEPLOYMENT.md).
+      - run: npm run db:migrate:staging
+      - run: npm run db:seed:staging
       - run: npm run deploy:staging
-        env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
 
   # Waits for a manual approval: give the "production" GitHub environment required reviewers.
   deploy-production:
@@ -81,6 +84,9 @@ jobs:
     needs: deploy-staging
     runs-on: ubuntu-latest
     environment: production
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-node@v5
@@ -88,7 +94,7 @@ jobs:
           node-version: 24
           cache: npm
       - run: npm ci
+      # Migrations first: they must work with the code that is still live (docs/DEPLOYMENT.md).
+      - run: npm run db:migrate:production
+      - run: npm run db:seed:production
       - run: npm run deploy:production
-        env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}

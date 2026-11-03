@@ -6,7 +6,13 @@
     "playwright.config.ts",
     "drizzle.config.ts",
     "react-router.config.ts",
-    "e2e/**/*"
+    "e2e/**/*",
+    "test/**/*",
+    "scripts/**/*",
+    // Runtime-neutral modules that Node scripts and integration tests import.
+    "app/db/seed.ts",
+    "app/db/seed-data.ts",
+    "app/lib/password.ts"
   ],
   "compilerOptions": {
     "composite": true,

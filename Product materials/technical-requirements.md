@@ -376,6 +376,7 @@ erDiagram
         timestamp consent_at
         string ip_hash
         boolean hidden
+        timestamp created_at
         timestamp delete_after
         boolean seeded
     }

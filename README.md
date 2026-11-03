@@ -26,6 +26,8 @@ npm run dev                      # http://localhost:5173
 | `npm test`                                     | Vitest unit tests (`npx vitest run <file>` for one)                |
 | `npm run test:e2e`                             | Playwright in Chromium, Firefox and WebKit, against `vite preview` |
 | `npm run db:generate`                          | Drizzle Kit: generate SQL migrations                               |
+| `npm run db:migrate:local`                     | Apply migrations to the local database                             |
+| `npm run db:seed:local`                        | Load the 4 reading tests (`-- --admin` also creates the admin)     |
 | `npm run deploy:staging` / `deploy:production` | Build for that environment and deploy                              |
 
 Before running E2E tests for the first time, install the browsers: `npx playwright install`.

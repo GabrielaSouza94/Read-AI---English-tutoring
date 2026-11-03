@@ -33,3 +33,16 @@
   - **C. Hermes on a personal computer** behind a Cloudflare Tunnel. Not viable for a public site: it needs the machine online 24/7, and it adds latency and security risk.
 - **Trade-offs:** Cost barely changes (Gemini is under $1 a month in the TRD). Privacy improves slightly with option A, since Google is no longer a third party. The risk is quality: the model must return valid JSON (feedback, plus highlighted words in text order) within the 15-second timeout.
 - **To verify:** In T0.6 or T3.5, run the same fixture attempts through two or three Workers AI models, with Gemini as the baseline, and compare JSON validity, feedback quality and latency. If an open model wins, update BR-14, the BRD restrictions and decisions log, TRD §3.2, §6.3, costs and third parties, `product-documentation.md`, `task-breakdown.md` (T3.5, S-2, T0.2), the privacy notice and `app/lib/config.ts`.
+
+## 2026-11-03: Schema details not fixed by the TRD (T0.3)
+
+- **Context:** TRD §5.1 lists tables and columns, but leaves some details open.
+- **Decisions:**
+  - `participants.created_at` added, because `delete_after` is "created + 90 days". An index on `browser_id` speeds up the returning-browser lookup on session start. The TRD ERD now shows `created_at`.
+  - `review_status` is `auto`, `needs_review` or `reviewed` (T3.7, T4.2). It stays null while a test is in progress.
+  - `step_type` is `progressive` or `full_story`.
+  - Timestamps are Unix milliseconds. JSON columns are text.
+  - Test and sentence ids are fixed (sentence = test × 100 + position), so the seed can upsert, and attempts keep pointing at the right sentence.
+  - The admin password is hashed with PBKDF2-SHA256, 100,000 iterations (the Workers limit), through Web Crypto, so the seed script and the Worker share one implementation.
+  - Integration tests use Wrangler's `getPlatformProxy` (in-memory D1), not Miniflare's API, which changed shape in Miniflare 5.
+- **Consequences:** Removing a sentence from `seed-data.ts` does not delete it from D1. Write a migration for that.

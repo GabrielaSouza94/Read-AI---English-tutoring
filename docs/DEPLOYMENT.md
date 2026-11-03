@@ -73,10 +73,33 @@ fails with "This does not match the target environment … used when building". 
 before running Wrangler by hand: `Remove-Item -Recurse build, .wrangler/deploy` (PowerShell).
 The `deploy:*` scripts are not affected, because they always build first.
 
-## Database migrations (from T0.3)
+## Database migrations and seed
 
-- Drizzle Kit generates SQL from `app/db/schema.ts` into `drizzle/migrations/` (`npm run db:generate`).
-  Wrangler applies it to D1.
+Changing the schema:
+
+1. Edit `app/db/schema.ts`, then run `npm run db:generate -- --name <short_name>`. Drizzle Kit writes
+   `drizzle/migrations/NNNN_<short_name>.sql`. Read the SQL before committing it.
+2. Write `drizzle/down/NNNN_<short_name>.down.sql` by hand.
+3. `npm run db:migrate:local`, then `npm test`. The integration tests in `test/` apply every migration to a
+   fresh database.
+4. Push. CI runs `db:migrate:<env>`, then `db:seed:<env>`, then the deploy, in that order. Wrangler records
+   applied migrations in each database's `d1_migrations` table and skips them next time.
+
+The seed (`app/db/seed-data.ts`) holds the 4 tests and 24 sentences. Every statement is an upsert keyed on a
+stable id, so it runs on every deploy, and edited thresholds overwrite the old ones. Sentence ids are
+`test × 100 + position` (203 = test 2, sentence 3). Attempts point at them, so never renumber a sentence.
+
+The admin account is seeded by hand, once per environment. CI never does it:
+
+```powershell
+npm run db:seed:staging -- --admin      # asks for email and password; stores only a PBKDF2 hash
+npm run db:seed:production -- --admin   # use a different password from staging
+```
+
+Running it again with the same email replaces the password.
+
+Rules:
+
 - **Forward-only.** Never edit a migration that has been applied anywhere. Fix mistakes with a new migration.
 - Every migration `NNNN_name.sql` has a hand-written `drizzle/down/NNNN_name.down.sql`. That file reverses it, for emergencies only.
 - A migration must stay compatible with the previous Worker version, so that a code rollback still works.

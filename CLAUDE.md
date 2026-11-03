@@ -15,9 +15,11 @@ npm run dev                 # dev server (Vite + workerd), http://localhost:5173
 npm run typecheck           # wrangler types + react-router typegen + tsc -b
 npm run lint                # ESLint
 npm run format              # Prettier write (format:check in CI)
-npm test                    # Vitest unit tests; one file: npx vitest run app/lib/environment.test.ts
+npm test                    # Vitest: unit (app/**/*.test.ts) + D1 integration (test/); one file: npx vitest run app/lib/config.test.ts
 npm run test:e2e            # Playwright, 3 browsers, against `vite preview`; one browser: --project=chromium
-npm run db:generate         # Drizzle Kit → drizzle/migrations
+npm run db:generate -- --name <name>  # Drizzle Kit → drizzle/migrations (then write drizzle/down/<same>.down.sql)
+npm run db:migrate:local    # apply migrations to local D1 (also :staging / :production)
+npm run db:seed:local       # upsert the 4 tests + 24 sentences; add -- --admin to create the admin
 npm run deploy:staging      # build with CLOUDFLARE_ENV=staging, then wrangler deploy (asks first)
 ```
 
@@ -28,8 +30,8 @@ Run `npm run typecheck` after editing `wrangler.jsonc` or adding routes. It rege
 - **One Worker serves everything.** `workers/app.ts` passes each request to the React Router server build, using SSR in framework mode. Routes are declared in `app/routes.ts`. Pages and API endpoints are route modules, with `loader` and `action` functions.
 - **Bindings** (`DB` for D1, `KV`, vars and secrets) are read with `import { env } from "cloudflare:workers"`. `wrangler.jsonc` declares the local config at the top level, plus `env.staging` and `env.production`. `vars`, `d1_databases` and `kv_namespaces` are not inherited by environments, so repeat them in each one. The environment is chosen at **build** time through `CLOUDFLARE_ENV`, not with `wrangler deploy --env`. See `docs/DEPLOYMENT.md`.
 - **Settings and secrets** go through `loadConfig()` in `app/lib/config.ts`, never straight from `env`. Secrets aren't in `wrangler.jsonc`, so the generated `Env` type doesn't include them in CI. Adding a setting means updating the loader, `.dev.vars.example` and `docs/SECRETS.md`. Error messages and logs may name a setting but never print its value. `GET /api/health` reports database, storage and config status per environment.
-- **Pure logic goes in `app/lib/`.** This covers metrics, mismatch rules and validation, and it keeps the code unit-testable in Node. Vitest runs `app/**/*.test.ts` in a Node environment, so code that imports `cloudflare:workers` can't be unit-tested there. Integration tests against D1/KV (Miniflare) arrive with T0.3.
-- **The database schema** is in `app/db/schema.ts` (Drizzle, SQLite dialect for D1). Migrations are forward-only, and each one needs a down script. See `docs/DEPLOYMENT.md`.
+- **Pure logic goes in `app/lib/`.** This covers metrics, mismatch rules and validation, and it keeps the code unit-testable in Node. Vitest runs `app/**/*.test.ts` in a Node environment, so code that imports `cloudflare:workers` can't be unit-tested there. Integration tests live in `test/` and use `test/d1.ts`, which builds an in-memory D1 from Wrangler's `getPlatformProxy` and applies the real migrations. Modules that both Node scripts and the Worker import (`app/db/seed*.ts`, `app/lib/password.ts`) must stay runtime-neutral, and they are listed in `tsconfig.node.json`.
+- **The database schema** is in `app/db/schema.ts` (Drizzle, SQLite dialect for D1). Migrations are forward-only, and each one needs a down script. Test content and thresholds live in `app/db/seed-data.ts` (the source of truth, upserted on every deploy). Never renumber sentence ids. See `docs/DEPLOYMENT.md`.
 - **CI** (`.github/workflows/ci.yml`) runs check → e2e → deploy-staging (on `main`) → deploy-production (manual approval). A failing check blocks every deploy.
 - **The cross-cutting rules** in `task-breakdown.md` §3 apply to all code: the S-1 JSON error format, S-2 timeouts and retries for external calls, and the S-3 Definition of Done. Never put participant names in logs or LangSmith traces, never persist audio, and enforce every restriction server-side.
 - The app uses React Router **8**; the TRD still says 7. See `docs/DECISIONS.md`.
