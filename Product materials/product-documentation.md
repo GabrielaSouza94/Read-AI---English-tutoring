@@ -284,6 +284,7 @@ The final score is the latest non-reverted review; with no review it is the AI b
 | `/api/export/attempts.csv` | GET | Attempts CSV |
 | `/api/export/results.csv` | GET | Results CSV |
 | `/api/admin/*` | various | Moderation, revert, trust, usage, kill switch |
+| `/api/health` | GET | Database, storage and configuration status; 200 or 503 |
 
 ---
 

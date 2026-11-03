@@ -3,8 +3,8 @@
  *
  * The top level is the local (`npm run dev`) environment. `staging` and `production` are
  * selected at build time with CLOUDFLARE_ENV (see the deploy scripts in package.json).
- * `vars` are not inherited by environments, so each one repeats them.
- * D1, KV and secrets arrive in T0.2.
+ * `vars`, `d1_databases` and `kv_namespaces` are not inherited by environments, so each one
+ * repeats them. Secrets are not listed here: see docs/SECRETS.md.
  */
 {
   "$schema": "node_modules/wrangler/config-schema.json",
@@ -13,15 +13,60 @@
   "main": "./workers/app.ts",
   "observability": { "enabled": true },
   "upload_source_maps": true,
-  "vars": { "APP_ENV": "local" },
+
+  // Local: Miniflare keeps D1 and KV data under .wrangler/state; the ids are placeholders.
+  "vars": {
+    "APP_ENV": "local",
+    "DAILY_STT_MINUTES_CAP": "80",
+    "RETENTION_DAYS": "90",
+    "PRIVACY_CONTACT_EMAIL": "gabrielasouza94@gmail.com",
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "local-dev",
+      "database_id": "local-dev",
+      "migrations_dir": "drizzle/migrations",
+    },
+  ],
+  "kv_namespaces": [{ "binding": "KV", "id": "local-dev" }],
+
   "env": {
     "staging": {
       "name": "read-ai-staging",
-      "vars": { "APP_ENV": "staging" },
+      "vars": {
+        "APP_ENV": "staging",
+        "DAILY_STT_MINUTES_CAP": "80",
+        "RETENTION_DAYS": "90",
+        "PRIVACY_CONTACT_EMAIL": "gabrielasouza94@gmail.com",
+      },
+      "d1_databases": [
+        {
+          "binding": "DB",
+          "database_name": "read-ai-staging-db",
+          "database_id": "4cfe243a-174e-440c-89a6-961bcde36a89",
+          "migrations_dir": "drizzle/migrations",
+        },
+      ],
+      "kv_namespaces": [{ "binding": "KV", "id": "e003d156d71a49bf9b4fc050a75aa68d" }],
     },
     "production": {
       "name": "read-ai-production",
-      "vars": { "APP_ENV": "production" },
+      "vars": {
+        "APP_ENV": "production",
+        "DAILY_STT_MINUTES_CAP": "80",
+        "RETENTION_DAYS": "90",
+        "PRIVACY_CONTACT_EMAIL": "gabrielasouza94@gmail.com",
+      },
+      "d1_databases": [
+        {
+          "binding": "DB",
+          "database_name": "read-ai-production-db",
+          "database_id": "ca7e2a8d-3ad8-459e-918e-e0d315a1bdee",
+          "migrations_dir": "drizzle/migrations",
+        },
+      ],
+      "kv_namespaces": [{ "binding": "KV", "id": "0c739cf8a80c4ce4866148b0296767a2" }],
     },
   },
 }

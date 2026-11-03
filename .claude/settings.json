@@ -36,6 +36,7 @@
       "Read(./.env.*)",
       "Read(./.dev.vars)",
       "Read(./.dev.vars.*)",
+      "Read(./.secrets.*)",
       "Edit(./.env)",
       "Edit(./.dev.vars)",
       "Bash(rm -rf:*)",
