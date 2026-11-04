@@ -514,6 +514,8 @@ erDiagram
 ### 6.4 LangSmith
 
 - Prompt Hub for the feedback prompt; tracing of every Gemini call with ids only.
+- One private prompt, `read-ai-feedback` (a `StructuredPrompt` with mustache templates and the output schema). Local pulls the latest commit; staging and production pull the `staging` and `production` tags, so an edit is promoted by moving a tag, without a deploy.
+- One tracing project per environment: `read-ai-local`, `read-ai-staging`, `read-ai-production`.
 
 ### 6.5 Cloudflare Turnstile
 
@@ -695,5 +697,6 @@ For comparison, the ReadAssist design with SpeechAce Premium would cost about $1
 
 | Version | Date | Author | Changes |
 | ------- | ---- | ------ | ------- |
+| 1.2 | November 3, 2026 | Gabriela | §6.4: prompt tags per environment and one tracing project per environment (T0.6). |
 | 1.1 | November 3, 2026 | Gabriela | §6.2: long-audio approach decided by the T0.5 spike (sentence-boundary chunks of at most 25 s; 30-second hard limit; fluency bias; WebSocket rejected). |
 | 1.0 | October 12, 2026 | Gabriela | Read AI TRD created from the ReadAssist AI TRD v4.2: public access, captcha and rate limits, admin login, name + code identity, 4 graded tests with texts, Azure pronunciation assessment replacing SpeechAce, WAV recording, mismatch detection, public review with audit and revert, LGPD privacy, new schema, 12-week sprint plan, updated costs. |

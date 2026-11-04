@@ -15,6 +15,8 @@
   "upload_source_maps": true,
   // Hourly alert check at minute 5 (T0.4): workers/app.ts scheduled(). Inherited by environments.
   "triggers": { "crons": ["5 * * * *"] },
+  // LangSmith (T0.6): one tracing project per environment. Local pulls the latest prompt commit,
+  // staging and production pull the commit their tag points to (see docs/DEPLOYMENT.md).
 
   // Local: Miniflare keeps D1 and KV data under .wrangler/state; the ids are placeholders.
   "vars": {
@@ -23,6 +25,8 @@
     "RETENTION_DAYS": "90",
     "PRIVACY_CONTACT_EMAIL": "gabrielasouza94@gmail.com",
     "ALERT_EMAIL": "gabrielasouza94@gmail.com",
+    "LANGSMITH_PROJECT": "read-ai-local",
+    "LANGSMITH_FEEDBACK_PROMPT_ID": "read-ai-feedback",
   },
   "d1_databases": [
     {
@@ -43,6 +47,8 @@
         "RETENTION_DAYS": "90",
         "PRIVACY_CONTACT_EMAIL": "gabrielasouza94@gmail.com",
         "ALERT_EMAIL": "gabrielasouza94@gmail.com",
+        "LANGSMITH_PROJECT": "read-ai-staging",
+        "LANGSMITH_FEEDBACK_PROMPT_ID": "read-ai-feedback:staging",
       },
       "d1_databases": [
         {
@@ -62,6 +68,8 @@
         "RETENTION_DAYS": "90",
         "PRIVACY_CONTACT_EMAIL": "gabrielasouza94@gmail.com",
         "ALERT_EMAIL": "gabrielasouza94@gmail.com",
+        "LANGSMITH_PROJECT": "read-ai-production",
+        "LANGSMITH_FEEDBACK_PROMPT_ID": "read-ai-feedback:production",
       },
       "d1_databases": [
         {

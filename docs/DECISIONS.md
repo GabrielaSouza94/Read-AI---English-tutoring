@@ -23,7 +23,14 @@
 - **Decision:** Remove the Python code and keep the workflow parts: the `/plan`, `/next`, `/review` and `/fix-tests` commands, the subagents, `docs/` and the format hook. Adapt them to npm, Vitest, ESLint and Prettier.
 - **Consequences:** `global/CLAUDE.md` holds personal preferences from the template and is left as is.
 
-## 2026-11-02: Open model instead of Gemini (to revisit in T0.6 / T3.5)
+## 2026-11-03: Feedback prompt versioned by Prompt Hub tags (T0.6)
+
+- **Context:** BR-RULE-14 says prompts change without a deploy, but a bad edit must not reach production at once.
+- **Decision:** One private prompt, `read-ai-feedback`, as a LangChain `StructuredPrompt` with mustache templates and the output JSON schema, so the Playground returns schema-shaped JSON. Local pulls the latest commit, staging and production pull the `staging` and `production` tags. The first version lives in `app/lib/prompts.ts` and is pushed with `npm run prompt:push`. The Worker calls the REST API directly with a small mustache renderer, not the LangChain SDK, to keep the bundle small.
+- **Alternatives:** One prompt per environment (edits copied by hand); pulling `latest` everywhere (no review step before production).
+- **Consequences:** Promoting a prompt means moving a tag. The renderer supports variables only, so a Hub edit that adds a mustache section fails the pull instead of rendering wrongly. The open-model bake-off below moves to T3.5, where the Gemini client and output validator exist to compare against.
+
+## 2026-11-02: Open model instead of Gemini (to revisit in T3.5)
 
 - **Status:** Bookmarked, not decided. The project stays on Gemini 2.5 Flash Lite for now.
 - **Context:** Gemini writes the feedback and picks the words to highlight (BR-14; two calls per attempt). It does not decide pass or fail, and a fallback covers outages. The question was whether an open model, such as Nous Research's Hermes, could replace it.
@@ -32,7 +39,7 @@
   - **B. Hermes through a hosted provider** (OpenRouter, Nous API). Still an outside vendor with a key; little gain over Gemini.
   - **C. Hermes on a personal computer** behind a Cloudflare Tunnel. Not viable for a public site: it needs the machine online 24/7, and it adds latency and security risk.
 - **Trade-offs:** Cost barely changes (Gemini is under $1 a month in the TRD). Privacy improves slightly with option A, since Google is no longer a third party. The risk is quality: the model must return valid JSON (feedback, plus highlighted words in text order) within the 15-second timeout.
-- **To verify:** In T0.6 or T3.5, run the same fixture attempts through two or three Workers AI models, with Gemini as the baseline, and compare JSON validity, feedback quality and latency. If an open model wins, update BR-14, the BRD restrictions and decisions log, TRD §3.2, §6.3, costs and third parties, `product-documentation.md`, `task-breakdown.md` (T3.5, S-2, T0.2), the privacy notice and `app/lib/config.ts`.
+- **To verify:** In T3.5 (moved from T0.6), run the same fixture attempts through two or three Workers AI models, with Gemini as the baseline, and compare JSON validity, feedback quality and latency. If an open model wins, update BR-14, the BRD restrictions and decisions log, TRD §3.2, §6.3, costs and third parties, `product-documentation.md`, `task-breakdown.md` (T3.5, S-2, T0.2), the privacy notice and `app/lib/config.ts`.
 
 ## 2026-11-03: Long reads scored in sentence-boundary chunks (T0.5)
 

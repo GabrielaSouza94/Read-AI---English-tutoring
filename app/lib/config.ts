@@ -22,6 +22,8 @@ export type AppConfig = { [K in keyof typeof SECRETS]: string } & {
   retentionDays: number;
   privacyContactEmail: string;
   alertEmail: string;
+  langsmithProject: string;
+  langsmithFeedbackPromptId: string;
 };
 
 export class ConfigError extends Error {
@@ -76,10 +78,20 @@ function check(source: Source): { problems: string[]; config: AppConfig } {
   const retentionDays = wholeNumber("RETENTION_DAYS");
   const privacyContactEmail = email("PRIVACY_CONTACT_EMAIL");
   const alertEmail = email("ALERT_EMAIL");
+  const langsmithProject = required("LANGSMITH_PROJECT");
+  const langsmithFeedbackPromptId = required("LANGSMITH_FEEDBACK_PROMPT_ID");
 
   return {
     problems,
-    config: { ...secrets, dailySttMinutesCap, retentionDays, privacyContactEmail, alertEmail },
+    config: {
+      ...secrets,
+      dailySttMinutesCap,
+      retentionDays,
+      privacyContactEmail,
+      alertEmail,
+      langsmithProject,
+      langsmithFeedbackPromptId,
+    },
   };
 }
 
@@ -119,20 +131,33 @@ export type SpeechConfig = Pick<
   "deepgramApiKey" | "azureSpeechKey" | "azureSpeechRegion"
 >;
 
-/** Only the scorer keys, so scoring never fails because an unrelated setting is missing. */
-export function loadSpeechConfig(source: Source): SpeechConfig {
-  const names = {
-    deepgramApiKey: SECRETS.deepgramApiKey,
-    azureSpeechKey: SECRETS.azureSpeechKey,
-    azureSpeechRegion: SECRETS.azureSpeechRegion,
-  };
-  const problems = Object.values(names)
+/** Reads only the named text settings, throwing a ConfigError if any is missing. */
+function loadSubset<K extends string>(source: Source, names: Record<K, string>): Record<K, string> {
+  const problems = Object.values<string>(names)
     .filter((name) => text(source, name) === undefined)
     .map((name) => `${name} is missing`);
   if (problems.length > 0) throw new ConfigError(problems);
-  return {
-    deepgramApiKey: text(source, names.deepgramApiKey) ?? "",
-    azureSpeechKey: text(source, names.azureSpeechKey) ?? "",
-    azureSpeechRegion: text(source, names.azureSpeechRegion) ?? "",
-  };
+  return Object.fromEntries(
+    Object.entries<string>(names).map(([key, name]) => [key, text(source, name) ?? ""]),
+  ) as Record<K, string>;
+}
+
+/** Only the scorer keys, so scoring never fails because an unrelated setting is missing. */
+export function loadSpeechConfig(source: Source): SpeechConfig {
+  return loadSubset(source, {
+    deepgramApiKey: SECRETS.deepgramApiKey,
+    azureSpeechKey: SECRETS.azureSpeechKey,
+    azureSpeechRegion: SECRETS.azureSpeechRegion,
+  });
+}
+
+export type LangSmithConfig = { apiKey: string; project: string; feedbackPromptId: string };
+
+/** Only the LangSmith settings, for prompt pulls and tracing. */
+export function loadLangSmithConfig(source: Source): LangSmithConfig {
+  return loadSubset(source, {
+    apiKey: SECRETS.langsmithApiKey,
+    project: "LANGSMITH_PROJECT",
+    feedbackPromptId: "LANGSMITH_FEEDBACK_PROMPT_ID",
+  });
 }

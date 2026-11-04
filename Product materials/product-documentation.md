@@ -286,6 +286,7 @@ The final score is the latest non-reverted review; with no review it is the AI b
 | `/api/admin/*` | various | Moderation, revert, trust, usage, kill switch |
 | `/api/health` | GET | Database, storage and configuration status; 200 or 503 |
 | `/api/debug/error`, `/api/debug/alert` | GET | Staging and local only: force an error, send a test alert (404 in production) |
+| `/api/debug/prompt` | GET | Staging and local only: pull the feedback prompt and render it with a fixture (404 in production) |
 
 ---
 
@@ -330,6 +331,7 @@ The final score is the latest non-reverted review; with no review it is the AI b
 ### LangSmith
 
 - Prompt pulled from Prompt Hub at runtime (cached 5 minutes); every Gemini call traced with attempt, participant and test ids only.
+- Prompt `read-ai-feedback`: local pulls the latest commit, staging and production the `staging` and `production` tags. Mustache variables: `scorer`, `reference_text`, `transcript`, `scores`, `thresholds`, `candidate_words` (`feedbackVariables()` in `app/lib/prompts.ts`).
 
 ### Cloudflare Turnstile
 

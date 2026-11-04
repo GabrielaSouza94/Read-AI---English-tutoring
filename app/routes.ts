@@ -7,4 +7,5 @@ export default [
   route("api/debug/alert", "routes/api.debug.alert.ts"),
   route("api/debug/tts", "routes/api.debug.tts.ts"),
   route("api/debug/azure-spike", "routes/api.debug.azure-spike.ts"),
+  route("api/debug/prompt", "routes/api.debug.prompt.ts"),
 ] satisfies RouteConfig;

@@ -65,6 +65,31 @@ Each alert is also logged as an `alert` event, so it is visible even when email 
 `admin_audit` row: action, admin id, target, redacted details and request id. Rows have no foreign keys, so the
 trail survives deletions.
 
+## Prompts (LangSmith)
+
+The feedback prompt lives in LangSmith Prompt Hub as `read-ai-feedback` (private). Its first version is
+`FEEDBACK_PROMPT` in `app/lib/prompts.ts`. Each environment pulls the commit named by
+`LANGSMITH_FEEDBACK_PROMPT_ID` in `wrangler.jsonc`:
+
+| Environment | Pulls                         | Tracing project      |
+| ----------- | ----------------------------- | -------------------- |
+| Local       | `read-ai-feedback` (latest)   | `read-ai-local`      |
+| Staging     | `read-ai-feedback:staging`    | `read-ai-staging`    |
+| Production  | `read-ai-feedback:production` | `read-ai-production` |
+
+**Changing the prompt without a deploy** (BR-RULE-14): edit it in the Hub or Playground and commit. Local
+sees it at once. Move the `staging` tag to the new commit and check it on staging, then move `production`.
+The prompt must keep mustache templates and the variables from `feedbackVariables()`; a pull that finds
+anything else fails, and T3.5 falls back to its cached copy.
+
+**Pushing the repo version:** `npm run prompt:push` creates the three tracing projects and the prompt if
+needed, commits `app/lib/prompts.ts` when it differs from the latest Hub commit, and tags it `staging`. Add
+`-- --tag production` to move `production` too. It reads `LANGSMITH_API_KEY` from the environment or
+`.dev.vars`. A push overwrites Hub edits only when the file itself has changed.
+
+**Checking it:** `GET /api/debug/prompt` (local and staging; 404 in production) pulls the prompt from the
+Worker and returns it rendered with a fixture attempt, its commit hash and the pull time. It calls no model.
+
 ## CI pipeline (`.github/workflows/ci.yml`)
 
 1. **check**: typecheck, ESLint, Prettier check and Vitest. Runs on every pull request and push.

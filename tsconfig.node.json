@@ -17,7 +17,11 @@
     "app/lib/alerts.ts",
     "app/lib/audit.ts",
     "app/lib/log.ts",
-    "app/lib/metrics.ts"
+    "app/lib/metrics.ts",
+    "app/lib/http.ts",
+    "app/lib/langsmith.ts",
+    "app/lib/mustache.ts",
+    "app/lib/prompts.ts"
   ],
   "compilerOptions": {
     "composite": true,

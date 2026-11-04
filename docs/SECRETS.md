@@ -8,21 +8,23 @@ Every setting the Worker needs, where its value comes from, who owns it and when
 **Secrets** are set per environment with Wrangler (or in `.dev.vars` locally) and are never committed.
 **Vars** are plain values in `wrangler.jsonc`, repeated in each environment.
 
-| Name                    | Kind   | Where the value comes from                                                      | Needed from |
-| ----------------------- | ------ | ------------------------------------------------------------------------------- | ----------- |
-| `DEEPGRAM_API_KEY`      | Secret | Deepgram console → API Keys                                                     | T3.2        |
-| `AZURE_SPEECH_KEY`      | Secret | Azure portal → Speech resource → Keys and Endpoint                              | T0.5        |
-| `AZURE_SPEECH_REGION`   | Secret | Same page as the key (for example `eastus`)                                     | T0.5        |
-| `GEMINI_API_KEY`        | Secret | Google AI Studio → API keys (paid tier)                                         | T3.5        |
-| `LANGSMITH_API_KEY`     | Secret | LangSmith → Settings → API Keys                                                 | T0.6        |
-| `TURNSTILE_SITE_KEY`    | Secret | Cloudflare dashboard → Turnstile → widget (public, but differs per environment) | T1.4        |
-| `TURNSTILE_SECRET_KEY`  | Secret | Same Turnstile widget                                                           | T1.4        |
-| `IP_HASH_SALT`          | Secret | Generate: `node -e "console.log(crypto.randomBytes(32).toString('hex'))"`       | T1.4        |
-| `RESEND_API_KEY`        | Secret | Resend → API Keys → Create, permission **Sending access**                       | T0.4        |
-| `DAILY_STT_MINUTES_CAP` | Var    | `wrangler.jsonc` (80)                                                           | T2.6        |
-| `RETENTION_DAYS`        | Var    | `wrangler.jsonc` (90)                                                           | T1.5        |
-| `PRIVACY_CONTACT_EMAIL` | Var    | `wrangler.jsonc`; shown publicly on the privacy notice                          | T1.2        |
-| `ALERT_EMAIL`           | Var    | `wrangler.jsonc`; must be the address of the Resend account                     | T0.4        |
+| Name                           | Kind   | Where the value comes from                                                      | Needed from |
+| ------------------------------ | ------ | ------------------------------------------------------------------------------- | ----------- |
+| `DEEPGRAM_API_KEY`             | Secret | Deepgram console → API Keys                                                     | T3.2        |
+| `AZURE_SPEECH_KEY`             | Secret | Azure portal → Speech resource → Keys and Endpoint                              | T0.5        |
+| `AZURE_SPEECH_REGION`          | Secret | Same page as the key (for example `eastus`)                                     | T0.5        |
+| `GEMINI_API_KEY`               | Secret | Google AI Studio → API keys (paid tier)                                         | T3.5        |
+| `LANGSMITH_API_KEY`            | Secret | LangSmith → Settings → API Keys                                                 | T0.6        |
+| `TURNSTILE_SITE_KEY`           | Secret | Cloudflare dashboard → Turnstile → widget (public, but differs per environment) | T1.4        |
+| `TURNSTILE_SECRET_KEY`         | Secret | Same Turnstile widget                                                           | T1.4        |
+| `IP_HASH_SALT`                 | Secret | Generate: `node -e "console.log(crypto.randomBytes(32).toString('hex'))"`       | T1.4        |
+| `RESEND_API_KEY`               | Secret | Resend → API Keys → Create, permission **Sending access**                       | T0.4        |
+| `DAILY_STT_MINUTES_CAP`        | Var    | `wrangler.jsonc` (80)                                                           | T2.6        |
+| `RETENTION_DAYS`               | Var    | `wrangler.jsonc` (90)                                                           | T1.5        |
+| `PRIVACY_CONTACT_EMAIL`        | Var    | `wrangler.jsonc`; shown publicly on the privacy notice                          | T1.2        |
+| `ALERT_EMAIL`                  | Var    | `wrangler.jsonc`; must be the address of the Resend account                     | T0.4        |
+| `LANGSMITH_PROJECT`            | Var    | `wrangler.jsonc`; tracing project, one per environment                          | T0.6        |
+| `LANGSMITH_FEEDBACK_PROMPT_ID` | Var    | `wrangler.jsonc`; Prompt Hub id and tag (see `docs/DEPLOYMENT.md`)              | T0.6        |
 
 Staging and production must use **separate keys** for every secret, so a leaked staging key never exposes
 production. Create a separate Turnstile widget per environment, and generate a different salt for each.

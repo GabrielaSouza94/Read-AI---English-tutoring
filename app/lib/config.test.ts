@@ -1,6 +1,12 @@
 import { describe, expect, it } from "vitest";
 
-import { ConfigError, findConfigProblems, loadConfig, loadMonitoringConfig } from "./config";
+import {
+  ConfigError,
+  findConfigProblems,
+  loadConfig,
+  loadLangSmithConfig,
+  loadMonitoringConfig,
+} from "./config";
 
 const VALID = {
   DEEPGRAM_API_KEY: "dg-key",
@@ -16,6 +22,8 @@ const VALID = {
   RETENTION_DAYS: "90",
   PRIVACY_CONTACT_EMAIL: "privacy@example.com",
   ALERT_EMAIL: "owner@example.com",
+  LANGSMITH_PROJECT: "read-ai-local",
+  LANGSMITH_FEEDBACK_PROMPT_ID: "read-ai-feedback:staging",
 };
 
 function without(name: keyof typeof VALID): Record<string, unknown> {
@@ -99,5 +107,23 @@ describe("loadMonitoringConfig", () => {
     expect(
       loadMonitoringConfig({ ALERT_EMAIL: "not-an-email", DAILY_STT_MINUTES_CAP: "x" }),
     ).toEqual({ dailySttMinutesCap: 80, alertEmail: undefined, resendApiKey: undefined });
+  });
+});
+
+describe("loadLangSmithConfig", () => {
+  it("returns the key, project and prompt id", () => {
+    expect(loadLangSmithConfig(VALID)).toEqual({
+      apiKey: "ls-key",
+      project: "read-ai-local",
+      feedbackPromptId: "read-ai-feedback:staging",
+    });
+  });
+
+  it("ignores unrelated settings but names its own missing ones, without values", () => {
+    const source = { LANGSMITH_API_KEY: "ls-key" };
+    expect(() => loadLangSmithConfig(source)).toThrow(
+      "LANGSMITH_PROJECT is missing; LANGSMITH_FEEDBACK_PROMPT_ID is missing",
+    );
+    expect(() => loadLangSmithConfig({})).not.toThrow("ls-key");
   });
 });
