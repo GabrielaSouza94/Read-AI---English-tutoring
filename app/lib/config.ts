@@ -161,3 +161,21 @@ export function loadLangSmithConfig(source: Source): LangSmithConfig {
     feedbackPromptId: "LANGSMITH_FEEDBACK_PROMPT_ID",
   });
 }
+
+export type PrivacyConfig = { contactEmail: string; retentionDays: number };
+
+/** Only what the privacy notice shows, so the page works even when a secret is missing. */
+export function loadPrivacyConfig(source: Source): PrivacyConfig {
+  const contactEmail = text(source, "PRIVACY_CONTACT_EMAIL");
+  const retentionDays = positiveInteger(text(source, "RETENTION_DAYS"));
+  const problems = [
+    ...(contactEmail && EMAIL.test(contactEmail)
+      ? []
+      : ["PRIVACY_CONTACT_EMAIL must be an email address"]),
+    ...(retentionDays === undefined ? ["RETENTION_DAYS must be a positive whole number"] : []),
+  ];
+  if (problems.length > 0 || !contactEmail || retentionDays === undefined) {
+    throw new ConfigError(problems);
+  }
+  return { contactEmail, retentionDays };
+}

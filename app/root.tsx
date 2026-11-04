@@ -1,5 +1,6 @@
 import {
   isRouteErrorResponse,
+  Link,
   Links,
   Meta,
   Outlet,
@@ -34,6 +35,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <body>
         {children}
+        {/* Minimal footer (T1.2); the full layout shell comes in T1.1. */}
+        <footer className="mx-auto max-w-2xl px-4 py-6 text-sm text-gray-500">
+          <Link className="underline" to="/privacy">
+            Privacy
+          </Link>
+        </footer>
         <ScrollRestoration />
         <Scripts />
       </body>

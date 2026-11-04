@@ -54,7 +54,12 @@
   - [x] Prompt pushed (commit `7dc45541`, tagged `staging` and `production`); projects created; keys replaced in all 3 environments
   - [x] `/api/debug/prompt` on staging pulls `read-ai-feedback:staging` in 253 ms, every placeholder filled
   - [x] Sample call in the Playground returns valid JSON (Gemini 2.5 Flash Lite)
-- [ ] T1.2 Privacy notice and LGPD basics
+- [x] **T1.2 Privacy notice and LGPD basics**
+  - [x] `/privacy`: controller, contact email and retention from settings (`loadPrivacyConfig`), data stored, purposes and legal basis, third parties, no audio, deletion, rights, age
+  - [x] Footer link on every page (minimal footer; full layout shell in T1.1)
+  - [x] Tests: E2E footer link and notice content; unit `loadPrivacyConfig`
+  - [x] Content checked against BRD §7 privacy rows
+  - [x] Consent-box link test moved to T1.3 (the consent box does not exist yet)
 - [ ] T1.4 Captcha and rate limits
 
 ## Done

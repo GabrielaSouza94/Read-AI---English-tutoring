@@ -333,6 +333,7 @@ Every API error returns JSON with an HTTP status:
 - [Unit] Name validation rejects 1 character, 41 characters, digits, HTML (`<script>`), and blocked words.
 - [Int] Missing consent → 403 `CONSENT_REQUIRED`; bad captcha → 403 `CAPTCHA_FAILED`.
 - [Int] Two requests with the same `browser_id` return the same participant.
+- [E2E] Consent box link opens `/privacy` (moved from T1.2, which shipped before the consent box).
 - [E2E] Full start flow with Turnstile test keys lands on `/tests`.
 
 ### T1.4 Rate limits, budget guard and kill-switch check
@@ -1197,3 +1198,4 @@ Reserved for defects from Sprints 5-6 and overflow from Sprints 3-4.
 | 1.0 | October 20, 2026 | Gabriela | Initial task breakdown from Read AI BRD v1.0 and TRD v1.0, including gaps from the documentation inspection report. |
 | 1.1 | November 3, 2026 | Gabriela | S-2: Resend added for alert email (T0.4). |
 | 1.2 | November 3, 2026 | Gabriela | T3.3: chunking rules from the T0.5 decision (25-second chunks, real-recording check). |
+| 1.3 | November 4, 2026 | Gabriela | T1.3: consent-link E2E test moved from T1.2. |

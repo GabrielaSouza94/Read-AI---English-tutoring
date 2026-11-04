@@ -6,6 +6,7 @@ import {
   loadConfig,
   loadLangSmithConfig,
   loadMonitoringConfig,
+  loadPrivacyConfig,
 } from "./config";
 
 const VALID = {
@@ -125,5 +126,19 @@ describe("loadLangSmithConfig", () => {
       "LANGSMITH_PROJECT is missing; LANGSMITH_FEEDBACK_PROMPT_ID is missing",
     );
     expect(() => loadLangSmithConfig({})).not.toThrow("ls-key");
+  });
+});
+
+describe("loadPrivacyConfig", () => {
+  it("returns the contact email and retention period, ignoring missing secrets", () => {
+    expect(
+      loadPrivacyConfig({ PRIVACY_CONTACT_EMAIL: "privacy@example.com", RETENTION_DAYS: "90" }),
+    ).toEqual({ contactEmail: "privacy@example.com", retentionDays: 90 });
+  });
+
+  it("rejects a missing or invalid email and retention period", () => {
+    expect(() => loadPrivacyConfig({ PRIVACY_CONTACT_EMAIL: "nope", RETENTION_DAYS: "0" })).toThrow(
+      "PRIVACY_CONTACT_EMAIL must be an email address; RETENTION_DAYS must be a positive whole number",
+    );
   });
 });
