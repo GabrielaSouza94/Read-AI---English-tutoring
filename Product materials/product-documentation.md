@@ -224,7 +224,7 @@ const correct = response.NBest[0].Words.filter(w => w.PronunciationAssessment.Er
 const wcpm = Math.round(correct / speechSeconds * 60); // speechSeconds from word offsets
 ```
 
-Steps longer than 30 seconds are split at sentence boundaries; chunk scores are averaged weighted by word count.
+Steps longer than 25 seconds are split in the pauses between sentences, using Deepgram word timings, into chunks of at most 25 seconds; chunk scores are averaged weighted by word count (`planChunks()` and `combineChunkResults()` in `app/lib/azure-chunks.ts`). See `docs/spikes/T0.5-azure-long-audio.md`.
 
 ### Best-of Metrics and Pass Rule
 
@@ -299,7 +299,7 @@ The final score is the latest non-reverted review; with no review it is the AI b
 
 - `https://{region}.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US`
 - `Pronunciation-Assessment` header: `ReferenceText`, `GradingSystem: HundredMark`, `Granularity: Word`, `Dimension: Comprehensive`, `EnableMiscue: true`.
-- WAV PCM 16 kHz mono, at most 30 seconds per request.
+- WAV PCM 16 kHz mono, at most 30 seconds per request. Longer audio returns 200 but is only partly scored, so `assessPronunciation()` refuses it.
 
 ### Gemini
 

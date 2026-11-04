@@ -4,6 +4,19 @@ import { assessmentHeader, assessPronunciation, parseAzureResponse } from "./azu
 import { aggregatePhrases } from "./azure-ws";
 import { transcribe } from "./deepgram";
 import { callWithRetry, ProviderError } from "./http";
+import { wavHeader } from "./wav";
+
+function oneSecondWav(): Uint8Array<ArrayBuffer> {
+  const header = wavHeader({
+    sampleRate: 16_000,
+    channels: 1,
+    bitsPerSample: 16,
+    dataLength: 32_000,
+  });
+  const wav = new Uint8Array(header.length + 32_000);
+  wav.set(header);
+  return wav;
+}
 
 function fakeFetch(responses: (Response | "network")[]) {
   const calls: { url: string; init: RequestInit }[] = [];
@@ -103,6 +116,22 @@ describe("Azure REST", () => {
     });
   });
 
+  it("refuses audio over 30 s, which Azure would silently score only in part", async () => {
+    const { calls, fetchImpl } = fakeFetch([]);
+    const long = wavHeader({
+      sampleRate: 16_000,
+      channels: 1,
+      bitsPerSample: 16,
+      dataLength: 31 * 32_000,
+    });
+    const wav = new Uint8Array(long.length + 31 * 32_000);
+    wav.set(long);
+    await expect(
+      assessPronunciation({ key: "k", region: "r" }, wav, "Hi.", { fetchImpl }),
+    ).rejects.toThrow("chunk it first");
+    expect(calls).toHaveLength(0);
+  });
+
   it("treats silence as a zero result, not an error", () => {
     expect(parseAzureResponse({ RecognitionStatus: "InitialSilenceTimeout" })).toMatchObject({
       accuracy: 0,
@@ -113,7 +142,7 @@ describe("Azure REST", () => {
 
   it("sends the key, audio type and assessment header to the regional endpoint", async () => {
     const { calls, fetchImpl } = fakeFetch([Response.json({ RecognitionStatus: "NoMatch" })]);
-    await assessPronunciation({ key: "k", region: "brazilsouth" }, new Uint8Array(4), "Hi.", {
+    await assessPronunciation({ key: "k", region: "brazilsouth" }, oneSecondWav(), "Hi.", {
       fetchImpl,
     });
     expect(calls[0].url).toMatch(

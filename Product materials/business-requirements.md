@@ -254,7 +254,7 @@ Numbers are starting values, to be tuned after launch.
 | **R5**  | One scorer fails | Result looks like a mismatch | Retry once; mark "provider error", not a mismatch |
 | **R6**  | Mismatch limits too tight | Review queue floods | Calibrate on seeded and dry-run data in Sprint 5 |
 | **R7**  | Accents and microphone noise skew scores | Unfair scores, more flags | Microphone check before the test; noise suppression |
-| **R8**  | Azure's REST API scores at most 30 seconds of audio | Long reads cannot be scored in one call | Sprint 1 technical spike; fallback: split at sentence boundaries and average |
+| **R8**  | Azure's REST API scores at most 30 seconds of audio | Long reads cannot be scored in one call | Resolved by the T0.5 spike: split at sentence boundaries into chunks of at most 25 s and average; a 100 s read scores in about 7 s |
 | **R9**  | Vendor prices change | Budget drift | Recheck prices before launch; daily cap bounds the worst case |
 
 ---
@@ -340,4 +340,5 @@ Full texts are in the Technical Requirements Document, section 4.6.
 
 | Version | Date | Author | Changes |
 | ------- | ---- | ------ | ------- |
+| 1.1 | November 3, 2026 | Gabriela Souza | Risk R8 resolved by the T0.5 spike. |
 | 1.0 | October 12, 2026 | Gabriela Souza | Read AI BRD created from the ReadAssist AI BRD v2.2: public access model, name + code tracking, consent gate, 4 graded tests, mismatch detection, public review with audit and revert, admin moderation, LGPD privacy, abuse and cost restrictions, Deepgram + Azure scoring, 12-week roadmap. |

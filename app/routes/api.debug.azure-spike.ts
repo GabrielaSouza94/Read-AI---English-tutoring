@@ -43,7 +43,8 @@ export async function action({ request }: { request: Request }) {
 
   try {
     if (mode === "whole") {
-      const result = await assessPronunciation(azure, wav, referenceText);
+      // allowLong: the spike shows what Azure does with audio over 30 s.
+      const result = await assessPronunciation(azure, wav, referenceText, { allowLong: true });
       return Response.json({
         ...base,
         status: result.recognitionStatus,

@@ -130,7 +130,7 @@ sequenceDiagram
         W->>DG: Audio
         DG-->>W: Transcript, word confidence, timings
     and
-        W->>AZ: Audio + reference text (split into ≤30 s chunks if needed)
+        W->>AZ: Audio + reference text (split into ≤25 s chunks if needed)
         AZ-->>W: Accuracy, fluency, completeness, word errors
     end
     W->>W: Compute metrics, compare scorers, set flags
@@ -502,7 +502,10 @@ erDiagram
 - **Header** `Pronunciation-Assessment` (base64 JSON): `ReferenceText`, `GradingSystem: HundredMark`, `Granularity: Word`, `Dimension: Comprehensive`, `EnableMiscue: true`.
 - **Audio:** WAV PCM 16 kHz mono; **at most 30 seconds per request**.
 - **Use:** AccuracyScore, FluencyScore, CompletenessScore, prosody where available, per-word ErrorType (None, Mispronunciation, Omission, Insertion). WCPM = words with ErrorType None ÷ speech duration (from word offsets) × 60.
-- **Long audio:** steps longer than 30 seconds are split at sentence boundaries using Deepgram word timings; each chunk is scored with its reference sentences, and scores are averaged weighted by word count. Sprint 1 spike confirms this, or a WebSocket alternative that runs on Workers.
+- **Long audio (decided in the T0.5 spike, `docs/spikes/T0.5-azure-long-audio.md`):** a step of 25 seconds or less is one call, made in parallel with Deepgram. A longer step is split in the pauses between sentences, using Deepgram word timings, into chunks of at most 25 seconds. Each chunk is scored in parallel against its own sentences, and the scores are averaged weighted by reference word count. A 100-second read scores in about 7 seconds from a Worker.
+- **Never send more than 30 seconds in one call.** Azure then returns 200 but scores only the first 30 seconds (completeness 32 for a full 97-second read). The client refuses such audio.
+- **Fluency bias:** splitting hides the pauses at the cuts, so chunked fluency is a few points higher than a single call (+3 to +4 with two chunks). Thresholds are calibrated on this pipeline (T6.7).
+- **Rejected alternative:** continuous assessment over WebSocket works from Workers, but takes about 20 seconds for a 100-second read, has no miscue support, and uses an undocumented protocol.
 
 ### 6.3 Gemini
 
@@ -692,4 +695,5 @@ For comparison, the ReadAssist design with SpeechAce Premium would cost about $1
 
 | Version | Date | Author | Changes |
 | ------- | ---- | ------ | ------- |
+| 1.1 | November 3, 2026 | Gabriela | §6.2: long-audio approach decided by the T0.5 spike (sentence-boundary chunks of at most 25 s; 30-second hard limit; fluency bias; WebSocket rejected). |
 | 1.0 | October 12, 2026 | Gabriela | Read AI TRD created from the ReadAssist AI TRD v4.2: public access, captcha and rate limits, admin login, name + code identity, 4 graded tests with texts, Azure pronunciation assessment replacing SpeechAce, WAV recording, mismatch detection, public review with audit and revert, LGPD privacy, new schema, 12-week sprint plan, updated costs. |

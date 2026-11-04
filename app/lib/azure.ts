@@ -4,6 +4,7 @@
  * S-2: 20 s timeout per chunk, one retry after 500 ms.
  */
 import { callWithRetry, type CallPolicy, ProviderError } from "./http";
+import { parseWav } from "./wav";
 
 export const AZURE_MAX_SECONDS = 30;
 
@@ -95,8 +96,13 @@ export async function assessPronunciation(
   { key, region }: { key: string; region: string },
   wav: Uint8Array<ArrayBuffer>,
   referenceText: string,
-  policy: Partial<CallPolicy> = {},
+  policy: Partial<CallPolicy> & { allowLong?: boolean } = {},
 ): Promise<AzureResult> {
+  // Azure answers 200 for longer audio but scores only about the first 30 s (T0.5), so a long
+  // read would silently look incomplete. Chunk it first (azure-chunks.ts).
+  if (!policy.allowLong && parseWav(wav).durationSec > AZURE_MAX_SECONDS) {
+    throw new ProviderError("azure", `audio is longer than ${AZURE_MAX_SECONDS} s; chunk it first`);
+  }
   const url = `https://${region}.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US&format=detailed`;
   const response = await callWithRetry(
     "azure",

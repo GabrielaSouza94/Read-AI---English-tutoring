@@ -34,6 +34,13 @@
 - **Trade-offs:** Cost barely changes (Gemini is under $1 a month in the TRD). Privacy improves slightly with option A, since Google is no longer a third party. The risk is quality: the model must return valid JSON (feedback, plus highlighted words in text order) within the 15-second timeout.
 - **To verify:** In T0.6 or T3.5, run the same fixture attempts through two or three Workers AI models, with Gemini as the baseline, and compare JSON validity, feedback quality and latency. If an open model wins, update BR-14, the BRD restrictions and decisions log, TRD §3.2, §6.3, costs and third parties, `product-documentation.md`, `task-breakdown.md` (T3.5, S-2, T0.2), the privacy notice and `app/lib/config.ts`.
 
+## 2026-11-03: Long reads scored in sentence-boundary chunks (T0.5)
+
+- **Context:** Azure REST pronunciation assessment takes at most 30 seconds; reads reach 100 seconds or more.
+- **Decision:** Chunked REST, with chunks of at most 25 seconds split in the pauses between sentences (from Deepgram timings), scored in parallel and averaged by word count. About 7 seconds for a 100-second read on staging.
+- **Alternatives:** Azure continuous mode over WebSocket works from a Worker, but takes about 20 seconds for 100 seconds of audio, lacks miscue support and uses an undocumented protocol.
+- **Consequences:** Azure waits for Deepgram on reads over 25 seconds (under 1 second). Chunked fluency is slightly higher than a single call, so thresholds are calibrated on this pipeline (T6.7). The Azure client refuses audio over 30 seconds, because Azure would score it only in part without an error. Full note: `docs/spikes/T0.5-azure-long-audio.md`.
+
 ## 2026-11-03: Monitoring and alerts (T0.4)
 
 - **Context:** T0.4 asks for structured logs, three email alerts and an admin audit log, on the free Cloudflare plan.

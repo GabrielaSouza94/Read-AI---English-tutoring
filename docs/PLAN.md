@@ -39,7 +39,13 @@
   - [x] Tests: redaction, alert rules, email retry, request finalising, D1 counters and audit, E2E forced error
   - [x] `RESEND_API_KEY` set in staging and production; `RESEND_API_KEY=` added to `.dev.vars.example`
   - [x] Forced error found in staging logs by request id; test alert reaches the owner's inbox
-- [ ] T0.5 Azure long-audio technical spike
+- [x] **T0.5 Azure long-audio technical spike** (`docs/spikes/T0.5-azure-long-audio.md`)
+  - [x] REST limit confirmed from a Worker: over 30 s returns 200 but scores only the start; client now refuses it
+  - [x] Sentence-boundary chunking with Deepgram timings; 97 s read scored in 7.0 s on staging (target 15 s)
+  - [x] Whole vs chunked on short reads: every score within 5 points (two chunks)
+  - [x] WebSocket continuous mode works from Workers but takes about 20 s for 100 s; rejected
+  - [x] Latency for 20, 33, 69 and 97 s reads; cost about $0.026 per audio minute
+  - [x] Decision recorded in TRD §6.2, BRD R8, product docs and T3.3
 - [ ] T0.6 LangSmith project and first prompt (also: open-model bake-off, see `docs/DECISIONS.md` 2026-11-02)
 - [ ] T1.2 Privacy notice and LGPD basics
 - [ ] T1.4 Captcha and rate limits

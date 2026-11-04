@@ -609,7 +609,8 @@ States with clear text and a next action:
 **Technical requirements:** TRD 6.2; S-2.
 
 - REST call with `Pronunciation-Assessment` header: reference text, `HundredMark`, `Word`, `Comprehensive`, `EnableMiscue: true`.
-- Chunking per T0.5 decision: split at sentence boundaries using Deepgram timings when audio > 30 seconds; score each chunk; weighted average by word count.
+- Chunking per the T0.5 decision (`docs/spikes/T0.5-azure-long-audio.md`): when audio is over 25 seconds, split in the pauses between sentences using Deepgram timings into chunks of at most 25 seconds; score chunks in parallel; weighted average by word count. Builds on `app/lib/azure-chunks.ts`.
+- Repeat the whole-vs-chunked check with real learner recordings (the spike used synthetic voices).
 - Metrics: AccuracyScore, FluencyScore, CompletenessScore, prosody where returned; miscues (Omission, Insertion, Mispronunciation); WCPM = words with ErrorType None ÷ speech seconds × 60.
 - Timeout 20 seconds per chunk, one retry.
 
@@ -620,7 +621,7 @@ States with clear text and a next action:
 **Tests:**
 
 - [Unit] Header builder produces valid base64 JSON.
-- [Unit] Chunker splits a 90-second fixture into chunks ≤ 30 seconds aligned to sentences.
+- [Unit] Chunker splits a 90-second fixture into chunks ≤ 25 seconds aligned to sentences.
 - [Unit] Weighted average and WCPM from a fixture response.
 - [Int] One chunk fails twice → attempt saved with `provider_error: azure`.
 - [Int] Live call on staging with fixture audio (nightly).
@@ -1195,3 +1196,4 @@ Reserved for defects from Sprints 5-6 and overflow from Sprints 3-4.
 | ------- | ---- | ------ | ------- |
 | 1.0 | October 20, 2026 | Gabriela | Initial task breakdown from Read AI BRD v1.0 and TRD v1.0, including gaps from the documentation inspection report. |
 | 1.1 | November 3, 2026 | Gabriela | S-2: Resend added for alert email (T0.4). |
+| 1.2 | November 3, 2026 | Gabriela | T3.3: chunking rules from the T0.5 decision (25-second chunks, real-recording check). |
