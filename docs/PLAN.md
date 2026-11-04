@@ -46,14 +46,14 @@
   - [x] WebSocket continuous mode works from Workers but takes about 20 s for 100 s; rejected
   - [x] Latency for 20, 33, 69 and 97 s reads; cost about $0.026 per audio minute
   - [x] Decision recorded in TRD §6.2, BRD R8, product docs and T3.3
-- [ ] **T0.6 LangSmith project and first prompt** (open-model bake-off moved to T3.5)
+- [x] **T0.6 LangSmith project and first prompt** (open-model bake-off moved to T3.5)
   - [x] Feedback prompt in `app/lib/prompts.ts`: tone rules, mustache variables, output schema (`StructuredPrompt`)
   - [x] Prompt Hub client (`pullPrompt`), mustache renderer, `LANGSMITH_PROJECT` and `LANGSMITH_FEEDBACK_PROMPT_ID` per environment
   - [x] `npm run prompt:push` (projects, prompt, `staging`/`production` tags); `GET /api/debug/prompt`
   - [x] Tests: render fills every placeholder; manifest round-trip; pull with a stubbed Hub (live test when a key is set)
   - [x] Prompt pushed (commit `7dc45541`, tagged `staging` and `production`); projects created; keys replaced in all 3 environments
   - [x] `/api/debug/prompt` on staging pulls `read-ai-feedback:staging` in 253 ms, every placeholder filled
-  - [ ] Sample call in the Playground returns valid JSON
+  - [x] Sample call in the Playground returns valid JSON (Gemini 2.5 Flash Lite)
 - [ ] T1.2 Privacy notice and LGPD basics
 - [ ] T1.4 Captcha and rate limits
 
