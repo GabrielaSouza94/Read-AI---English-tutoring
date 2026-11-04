@@ -113,3 +113,26 @@ export function loadMonitoringConfig(source: Source): MonitoringConfig {
     resendApiKey: text(source, "RESEND_API_KEY"),
   };
 }
+
+export type SpeechConfig = Pick<
+  AppConfig,
+  "deepgramApiKey" | "azureSpeechKey" | "azureSpeechRegion"
+>;
+
+/** Only the scorer keys, so scoring never fails because an unrelated setting is missing. */
+export function loadSpeechConfig(source: Source): SpeechConfig {
+  const names = {
+    deepgramApiKey: SECRETS.deepgramApiKey,
+    azureSpeechKey: SECRETS.azureSpeechKey,
+    azureSpeechRegion: SECRETS.azureSpeechRegion,
+  };
+  const problems = Object.values(names)
+    .filter((name) => text(source, name) === undefined)
+    .map((name) => `${name} is missing`);
+  if (problems.length > 0) throw new ConfigError(problems);
+  return {
+    deepgramApiKey: text(source, names.deepgramApiKey) ?? "",
+    azureSpeechKey: text(source, names.azureSpeechKey) ?? "",
+    azureSpeechRegion: text(source, names.azureSpeechRegion) ?? "",
+  };
+}

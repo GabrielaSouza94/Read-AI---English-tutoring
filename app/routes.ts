@@ -5,4 +5,6 @@ export default [
   route("api/health", "routes/api.health.ts"),
   route("api/debug/error", "routes/api.debug.error.ts"),
   route("api/debug/alert", "routes/api.debug.alert.ts"),
+  route("api/debug/tts", "routes/api.debug.tts.ts"),
+  route("api/debug/azure-spike", "routes/api.debug.azure-spike.ts"),
 ] satisfies RouteConfig;
