@@ -28,7 +28,7 @@
 - **Context:** The TRD mirrors the kill switch in KV and asks for a WAF rule on `/api/*`. KV reads can be up to 60 seconds stale in other locations, so a KV switch would not refuse "within one request". WAF rules need a zone (custom domain), and the app runs on `workers.dev`.
 - **Decision:** The kill switch and the speech budget are read from D1 `usage_daily` on every session start; the switch is the `paused` flag of the latest row, copied into each new day's row, so it stays on until turned off. The `/api/*` limit uses the Workers rate-limiting binding (60 a minute per IP). Per-IP daily counters stay in KV, as in the TRD; an unreadable counter counts as used up.
 - **Alternatives:** A KV mirror for faster reads (stale); a WAF rule once a custom domain exists (can be added on top later).
-- **Consequences:** One extra D1 read per session start. The Workers limiter counts per Cloudflare location, so the limit is approximate.
+- **Consequences:** One extra D1 read per session start. The Workers limiter counts per Cloudflare location and syncs its counts with a delay, so the limit is loose: on staging, about 275 requests passed within a minute before the first 429 (2026-11-04). It stops floods, not a careful script; the per-IP daily counters and the speech budget are what cap spend.
 
 ## 2026-11-03: Feedback prompt versioned by Prompt Hub tags (T0.6)
 
