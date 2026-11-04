@@ -13,6 +13,8 @@
   "main": "./workers/app.ts",
   "observability": { "enabled": true },
   "upload_source_maps": true,
+  // Hourly alert check at minute 5 (T0.4): workers/app.ts scheduled(). Inherited by environments.
+  "triggers": { "crons": ["5 * * * *"] },
 
   // Local: Miniflare keeps D1 and KV data under .wrangler/state; the ids are placeholders.
   "vars": {
@@ -20,6 +22,7 @@
     "DAILY_STT_MINUTES_CAP": "80",
     "RETENTION_DAYS": "90",
     "PRIVACY_CONTACT_EMAIL": "gabrielasouza94@gmail.com",
+    "ALERT_EMAIL": "gabrielasouza94@gmail.com",
   },
   "d1_databases": [
     {
@@ -39,6 +42,7 @@
         "DAILY_STT_MINUTES_CAP": "80",
         "RETENTION_DAYS": "90",
         "PRIVACY_CONTACT_EMAIL": "gabrielasouza94@gmail.com",
+        "ALERT_EMAIL": "gabrielasouza94@gmail.com",
       },
       "d1_databases": [
         {
@@ -57,6 +61,7 @@
         "DAILY_STT_MINUTES_CAP": "80",
         "RETENTION_DAYS": "90",
         "PRIVACY_CONTACT_EMAIL": "gabrielasouza94@gmail.com",
+        "ALERT_EMAIL": "gabrielasouza94@gmail.com",
       },
       "d1_databases": [
         {

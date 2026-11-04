@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { ConfigError, findConfigProblems, loadConfig } from "./config";
+import { ConfigError, findConfigProblems, loadConfig, loadMonitoringConfig } from "./config";
 
 const VALID = {
   DEEPGRAM_API_KEY: "dg-key",
@@ -11,9 +11,11 @@ const VALID = {
   TURNSTILE_SITE_KEY: "ts-site",
   TURNSTILE_SECRET_KEY: "ts-secret",
   IP_HASH_SALT: "salt",
+  RESEND_API_KEY: "re-key",
   DAILY_STT_MINUTES_CAP: "80",
   RETENTION_DAYS: "90",
   PRIVACY_CONTACT_EMAIL: "privacy@example.com",
+  ALERT_EMAIL: "owner@example.com",
 };
 
 function without(name: keyof typeof VALID): Record<string, unknown> {
@@ -28,6 +30,7 @@ describe("loadConfig", () => {
     expect(config.dailySttMinutesCap).toBe(80);
     expect(config.retentionDays).toBe(90);
     expect(config.privacyContactEmail).toBe("privacy@example.com");
+    expect(config.alertEmail).toBe("owner@example.com");
   });
 
   it("accepts numbers given as numbers", () => {
@@ -80,5 +83,21 @@ describe("loadConfig", () => {
     expect(() => loadConfig(source)).toThrow(
       expect.objectContaining({ message: expect.not.stringContaining("secret-looking-value") }),
     );
+  });
+});
+
+describe("loadMonitoringConfig", () => {
+  it("reads the alert settings", () => {
+    expect(loadMonitoringConfig(VALID)).toEqual({
+      dailySttMinutesCap: 80,
+      alertEmail: "owner@example.com",
+      resendApiKey: "re-key",
+    });
+  });
+
+  it("never throws when other settings are missing or invalid", () => {
+    expect(
+      loadMonitoringConfig({ ALERT_EMAIL: "not-an-email", DAILY_STT_MINUTES_CAP: "x" }),
+    ).toEqual({ dailySttMinutesCap: 80, alertEmail: undefined, resendApiKey: undefined });
   });
 });

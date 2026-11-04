@@ -285,6 +285,7 @@ The final score is the latest non-reverted review; with no review it is the AI b
 | `/api/export/results.csv` | GET | Results CSV |
 | `/api/admin/*` | various | Moderation, revert, trust, usage, kill switch |
 | `/api/health` | GET | Database, storage and configuration status; 200 or 503 |
+| `/api/debug/error`, `/api/debug/alert` | GET | Staging and local only: force an error, send a test alert (404 in production) |
 
 ---
 
@@ -503,6 +504,8 @@ npm run db:seed        # 4 tests, sentences, demo results
 | `DAILY_STT_MINUTES_CAP` | Daily budget (default 80) |
 | `RETENTION_DAYS` | Retention (default 90) |
 | `PRIVACY_CONTACT_EMAIL` | Contact shown on the privacy notice |
+| `ALERT_EMAIL` | Owner address for monitoring alerts |
+| `RESEND_API_KEY` | Resend key for alert email (receives no participant data) |
 
 ---
 

@@ -34,6 +34,18 @@
 - **Trade-offs:** Cost barely changes (Gemini is under $1 a month in the TRD). Privacy improves slightly with option A, since Google is no longer a third party. The risk is quality: the model must return valid JSON (feedback, plus highlighted words in text order) within the 15-second timeout.
 - **To verify:** In T0.6 or T3.5, run the same fixture attempts through two or three Workers AI models, with Gemini as the baseline, and compare JSON validity, feedback quality and latency. If an open model wins, update BR-14, the BRD restrictions and decisions log, TRD §3.2, §6.3, costs and third parties, `product-documentation.md`, `task-breakdown.md` (T3.5, S-2, T0.2), the privacy notice and `app/lib/config.ts`.
 
+## 2026-11-03: Monitoring and alerts (T0.4)
+
+- **Context:** T0.4 asks for structured logs, three email alerts and an admin audit log, on the free Cloudflare plan.
+- **Decisions:**
+  - **Logs:** Workers Logs, one JSON line per event, through one logger that redacts names, IPs and secrets by key. No Logpush (paid plan) and no separate error tracker: unhandled errors are logged with the stack and request id, and the 5xx alert covers them.
+  - **Counters in D1** (`metrics_hourly`), not KV. An atomic upsert per request never loses a count, and the KV free tier allows only 1,000 writes a day. Analytics Engine would need an API token to query.
+  - **An hourly Cron Trigger** checks the previous full hour. Rate alerts need a minimum volume (3 provider calls, 10 requests), so one failure at night does not wake the owner.
+  - **Email through Resend** (owner's choice, 2026-11-03). A Worker cannot send email itself, and Cloudflare Email Routing needs an owned domain. Without a domain, Resend sends only to the account owner's address, which is the alert recipient. Resend receives no participant data.
+  - **Audit log** in a D1 table `admin_audit`, without foreign keys, so it survives deletions.
+  - **Debug routes** `/api/debug/error` and `/api/debug/alert` prove the acceptance criteria on staging. Production returns 404.
+- **Consequences:** The Resend free tier (100 emails a day) is far above the alert volume. If a domain is added later, Email Routing can replace Resend by changing `alertNotifier` only.
+
 ## 2026-11-03: Schema details not fixed by the TRD (T0.3)
 
 - **Context:** TRD §5.1 lists tables and columns, but leaves some details open.

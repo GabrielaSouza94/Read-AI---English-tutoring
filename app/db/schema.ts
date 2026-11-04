@@ -206,3 +206,48 @@ export const usageDaily = sqliteTable("usage_daily", {
   testsStarted: integer("tests_started").notNull().default(0),
   paused: flag("paused"),
 });
+
+export const ADMIN_ACTIONS = [
+  "login",
+  "login_failed",
+  "logout",
+  "hide",
+  "unhide",
+  "delete",
+  "revert",
+  "trust",
+  "untrust",
+  "kill_switch_on",
+  "kill_switch_off",
+] as const;
+
+/**
+ * Every admin action (T0.4, UC-3). No foreign keys: the trail outlives the rows it describes, and
+ * `admin_id` stays null for a failed login. `details` never holds names or IP addresses.
+ */
+export const adminAudit = sqliteTable(
+  "admin_audit",
+  {
+    id: integer("id").primaryKey({ autoIncrement: true }),
+    createdAt: createdAt(),
+    adminId: integer("admin_id"),
+    action: text("action", { enum: ADMIN_ACTIONS }).notNull(),
+    targetType: text("target_type"), // "test_result", "reviewer", "site", …
+    targetId: text("target_id"),
+    details: json<Record<string, unknown>>("details"),
+    requestId: text("request_id"),
+  },
+  (table) => [index("admin_audit_created_at_idx").on(table.createdAt)],
+);
+
+/**
+ * Request and provider counters per UTC hour, read by the hourly alert check (T0.4).
+ * Holds no personal data.
+ */
+export const metricsHourly = sqliteTable("metrics_hourly", {
+  hour: text("hour").primaryKey(), // YYYY-MM-DDTHH (UTC)
+  requests: integer("requests").notNull().default(0),
+  serverErrors: integer("server_errors").notNull().default(0), // 5xx responses
+  providerCalls: integer("provider_calls").notNull().default(0),
+  providerErrors: integer("provider_errors").notNull().default(0), // failed after retry
+});

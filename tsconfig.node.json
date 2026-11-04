@@ -12,7 +12,12 @@
     // Runtime-neutral modules that Node scripts and integration tests import.
     "app/db/seed.ts",
     "app/db/seed-data.ts",
-    "app/lib/password.ts"
+    "app/lib/password.ts",
+    "app/db/schema.ts",
+    "app/lib/alerts.ts",
+    "app/lib/audit.ts",
+    "app/lib/log.ts",
+    "app/lib/metrics.ts"
   ],
   "compilerOptions": {
     "composite": true,

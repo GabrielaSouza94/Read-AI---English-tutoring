@@ -14,12 +14,14 @@ const SECRETS = {
   turnstileSiteKey: "TURNSTILE_SITE_KEY",
   turnstileSecretKey: "TURNSTILE_SECRET_KEY",
   ipHashSalt: "IP_HASH_SALT",
+  resendApiKey: "RESEND_API_KEY",
 } as const;
 
 export type AppConfig = { [K in keyof typeof SECRETS]: string } & {
   dailySttMinutesCap: number;
   retentionDays: number;
   privacyContactEmail: string;
+  alertEmail: string;
 };
 
 export class ConfigError extends Error {
@@ -37,6 +39,8 @@ function text(source: Source, name: string): string | undefined {
   if (typeof value !== "string" || value.trim() === "") return undefined;
   return value.trim();
 }
+
+const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 function positiveInteger(value: string | undefined): number | undefined {
   return value !== undefined && /^[1-9]\d*$/.test(value) ? Number(value) : undefined;
@@ -59,20 +63,23 @@ function check(source: Source): { problems: string[]; config: AppConfig } {
     if (value === undefined) problems.push(`${name} must be a positive whole number`);
     return value ?? 0;
   };
+  const email = (name: string) => {
+    const value = required(name);
+    if (value && !EMAIL.test(value)) problems.push(`${name} must be an email address`);
+    return value;
+  };
 
   const secrets = Object.fromEntries(
     Object.entries(SECRETS).map(([key, name]) => [key, required(name)]),
   ) as { [K in keyof typeof SECRETS]: string };
   const dailySttMinutesCap = wholeNumber("DAILY_STT_MINUTES_CAP");
   const retentionDays = wholeNumber("RETENTION_DAYS");
-  const privacyContactEmail = required("PRIVACY_CONTACT_EMAIL");
-  if (privacyContactEmail && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(privacyContactEmail)) {
-    problems.push("PRIVACY_CONTACT_EMAIL must be an email address");
-  }
+  const privacyContactEmail = email("PRIVACY_CONTACT_EMAIL");
+  const alertEmail = email("ALERT_EMAIL");
 
   return {
     problems,
-    config: { ...secrets, dailySttMinutesCap, retentionDays, privacyContactEmail },
+    config: { ...secrets, dailySttMinutesCap, retentionDays, privacyContactEmail, alertEmail },
   };
 }
 
@@ -86,4 +93,23 @@ export function loadConfig(source: Source): AppConfig {
   const { problems, config } = check(source);
   if (problems.length > 0) throw new ConfigError(problems);
   return config;
+}
+
+export type MonitoringConfig = {
+  dailySttMinutesCap: number;
+  alertEmail: string | undefined;
+  resendApiKey: string | undefined;
+};
+
+/**
+ * The settings the hourly alert check needs. Unlike loadConfig, it never throws: alerts must still
+ * work when another setting is missing. Unusable values become undefined (or the default cap).
+ */
+export function loadMonitoringConfig(source: Source): MonitoringConfig {
+  const alertEmail = text(source, "ALERT_EMAIL");
+  return {
+    dailySttMinutesCap: positiveInteger(text(source, "DAILY_STT_MINUTES_CAP")) ?? 80,
+    alertEmail: alertEmail && EMAIL.test(alertEmail) ? alertEmail : undefined,
+    resendApiKey: text(source, "RESEND_API_KEY"),
+  };
 }

@@ -18,9 +18,11 @@ Every setting the Worker needs, where its value comes from, who owns it and when
 | `TURNSTILE_SITE_KEY`    | Secret | Cloudflare dashboard → Turnstile → widget (public, but differs per environment) | T1.4        |
 | `TURNSTILE_SECRET_KEY`  | Secret | Same Turnstile widget                                                           | T1.4        |
 | `IP_HASH_SALT`          | Secret | Generate: `node -e "console.log(crypto.randomBytes(32).toString('hex'))"`       | T1.4        |
+| `RESEND_API_KEY`        | Secret | Resend → API Keys → Create, permission **Sending access**                       | T0.4        |
 | `DAILY_STT_MINUTES_CAP` | Var    | `wrangler.jsonc` (80)                                                           | T2.6        |
 | `RETENTION_DAYS`        | Var    | `wrangler.jsonc` (90)                                                           | T1.5        |
 | `PRIVACY_CONTACT_EMAIL` | Var    | `wrangler.jsonc`; shown publicly on the privacy notice                          | T1.2        |
+| `ALERT_EMAIL`           | Var    | `wrangler.jsonc`; must be the address of the Resend account                     | T0.4        |
 
 Staging and production must use **separate keys** for every secret, so a leaked staging key never exposes
 production. Create a separate Turnstile widget per environment, and generate a different salt for each.
@@ -52,12 +54,12 @@ Secrets apply right away and are kept across deploys and rollbacks.
 Owner of every key: **Gabriela Souza**. Rotate each key **every 6 months**, and right away if a leak is suspected:
 for example, a key pasted into a chat, a commit, a log or a screenshot.
 
-| Secret                      | Rotation steps                                                                                                       | Last rotated |
-| --------------------------- | -------------------------------------------------------------------------------------------------------------------- | ------------ |
-| Deepgram, Gemini, LangSmith | Create a new key, `wrangler secret put` it in each environment, confirm `/api/health` is ok, then revoke the old key | --           |
-| Azure Speech                | Azure has two keys: switch the Worker to the second key, then regenerate the first                                   | --           |
-| Turnstile                   | Rotate the secret key in the widget settings, then `wrangler secret put` the new value                               | --           |
-| `IP_HASH_SALT`              | Generate a new salt. Side effect: the day's rate-limit counters reset                                                | --           |
-| Cloudflare API token (CI)   | Roll the token in Cloudflare, then update the `CLOUDFLARE_API_TOKEN` repository secret in GitHub                     | --           |
+| Secret                              | Rotation steps                                                                                                       | Last rotated |
+| ----------------------------------- | -------------------------------------------------------------------------------------------------------------------- | ------------ |
+| Deepgram, Gemini, LangSmith, Resend | Create a new key, `wrangler secret put` it in each environment, confirm `/api/health` is ok, then revoke the old key | --           |
+| Azure Speech                        | Azure has two keys: switch the Worker to the second key, then regenerate the first                                   | --           |
+| Turnstile                           | Rotate the secret key in the widget settings, then `wrangler secret put` the new value                               | --           |
+| `IP_HASH_SALT`                      | Generate a new salt. Side effect: the day's rate-limit counters reset                                                | --           |
+| Cloudflare API token (CI)           | Roll the token in Cloudflare, then update the `CLOUDFLARE_API_TOKEN` repository secret in GitHub                     | --           |
 
 Update the "Last rotated" column (date only) each time.

@@ -100,6 +100,7 @@ Every API error returns JSON with an HTTP status:
 | Gemini | 15 s | Once; then fallback feedback |
 | LangSmith prompt pull | 5 s | Use cached prompt (5-minute cache, plus last-known copy in KV) |
 | Turnstile verify | 5 s | No retry; fail closed |
+| Resend (alert email) | 10 s | Once, after 500 ms; alert stays in Workers Logs if delivery fails |
 
 ### S-3 Definition of Done
 
@@ -1193,3 +1194,4 @@ Reserved for defects from Sprints 5-6 and overflow from Sprints 3-4.
 | Version | Date | Author | Changes |
 | ------- | ---- | ------ | ------- |
 | 1.0 | October 20, 2026 | Gabriela | Initial task breakdown from Read AI BRD v1.0 and TRD v1.0, including gaps from the documentation inspection report. |
+| 1.1 | November 3, 2026 | Gabriela | S-2: Resend added for alert email (T0.4). |

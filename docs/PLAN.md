@@ -22,15 +22,23 @@
   - [x] Staging and production deploy; `/api/health` shows database and storage "ok" in both
   - [x] Secret scan passes in CI
   - [x] Secrets set with separate staging and production keys (Azure key and region still to add, T0.5)
-- [ ] **T0.3 Database schema, migrations and seed**
+- [x] **T0.3 Database schema, migrations and seed**
   - [x] Drizzle schema for all 11 tables, required indexes, cascades from `participants`
   - [x] Migration `0000_init` with its down script; `db:migrate:*` and `db:seed:*` scripts
   - [x] Idempotent seed: 4 tests, 24 sentences; admin via `-- --admin` (PBKDF2 hash)
   - [x] Tests: seed values match the TRD; migrate + seed twice; cascade delete leaves no orphans
   - [x] CI migrates and seeds before each deploy
-  - [ ] Migrations and seed applied to staging and production by CI
-  - [ ] Admin account seeded in staging and production
-- [ ] T0.4 Logging, monitoring and alerts
+  - [x] Migrations and seed applied to staging and production by CI
+  - [x] Admin account seeded in staging and production
+- [ ] **T0.4 Logging, monitoring and alerts**
+  - [x] JSON logger with redaction; request id, route, status and latency on every request; `x-request-id` header
+  - [x] Unhandled errors logged with the request id (`handleError`); S-1 `INTERNAL` JSON for API 500s
+  - [x] `metrics_hourly` counters; hourly cron with speech-budget, provider-error and 5xx alerts; KV dedupe
+  - [x] Alert email through Resend (`RESEND_API_KEY`, `ALERT_EMAIL`)
+  - [x] `admin_audit` table and `recordAdminAction()` (used from T5.1)
+  - [x] Tests: redaction, alert rules, email retry, request finalising, D1 counters and audit, E2E forced error
+  - [ ] `RESEND_API_KEY` set in staging and production; `RESEND_API_KEY=` added to `.dev.vars.example`
+  - [ ] Forced error found in staging logs by request id; test alert reaches the owner's inbox
 - [ ] T0.5 Azure long-audio technical spike
 - [ ] T0.6 LangSmith project and first prompt (also: open-model bake-off, see `docs/DECISIONS.md` 2026-11-02)
 - [ ] T1.2 Privacy notice and LGPD basics

@@ -1,4 +1,4 @@
-import { readFileSync } from "node:fs";
+import { readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
@@ -47,8 +47,8 @@ describe("migrations and seed", () => {
   });
 });
 
-describe("down migration", () => {
-  it("drops every table the up migration created", async () => {
+describe("down migrations", () => {
+  it("every migration has a down script, and running them newest first drops every table", async () => {
     const tables = () =>
       db
         .prepare(
@@ -56,10 +56,17 @@ describe("down migration", () => {
         )
         .first<number>("n");
     await runStatements(db, contentSeedStatements());
-    expect(await tables()).toBe(11);
+    expect(await tables()).toBe(13);
 
-    const down = readFileSync(join(ROOT, "drizzle", "down", "0000_init.down.sql"), "utf8");
-    await runStatements(db, down.replace(/^--.*$/gm, "").split(";"));
+    const migrations = readdirSync(join(ROOT, "drizzle", "migrations"))
+      .filter((file) => file.endsWith(".sql"))
+      .sort()
+      .reverse();
+    for (const migration of migrations) {
+      const file = join(ROOT, "drizzle", "down", migration.replace(/\.sql$/, ".down.sql"));
+      const down = readFileSync(file, "utf8");
+      await runStatements(db, down.replace(/^--.*$/gm, "").split(";"));
+    }
 
     expect(await tables()).toBe(0);
   });

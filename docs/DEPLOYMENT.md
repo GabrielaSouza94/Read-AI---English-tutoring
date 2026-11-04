@@ -29,6 +29,42 @@ Local data lives in `.wrangler/state` and is safe to delete. Secrets and vars ar
 `GET /api/health` checks that the environment can query its database, read its storage and has a complete
 configuration. It returns 200 when everything works and 503 otherwise. Open it after every deploy.
 
+## Logs, monitoring and alerts
+
+**Logs.** Every request writes one JSON line to Workers Logs (`observability` in `wrangler.jsonc`) with
+`requestId`, `route` (path only, never the query string), `method`, `status` and `latencyMs`. Unhandled
+errors write an `unhandled_exception` line with the same `requestId` and the stack. Every response carries the
+id in an `x-request-id` header, and API 500s return it in the S-1 body, so a user can quote it.
+All log fields pass through `redact()` in `app/lib/log.ts`: names, reviewer names, IP addresses, passwords,
+tokens and audio never reach the logs. Use `log` from `~/lib/log`, never bare `console.log`.
+
+To read them: Cloudflare dashboard → Workers → `read-ai-staging` → Observability, or live with
+`npx wrangler tail read-ai-staging`. Filter on `requestId` to follow one request.
+
+**Counters.** Each request adds to `metrics_hourly` (one D1 upsert, after the response is sent). Scorer and
+Gemini calls call `recordProviderCall` (from T3.x).
+
+**Alerts.** A Cron Trigger runs at minute 5 of every hour (UTC) and emails `ALERT_EMAIL` through Resend when:
+
+| Alert           | Rule                                                                      | Sent at most |
+| --------------- | ------------------------------------------------------------------------- | ------------ |
+| Speech budget   | Today's speech minutes are at least 80% of `DAILY_STT_MINUTES_CAP`        | Once a day   |
+| Provider errors | Over 10% of provider calls failed in the previous hour (at least 3 calls) | Once an hour |
+| Server errors   | Over 5% of responses were 5xx in the previous hour (at least 10 requests) | Once an hour |
+
+Each alert is also logged as an `alert` event, so it is visible even when email fails
+(`alert_delivery_failed`, retried at the next run). Dedupe keys live in KV (`alert:*`) with a TTL.
+
+**Checking it on staging** (production returns 404 for both):
+
+- `GET /api/debug/error` throws on purpose. Look up the `requestId` from the response in the logs.
+- `GET /api/debug/alert` emails a test alert, at most once every 10 minutes.
+- Locally, `npx wrangler dev --test-scheduled`, then open `http://localhost:8787/__scheduled?cron=5+*+*+*+*` to run the hourly check.
+
+**Admin audit.** Every admin action calls `recordAdminAction()` (`app/lib/audit.ts`), which writes one
+`admin_audit` row: action, admin id, target, redacted details and request id. Rows have no foreign keys, so the
+trail survives deletions.
+
 ## CI pipeline (`.github/workflows/ci.yml`)
 
 1. **check**: typecheck, ESLint, Prettier check and Vitest. Runs on every pull request and push.

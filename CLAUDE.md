@@ -34,6 +34,7 @@ Run `npm run typecheck` after editing `wrangler.jsonc` or adding routes. It rege
 - **The database schema** is in `app/db/schema.ts` (Drizzle, SQLite dialect for D1). Migrations are forward-only, and each one needs a down script. Test content and thresholds live in `app/db/seed-data.ts` (the source of truth, upserted on every deploy). Never renumber sentence ids. See `docs/DEPLOYMENT.md`.
 - **CI** (`.github/workflows/ci.yml`) runs check → e2e → deploy-staging (on `main`) → deploy-production (manual approval). A failing check blocks every deploy.
 - **The cross-cutting rules** in `task-breakdown.md` §3 apply to all code: the S-1 JSON error format, S-2 timeouts and retries for external calls, and the S-3 Definition of Done. Never put participant names in logs or LangSmith traces, never persist audio, and enforce every restriction server-side.
+- **Logging** goes through `log` from `app/lib/log.ts` (JSON; redacts names, IPs and secrets by key), never bare `console.*`. Admin actions call `recordAdminAction()`, and external calls call `recordProviderCall()`. Monitoring is described in `docs/DEPLOYMENT.md`.
 - The app uses React Router **8**; the TRD still says 7. See `docs/DECISIONS.md`.
 
 ## Product materials
