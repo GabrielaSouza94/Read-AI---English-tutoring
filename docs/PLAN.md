@@ -51,8 +51,8 @@
   - [x] Prompt Hub client (`pullPrompt`), mustache renderer, `LANGSMITH_PROJECT` and `LANGSMITH_FEEDBACK_PROMPT_ID` per environment
   - [x] `npm run prompt:push` (projects, prompt, `staging`/`production` tags); `GET /api/debug/prompt`
   - [x] Tests: render fills every placeholder; manifest round-trip; pull with a stubbed Hub (live test when a key is set)
-  - [ ] Push the prompt: LangSmith answers 403 to the local `LANGSMITH_API_KEY` (same as a made-up key)
-  - [ ] `/api/debug/prompt` on staging returns the rendered prompt
+  - [x] Prompt pushed (commit `7dc45541`, tagged `staging` and `production`); projects created; keys replaced in all 3 environments
+  - [x] `/api/debug/prompt` on staging pulls `read-ai-feedback:staging` in 253 ms, every placeholder filled
   - [ ] Sample call in the Playground returns valid JSON
 - [ ] T1.2 Privacy notice and LGPD basics
 - [ ] T1.4 Captcha and rate limits
