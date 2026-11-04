@@ -348,7 +348,7 @@ Every API error returns JSON with an HTTP status:
 
 - KV counters: `tests:{ipHash}:{date}` (max 3), `reviews:{ipHash}:{date}` (max 20), 24-hour TTL.
 - Budget guard: refuse new sessions when `usage_daily.stt_minutes` ≥ `DAILY_STT_MINUTES_CAP` or `paused` is true → 503 `DEMO_PAUSED`.
-- Cloudflare WAF rate-limiting rule on `/api/*` (for example 60 requests per minute per IP).
+- Rate limit on `/api/*`: 60 requests per minute per IP, with the Workers rate-limiting binding (a WAF rule needs a custom domain; `workers.dev` has none).
 - Middleware reusable by T1.3, T3.1 and T5.1.
 
 **Use cases:** UC-1 (limits); UC-2 (review limit); UC-3 (kill switch).
@@ -1199,3 +1199,4 @@ Reserved for defects from Sprints 5-6 and overflow from Sprints 3-4.
 | 1.1 | November 3, 2026 | Gabriela | S-2: Resend added for alert email (T0.4). |
 | 1.2 | November 3, 2026 | Gabriela | T3.3: chunking rules from the T0.5 decision (25-second chunks, real-recording check). |
 | 1.3 | November 4, 2026 | Gabriela | T1.3: consent-link E2E test moved from T1.2. |
+| 1.4 | November 4, 2026 | Gabriela | T1.4: Workers rate limiter instead of a WAF rule. |

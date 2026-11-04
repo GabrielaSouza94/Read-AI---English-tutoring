@@ -21,7 +21,10 @@
     "app/lib/http.ts",
     "app/lib/langsmith.ts",
     "app/lib/mustache.ts",
-    "app/lib/prompts.ts"
+    "app/lib/prompts.ts",
+    "app/lib/errors.ts",
+    "app/lib/ip.ts",
+    "app/lib/limits.ts"
   ],
   "compilerOptions": {
     "composite": true,

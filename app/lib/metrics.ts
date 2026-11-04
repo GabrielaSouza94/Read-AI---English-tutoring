@@ -3,13 +3,15 @@
  * upsert, so concurrent requests never lose a count. The hourly alert check reads them.
  */
 
+type D1Statement = {
+  run(): Promise<unknown>;
+  first<T = Record<string, unknown>>(): Promise<T | null>;
+};
+
 export type D1Like = {
-  prepare(sql: string): {
-    bind(...values: unknown[]): {
-      run(): Promise<unknown>;
-      first<T = Record<string, unknown>>(): Promise<T | null>;
-    };
-  };
+  prepare(sql: string): { bind(...values: unknown[]): D1Statement };
+  /** Runs the statements in one transaction. */
+  batch(statements: D1Statement[]): Promise<unknown>;
 };
 
 export type HourCounters = {

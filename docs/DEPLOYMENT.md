@@ -65,6 +65,27 @@ Each alert is also logged as an `alert` event, so it is visible even when email 
 `admin_audit` row: action, admin id, target, redacted details and request id. Rows have no foreign keys, so the
 trail survives deletions.
 
+## Abuse and cost limits
+
+`app/lib/limits.ts` holds the guards. Routes call them after their own validation, so a rejected form does
+not use up a test:
+
+| Limit          | Where                                                 | Value                        | Refusal                                |
+| -------------- | ----------------------------------------------------- | ---------------------------- | -------------------------------------- |
+| Tests per IP   | KV `tests:{ipHash}:{date}` (UTC, 24-hour TTL)         | 3 a day                      | 429 `RATE_LIMITED`                     |
+| Reviews per IP | KV `reviews:{ipHash}:{date}`                          | 20 a day                     | 429 `RATE_LIMITED`                     |
+| Speech budget  | D1 `usage_daily.stt_minutes`                          | `DAILY_STT_MINUTES_CAP` (80) | 503 `DEMO_PAUSED` on new sessions only |
+| Kill switch    | D1 `usage_daily.paused` (latest row)                  | on / off                     | 503 `DEMO_PAUSED` on new sessions only |
+| API requests   | Workers binding `API_RATE_LIMITER` (`wrangler.jsonc`) | 60 a minute per IP           | 429 `RATE_LIMITED`, retryable          |
+
+- Running tests always finish: attempts are never refused by the budget or the switch.
+- The kill switch stays on across midnight: a new day's row copies `paused` from the latest one.
+- KV counters are not atomic, so two requests at the same instant can both pass. The API limit and the
+  budget bound the cost.
+- To pause by hand before the admin page exists (T5.x):
+  `npx wrangler d1 execute DB --remote --env staging --command "INSERT INTO usage_daily (date, paused) VALUES (date('now'), 1) ON CONFLICT(date) DO UPDATE SET paused = 1"`
+  (`paused = 0` to resume).
+
 ## Prompts (LangSmith)
 
 The feedback prompt lives in LangSmith Prompt Hub as `read-ai-feedback` (private). Its first version is

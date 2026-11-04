@@ -4,6 +4,8 @@ import { runAlertCheck } from "~/lib/alerts";
 import { loadMonitoringConfig } from "~/lib/config";
 import { alertNotifier } from "~/lib/email";
 import { internalError } from "~/lib/errors";
+import { clientIp } from "~/lib/ip";
+import { checkApiRateLimit } from "~/lib/limits";
 import { log } from "~/lib/log";
 import { recordRequest } from "~/lib/metrics";
 import { finaliseResponse, isApiPath, routeOf, withRequestId } from "~/lib/request";
@@ -22,7 +24,9 @@ export default {
 
     let response: Response;
     try {
-      response = await requestHandler(withRequestId(request, requestId));
+      response =
+        (await checkApiRateLimit(env.API_RATE_LIMITER, url, clientIp(request))) ??
+        (await requestHandler(withRequestId(request, requestId)));
     } catch (error) {
       // Errors inside loaders and actions are logged by handleError in entry.server.tsx.
       requestLog.error("unhandled_exception", { error });

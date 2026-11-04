@@ -38,7 +38,7 @@ flowchart TB
         WORKER["Worker<br/>React Router 7 SSR + API"]
         D1["D1 (SQLite)"]
         KV["KV (sessions, counters)"]
-        WAF["WAF and rate limiting"]
+        WAF["Rate limiting"]
     end
 
     subgraph APIS["External APIs"]

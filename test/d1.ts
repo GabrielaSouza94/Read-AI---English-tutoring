@@ -1,5 +1,5 @@
 /**
- * A fresh, in-memory D1 database from Wrangler's local runtime (the same engine as `npm run dev`),
+ * A fresh, in-memory D1 database (and KV namespace) from Wrangler's local runtime (the same engine as `npm run dev`),
  * using the local `DB` binding in wrangler.jsonc, with the real migrations from drizzle/migrations.
  */
 import { readdirSync, readFileSync } from "node:fs";
@@ -20,15 +20,19 @@ export type TestD1 = {
   prepare(sql: string): Statement;
   batch(statements: Statement[]): Promise<unknown>;
 };
+export type TestKV = {
+  get(key: string): Promise<string | null>;
+  put(key: string, value: string, options?: { expirationTtl?: number }): Promise<void>;
+};
 
 export async function createTestDatabase() {
-  const { env, dispose } = await getPlatformProxy<{ DB: TestD1 }>({
+  const { env, dispose } = await getPlatformProxy<{ DB: TestD1; KV: TestKV }>({
     configPath: join(ROOT, "wrangler.jsonc"),
     persist: false,
     envFiles: [],
     remoteBindings: false,
   });
-  return { db: env.DB, dispose };
+  return { db: env.DB, kv: env.KV, dispose };
 }
 
 export async function applyMigrations(db: TestD1): Promise<void> {

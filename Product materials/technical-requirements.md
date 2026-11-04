@@ -100,7 +100,7 @@ flowchart TB
 
 - **Reuse:** the ReadAssist stack is proven for this exact workflow; reuse shortens delivery.
 - **Cost:** Workers, D1 and KV stay within free limits at the expected volume; Azure replaces SpeechAce and cuts scoring cost from about $125 to about $11 a month.
-- **Public safety:** Turnstile, KV counters and the WAF give bot protection and rate limiting without accounts.
+- **Public safety:** Turnstile, KV counters and a Workers rate limiter give bot protection and rate limiting without accounts.
 - **Audio format:** Azure's REST endpoint accepts WAV (PCM) or OGG/Opus, not WebM. Recording 16 kHz mono WAV in the browser serves both Deepgram and Azure without server-side conversion.
 
 ---
@@ -290,7 +290,7 @@ Run after each step and on finalize. Limits are per test (columns on `tests`); s
 ### 4.11 BR-12 → TR-11: Admin Moderation
 
 - Admin page: recent results and reviews, hide/unhide result, delete result, revert review, trusted reviewers, usage today and this month, kill switch.
-- Kill switch writes `paused=true` to `usage_daily` and KV; the start page shows "Demo paused".
+- Kill switch writes `paused=true` to `usage_daily` (read fresh on every start, and carried over to each new day until turned off); the start page shows "Demo paused".
 
 ### 4.12 BR-13 → TR-12: CSV Export
 
@@ -319,9 +319,9 @@ Run after each step and on finalize. Limits are per test (columns on `tests`); s
 | Reviews per IP | KV counter `reviews:{ipHash}:{date}`, max 20 |
 | Recording size | Client stops at 2 minutes; server rejects > 10 MB or > 2 minutes |
 | Daily budget | `usage_daily.stt_minutes` incremented per attempt; new sessions refused at 80 minutes |
-| Kill switch | `usage_daily.paused`, mirrored in KV |
+| Kill switch | `usage_daily.paused` of the latest row, read on every session start |
 | Input safety | Plain-text storage, output escaping, Content-Security-Policy headers |
-| WAF | Cloudflare rate limiting on `/api/*` |
+| API rate limit | Workers rate-limiting binding `API_RATE_LIMITER`: 60 requests per minute per IP on `/api/*` (WAF rules do not apply to `workers.dev`) |
 
 ### 4.16 BR-17 → TR-16: Reading Step Metrics
 
@@ -697,6 +697,7 @@ For comparison, the ReadAssist design with SpeechAce Premium would cost about $1
 
 | Version | Date | Author | Changes |
 | ------- | ---- | ------ | ------- |
+| 1.3 | November 4, 2026 | Gabriela | §4.12, §4.15: kill switch read from D1 only; Workers rate limiter instead of a WAF rule (T1.4). |
 | 1.2 | November 3, 2026 | Gabriela | §6.4: prompt tags per environment and one tracing project per environment (T0.6). |
 | 1.1 | November 3, 2026 | Gabriela | §6.2: long-audio approach decided by the T0.5 spike (sentence-boundary chunks of at most 25 s; 30-second hard limit; fluency bias; WebSocket rejected). |
 | 1.0 | October 12, 2026 | Gabriela | Read AI TRD created from the ReadAssist AI TRD v4.2: public access, captcha and rate limits, admin login, name + code identity, 4 graded tests with texts, Azure pronunciation assessment replacing SpeechAce, WAV recording, mismatch detection, public review with audit and revert, LGPD privacy, new schema, 12-week sprint plan, updated costs. |

@@ -37,6 +37,10 @@
     },
   ],
   "kv_namespaces": [{ "binding": "KV", "id": "local-dev" }],
+  // Per-IP limit on /api/* (T1.4): 60 requests a minute. Bindings are not inherited by environments.
+  "ratelimits": [
+    { "name": "API_RATE_LIMITER", "namespace_id": "1000", "simple": { "limit": 60, "period": 60 } },
+  ],
 
   "env": {
     "staging": {
@@ -59,6 +63,13 @@
         },
       ],
       "kv_namespaces": [{ "binding": "KV", "id": "e003d156d71a49bf9b4fc050a75aa68d" }],
+      "ratelimits": [
+        {
+          "name": "API_RATE_LIMITER",
+          "namespace_id": "1001",
+          "simple": { "limit": 60, "period": 60 },
+        },
+      ],
     },
     "production": {
       "name": "read-ai-production",
@@ -80,6 +91,13 @@
         },
       ],
       "kv_namespaces": [{ "binding": "KV", "id": "0c739cf8a80c4ce4866148b0296767a2" }],
+      "ratelimits": [
+        {
+          "name": "API_RATE_LIMITER",
+          "namespace_id": "1002",
+          "simple": { "limit": 60, "period": 60 },
+        },
+      ],
     },
   },
 }

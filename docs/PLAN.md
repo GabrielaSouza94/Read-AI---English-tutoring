@@ -60,7 +60,12 @@
   - [x] Tests: E2E footer link and notice content; unit `loadPrivacyConfig`
   - [x] Content checked against BRD §7 privacy rows
   - [x] Consent-box link test moved to T1.3 (the consent box does not exist yet)
-- [ ] T1.4 Captcha and rate limits
+- [x] **T1.4 Rate limits, budget guard and kill-switch check** (captcha verification is part of T1.3)
+  - [x] `app/lib/limits.ts`: KV counters (3 tests, 20 reviews per IP per UTC day), `guardSessionStart`, `guardReviewSave`
+  - [x] Speech budget and kill switch from D1 `usage_daily`; the switch carries over midnight; running attempts never refused
+  - [x] `app/lib/ip.ts`: client IP and salted SHA-256 hash
+  - [x] `API_RATE_LIMITER` binding: 60 requests a minute per IP on `/api/*` (instead of a WAF rule)
+  - [x] Tests: counters and UTC reset; 4th start 429; budget 503 while an attempt finishes; kill switch within one request
 
 ## Done
 
