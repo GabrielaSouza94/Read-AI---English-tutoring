@@ -2,10 +2,13 @@ import { expect, test } from "@playwright/test";
 
 // Every successful start uses one of the IP's 3 daily tests, and local KV keeps the count between
 // runs. A fresh client IP per test keeps the suite repeatable; Cloudflare overwrites this header in
-// staging and production.
+// staging and production. Only our own endpoint gets it: Turnstile's servers refuse requests that carry it.
 test.beforeEach(async ({ page }) => {
   const octet = () => Math.floor(Math.random() * 254) + 1;
-  await page.setExtraHTTPHeaders({ "cf-connecting-ip": `198.18.${octet()}.${octet()}` });
+  const ip = `198.18.${octet()}.${octet()}`;
+  await page.route("**/api/session/start", (route) =>
+    route.continue({ headers: { ...route.request().headers(), "cf-connecting-ip": ip } }),
+  );
 });
 
 // Turnstile test keys (local and CI): the widget passes on its own after a moment.
@@ -34,7 +37,8 @@ test("full start flow lands on /tests, and the browser keeps its participant", a
   const stored = await page.evaluate<string | null>('localStorage.getItem("read-ai.browser-id")');
   expect(stored).toMatch(/^[0-9a-f-]{36}$/);
   const cookie = (await page.context().cookies()).find((c) => c.name === "browser_id");
-  expect(cookie).toMatchObject({ value: stored, httpOnly: true, sameSite: "Lax" });
+  // SameSite and Secure are checked on the header in the unit tests; WebKit on Windows reports None.
+  expect(cookie).toMatchObject({ value: stored, httpOnly: true });
 
   await page.goto("/start");
   await expect(page.getByRole("heading", { level: 1 })).toHaveText("Welcome back");

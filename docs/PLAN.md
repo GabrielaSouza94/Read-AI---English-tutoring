@@ -12,11 +12,12 @@ Build every MVP task domain-ready (`task-breakdown.md` §14.1): no host names, r
   - [x] `/` with "Take a test" and "Open the portal"; header, footer (privacy link) and demo banner on every page, error pages included
   - [x] Design tokens from `HiFi-Design.md` in the Tailwind theme, colours rechecked for WCAG AA contrast (`test/theme.test.ts`)
   - [x] Tests: E2E banner on `/`, `/start`, `/portal`, `/privacy`; works at 1366 × 768 and 1024 × 768; keyboard reachable, skip link
-- [ ] **T1.3 Start page and session start** (includes Turnstile verification)
-  - [ ] `/start` form: name, consent, optional group code, Turnstile widget
-  - [ ] `POST /api/session/start`: Turnstile verified server-side, consent required, name rules and blocked words; `guardSessionStart()` last
-  - [ ] Display name and unique 4-character code; `browser_id` (host-only cookie + local storage, in one module); `consent_at`, `ip_hash`, `delete_after`
-  - [ ] Tests: display name and code units; 403 `CONSENT_REQUIRED` / `CAPTCHA_FAILED`; same browser keeps its participant; E2E consent link opens `/privacy`
+- [x] **T1.3 Start page and session start** (includes Turnstile verification)
+  - [x] `/start` form: name, consent, optional group code, Turnstile widget; field errors announced; returning browser greeted
+  - [x] `POST /api/session/start`: Turnstile verified server-side (5 s, fail closed), consent required, name rules and blocked words; `guardSessionStart()` last
+  - [x] Display name and unique 4-character code; `browser_id` (host-only cookie + local storage, in `app/lib/browser-id.ts`); `consent_at`, `ip_hash`, `delete_after`; `group_code` session cookie for T2.3
+  - [x] Tests: display name and code units; 403 `CONSENT_REQUIRED` / `CAPTCHA_FAILED`; same browser keeps its participant; E2E consent link opens `/privacy`; full flow lands on `/tests` (Turnstile test keys)
+  - [ ] Staging: Turnstile widget hostnames match the `workers.dev` addresses (owner, Cloudflare dashboard)
 - [ ] **T2.1 Test picker**
   - [ ] `/tests`: 4 cards (level, title, sentences, time); without a session, redirect to `/start`
   - [ ] Tests: E2E each card opens the right test; direct visit without a session redirects
