@@ -23,6 +23,13 @@
 - **Decision:** Remove the Python code and keep the workflow parts: the `/plan`, `/next`, `/review` and `/fix-tests` commands, the subagents, `docs/` and the format hook. Adapt them to npm, Vitest, ESLint and Prettier.
 - **Consequences:** `global/CLAUDE.md` holds personal preferences from the template and is left as is.
 
+## 2026-11-05: Design tokens rechecked for contrast (T1.1)
+
+- **Context:** `HiFi-Design.md` (ReadAssist) is reused for Read AI once its colours pass WCAG 2.1 AA. Several do not: success `#059669` (3.8:1) and warning `#D97706` (3.2:1) as text on white, danger `#DC2626` on its light background (4.0:1), the focus ring `#93C5FD` (1.8:1) and input borders `#E5E7EB` (1.2:1, below the 3:1 for UI parts).
+- **Decision:** Use the spec's darker shades for success, warning and danger text, primary blue for the focus ring and gray-500 for input borders. The tokens live in the `@theme` block of `app/app.css`, and `test/theme.test.ts` checks every text and UI pair the app uses, so the manual contrast check is now automated. Light theme only.
+- **Alternatives:** Keep the spec colours for large text only. Rejected: the same tokens are used for body text and badges.
+- **Consequences:** New colour pairs must be added to `test/theme.test.ts`. The E2E keyboard tests skip WebKit, which (like Safari) does not tab to links by default; Chromium and Firefox cover keyboard access.
+
 ## 2026-11-05: MVP on workers.dev, own domain in MVP2 (BR-19)
 
 - **Context:** The owner plans to move Read AI to its own domain, but not as part of the MVP. T6.8 had listed "Domain and DNS" as a launch step.

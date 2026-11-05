@@ -24,7 +24,8 @@
     "app/lib/prompts.ts",
     "app/lib/errors.ts",
     "app/lib/ip.ts",
-    "app/lib/limits.ts"
+    "app/lib/limits.ts",
+    "app/lib/contrast.ts"
   ],
   "compilerOptions": {
     "composite": true,

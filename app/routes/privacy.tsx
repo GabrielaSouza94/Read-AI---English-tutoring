@@ -61,8 +61,8 @@ export default function Privacy({ loaderData }: Route.ComponentProps) {
   );
 
   return (
-    <main className="mx-auto max-w-2xl px-4 py-12 leading-relaxed">
-      <h1 className="text-3xl font-semibold">Privacy notice</h1>
+    <main id="main" tabIndex={-1} className="mx-auto max-w-content px-8 py-12 leading-relaxed">
+      <h1 className="text-h1 font-bold text-gray-900">Privacy notice</h1>
       <p className="mt-4">
         Read AI is a public demo that scores how fluently you read English aloud. This notice
         explains what we collect, why, who receives it, how long we keep it and how to delete it. It

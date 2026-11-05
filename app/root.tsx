@@ -1,6 +1,5 @@
 import {
   isRouteErrorResponse,
-  Link,
   Links,
   Meta,
   Outlet,
@@ -10,6 +9,7 @@ import {
 
 import type { Route } from "./+types/root";
 import "./app.css";
+import { SiteLayout } from "./components/layout";
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -34,13 +34,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        {children}
-        {/* Minimal footer (T1.2); the full layout shell comes in T1.1. */}
-        <footer className="mx-auto max-w-2xl px-4 py-6 text-sm text-gray-500">
-          <Link className="underline" to="/privacy">
-            Privacy
-          </Link>
-        </footer>
+        <SiteLayout>{children}</SiteLayout>
         <ScrollRestoration />
         <Scripts />
       </body>
@@ -58,7 +52,7 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   let stack: string | undefined;
 
   if (isRouteErrorResponse(error)) {
-    message = error.status === 404 ? "404" : "Error";
+    message = error.status === 404 ? "Page not found" : "Error";
     details =
       error.status === 404 ? "The requested page could not be found." : error.statusText || details;
   } else if (import.meta.env.DEV && error && error instanceof Error) {
@@ -67,9 +61,9 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   }
 
   return (
-    <main className="pt-16 p-4 container mx-auto">
-      <h1>{message}</h1>
-      <p>{details}</p>
+    <main id="main" tabIndex={-1} className="mx-auto max-w-content px-8 py-12">
+      <h1 className="text-h1 font-bold text-gray-900">{message}</h1>
+      <p className="mt-4">{details}</p>
       {stack && (
         <pre className="w-full p-4 overflow-x-auto">
           <code>{stack}</code>

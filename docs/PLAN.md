@@ -8,10 +8,10 @@
 Goal: **Gate A** -- a participant finishes a full test on staging, with the stub scorer.
 Build every MVP task domain-ready (`task-breakdown.md` §14.1): no host names, relative URLs, host-only cookies.
 
-- [ ] **T1.1 Landing page, layout and demo banner**
-  - [ ] `/` with "Take a test" and "Open the portal"; header, footer (privacy link) and demo banner on every page
-  - [ ] Design tokens from `HiFi-Design.md` in the Tailwind theme, colours rechecked for WCAG AA contrast
-  - [ ] Tests: E2E banner on `/`, `/start`, `/portal`, `/privacy`; works at 1366 × 768 and 1024 × 768; keyboard reachable
+- [x] **T1.1 Landing page, layout and demo banner**
+  - [x] `/` with "Take a test" and "Open the portal"; header, footer (privacy link) and demo banner on every page, error pages included
+  - [x] Design tokens from `HiFi-Design.md` in the Tailwind theme, colours rechecked for WCAG AA contrast (`test/theme.test.ts`)
+  - [x] Tests: E2E banner on `/`, `/start`, `/portal`, `/privacy`; works at 1366 × 768 and 1024 × 768; keyboard reachable, skip link
 - [ ] **T1.3 Start page and session start** (includes Turnstile verification)
   - [ ] `/start` form: name, consent, optional group code, Turnstile widget
   - [ ] `POST /api/session/start`: Turnstile verified server-side, consent required, name rules and blocked words; `guardSessionStart()` last
