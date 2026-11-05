@@ -25,7 +25,13 @@
     "app/lib/errors.ts",
     "app/lib/ip.ts",
     "app/lib/limits.ts",
-    "app/lib/contrast.ts"
+    "app/lib/contrast.ts",
+    "app/lib/config.ts",
+    "app/lib/participant.ts",
+    "app/lib/blocked-words.ts",
+    "app/lib/browser-id.ts",
+    "app/lib/turnstile.ts",
+    "app/lib/session-start.ts"
   ],
   "compilerOptions": {
     "composite": true,

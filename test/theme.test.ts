@@ -27,6 +27,8 @@ const TEXT_PAIRS: [text: string, background: string][] = [
   ["warning", "warning-light"],
   ["danger", "white"],
   ["danger", "danger-light"],
+  // Disabled button.
+  ["gray-700", "gray-300"],
 ];
 
 // Focus rings, input borders and other UI parts need 3:1 against the page (WCAG 1.4.11).

@@ -7,6 +7,7 @@ import {
   loadLangSmithConfig,
   loadMonitoringConfig,
   loadPrivacyConfig,
+  loadStartConfig,
 } from "./config";
 
 const VALID = {
@@ -139,6 +140,32 @@ describe("loadPrivacyConfig", () => {
   it("rejects a missing or invalid email and retention period", () => {
     expect(() => loadPrivacyConfig({ PRIVACY_CONTACT_EMAIL: "nope", RETENTION_DAYS: "0" })).toThrow(
       "PRIVACY_CONTACT_EMAIL must be an email address; RETENTION_DAYS must be a positive whole number",
+    );
+  });
+});
+
+describe("loadStartConfig", () => {
+  it("returns the Turnstile keys, salt, retention and speech cap, ignoring other secrets", () => {
+    expect(
+      loadStartConfig({
+        TURNSTILE_SITE_KEY: "ts-site",
+        TURNSTILE_SECRET_KEY: "ts-secret",
+        IP_HASH_SALT: "salt",
+        RETENTION_DAYS: "90",
+        DAILY_STT_MINUTES_CAP: 80,
+      }),
+    ).toEqual({
+      turnstileSiteKey: "ts-site",
+      turnstileSecretKey: "ts-secret",
+      ipHashSalt: "salt",
+      retentionDays: 90,
+      dailySttMinutesCap: 80,
+    });
+  });
+
+  it("names every problem without printing values", () => {
+    expect(() => loadStartConfig({ TURNSTILE_SITE_KEY: "ts-site", RETENTION_DAYS: "x" })).toThrow(
+      "Invalid configuration: TURNSTILE_SECRET_KEY is missing; IP_HASH_SALT is missing; RETENTION_DAYS must be a positive whole number; DAILY_STT_MINUTES_CAP must be a positive whole number",
     );
   });
 });

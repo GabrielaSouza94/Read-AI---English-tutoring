@@ -15,8 +15,8 @@ Every setting the Worker needs, where its value comes from, who owns it and when
 | `AZURE_SPEECH_REGION`          | Secret | Same page as the key (for example `eastus`)                                     | T0.5        |
 | `GEMINI_API_KEY`               | Secret | Google AI Studio → API keys (paid tier)                                         | T3.5        |
 | `LANGSMITH_API_KEY`            | Secret | LangSmith → Settings → API Keys                                                 | T0.6        |
-| `TURNSTILE_SITE_KEY`           | Secret | Cloudflare dashboard → Turnstile → widget (public, but differs per environment) | T1.4        |
-| `TURNSTILE_SECRET_KEY`         | Secret | Same Turnstile widget                                                           | T1.4        |
+| `TURNSTILE_SITE_KEY`           | Secret | Cloudflare dashboard → Turnstile → widget (public, but differs per environment) | T1.3        |
+| `TURNSTILE_SECRET_KEY`         | Secret | Same Turnstile widget                                                           | T1.3        |
 | `IP_HASH_SALT`                 | Secret | Generate: `node -e "console.log(crypto.randomBytes(32).toString('hex'))"`       | T1.4        |
 | `RESEND_API_KEY`               | Secret | Resend → API Keys → Create, permission **Sending access**                       | T0.4        |
 | `DAILY_STT_MINUTES_CAP`        | Var    | `wrangler.jsonc` (80)                                                           | T2.6        |
@@ -28,6 +28,13 @@ Every setting the Worker needs, where its value comes from, who owns it and when
 
 Staging and production must use **separate keys** for every secret, so a leaked staging key never exposes
 production. Create a separate Turnstile widget per environment, and generate a different salt for each.
+
+**Turnstile widgets.** Each widget lists the hostnames it accepts (Cloudflare dashboard → Turnstile →
+widget → Hostnames): the staging widget the staging `workers.dev` host, the production widget the
+production one. A wrong hostname shows Turnstile error 110200 and the start page cannot continue.
+Locally and in CI, use Cloudflare's published test keys, which always pass on any host:
+`TURNSTILE_SITE_KEY=1x00000000000000000000AA` and `TURNSTILE_SECRET_KEY=1x0000000000000000000000000000000AA`
+(the CI E2E job writes them into its own `.dev.vars`).
 
 ## Setting secrets
 

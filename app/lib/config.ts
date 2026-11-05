@@ -179,3 +179,35 @@ export function loadPrivacyConfig(source: Source): PrivacyConfig {
   }
   return { contactEmail, retentionDays };
 }
+
+export type StartConfig = {
+  turnstileSiteKey: string;
+  turnstileSecretKey: string;
+  ipHashSalt: string;
+  retentionDays: number;
+  dailySttMinutesCap: number;
+};
+
+/** What the start page and `POST /api/session/start` need (T1.3). */
+export function loadStartConfig(source: Source): StartConfig {
+  const keys = {
+    turnstileSiteKey: SECRETS.turnstileSiteKey,
+    turnstileSecretKey: SECRETS.turnstileSecretKey,
+    ipHashSalt: SECRETS.ipHashSalt,
+  };
+  const retentionDays = positiveInteger(text(source, "RETENTION_DAYS"));
+  const dailySttMinutesCap = positiveInteger(text(source, "DAILY_STT_MINUTES_CAP"));
+  const problems = [
+    ...Object.values(keys)
+      .filter((name) => text(source, name) === undefined)
+      .map((name) => `${name} is missing`),
+    ...(retentionDays === undefined ? ["RETENTION_DAYS must be a positive whole number"] : []),
+    ...(dailySttMinutesCap === undefined
+      ? ["DAILY_STT_MINUTES_CAP must be a positive whole number"]
+      : []),
+  ];
+  if (problems.length > 0 || retentionDays === undefined || dailySttMinutesCap === undefined) {
+    throw new ConfigError(problems);
+  }
+  return { ...loadSubset(source, keys), retentionDays, dailySttMinutesCap };
+}

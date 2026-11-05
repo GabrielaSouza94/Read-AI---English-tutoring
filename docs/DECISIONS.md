@@ -23,6 +23,13 @@
 - **Decision:** Remove the Python code and keep the workflow parts: the `/plan`, `/next`, `/review` and `/fix-tests` commands, the subagents, `docs/` and the format hook. Adapt them to npm, Vitest, ESLint and Prettier.
 - **Consequences:** `global/CLAUDE.md` holds personal preferences from the template and is left as is.
 
+## 2026-11-05: Session start: resume by browser, group code cookie (T1.3)
+
+- **Context:** TR-04 says a returning browser is the same participant, and the group code is stored on each result (`test_results.group_code`), which T2.3 creates later.
+- **Decision:** `POST /api/session/start` looks up the browser id (cookie first, then the localStorage copy sent in the body). A live participant is resumed: no name needed, but consent and the captcha are still checked, and the start still counts towards the IP's 3 daily tests. The group code goes into a host-only session cookie, `group_code`, for T2.3 to copy onto the result. Order of checks: consent, fields, captcha, then limits, so a rejected form never uses up a test.
+- **Alternatives:** Keep the group code in KV per participant. Rejected: it belongs to the visit, not to the person, and a cookie needs no cleanup.
+- **Consequences:** The daily test limit counts session starts. T2.3 must decide whether starting a second test from `/tests` counts too (TR-15 says 3 tests per IP per day). E2E sends its own `cf-connecting-ip` per test so local KV counters never block a rerun; Cloudflare overwrites the header in staging and production.
+
 ## 2026-11-05: Design tokens rechecked for contrast (T1.1)
 
 - **Context:** `HiFi-Design.md` (ReadAssist) is reused for Read AI once its colours pass WCAG 2.1 AA. Several do not: success `#059669` (3.8:1) and warning `#D97706` (3.2:1) as text on white, danger `#DC2626` on its light background (4.0:1), the focus ring `#93C5FD` (1.8:1) and input borders `#E5E7EB` (1.2:1, below the 3:1 for UI parts).
