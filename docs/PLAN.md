@@ -3,7 +3,52 @@
 > Claude works through these one at a time (`/next`). Task ids, acceptance criteria and tests come from
 > `Product materials/task-breakdown.md`. Tick a task only when its acceptance criteria are met.
 
-## Sprint 1: Setup and data model (weeks 1-2)
+## Sprint 2: Participant flow (weeks 3-4)
+
+Goal: **Gate A** -- a participant finishes a full test on staging, with the stub scorer.
+Build every MVP task domain-ready (`task-breakdown.md` §14.1): no host names, relative URLs, host-only cookies.
+
+- [ ] **T1.1 Landing page, layout and demo banner**
+  - [ ] `/` with "Take a test" and "Open the portal"; header, footer (privacy link) and demo banner on every page
+  - [ ] Design tokens from `HiFi-Design.md` in the Tailwind theme, colours rechecked for WCAG AA contrast
+  - [ ] Tests: E2E banner on `/`, `/start`, `/portal`, `/privacy`; works at 1366 × 768 and 1024 × 768; keyboard reachable
+- [ ] **T1.3 Start page and session start** (includes Turnstile verification)
+  - [ ] `/start` form: name, consent, optional group code, Turnstile widget
+  - [ ] `POST /api/session/start`: Turnstile verified server-side, consent required, name rules and blocked words; `guardSessionStart()` last
+  - [ ] Display name and unique 4-character code; `browser_id` (host-only cookie + local storage, in one module); `consent_at`, `ip_hash`, `delete_after`
+  - [ ] Tests: display name and code units; 403 `CONSENT_REQUIRED` / `CAPTCHA_FAILED`; same browser keeps its participant; E2E consent link opens `/privacy`
+- [ ] **T2.1 Test picker**
+  - [ ] `/tests`: 4 cards (level, title, sentences, time); without a session, redirect to `/start`
+  - [ ] Tests: E2E each card opens the right test; direct visit without a session redirects
+- [ ] **T2.2 Audio capture (WAV) and microphone check**
+  - [ ] AudioWorklet 16 kHz mono PCM → WAV; record, stop, play back, re-record; stop at 120 s; level meter with text status
+  - [ ] Microphone check before the first recording; permission-denied and no-device states
+  - [ ] Tests: WAV header and length; state machine; E2E fake audio device records 5 s
+- [ ] **T2.3 Progressive step engine and session state**
+  - [ ] n progressive steps + 2 full reads; progress bar ("Step 3 of 7"); retry limit and auto-progress
+  - [ ] Session state in KV (`session:{participantId}:{testId}`, 1-hour TTL); reload resumes
+  - [ ] Stub scorer behind a flag (always passes)
+  - [ ] Tests: step builder (7 and 9 steps); retry logic; E2E test 1 end to end (Gate A); reload resumes step 3
+- [ ] **T2.4 Word highlighting and acknowledgment**
+  - [ ] Highlight words by position; each word a toggle button (`aria-pressed`); record disabled until all are reviewed
+  - [ ] Instruction audio plays once, with replay
+  - [ ] Tests: word matching (repeats, capitals, punctuation); E2E record disabled until 3 words clicked
+- [ ] **T2.6 Participant error, empty and edge states**
+  - [ ] Microphone denied, upload failed, provider error, demo paused, rate limited, bad `testId`, expired session, unsupported browser
+  - [ ] Tests: E2E each state through mocked 403, 429, 503, 502, network abort and 404
+- [ ] **Gate A:** full test on staging with the stub scorer
+
+## MVP2: Own domain (after Gate C, or earlier -- see `task-breakdown.md` §14)
+
+- [ ] T7.1 Domain, DNS and custom domains (`APP_ORIGIN`)
+- [ ] T7.2 Redirects and browser-id hand-over (skip the hand-over if done before launch)
+- [ ] T7.3 Email on the domain (Resend sender, `privacy@` through Email Routing)
+- [ ] T7.4 Edge security on the zone (WAF rule, Access on staging, HSTS, Turnstile hostnames)
+- [ ] T7.5 Cutover and documentation
+
+## Done
+
+### Sprint 1: Setup and data model (weeks 1-2) -- done 2026-11-04
 
 - [x] **T0.1 Repository, tooling and CI/CD**
   - [x] React Router + Tailwind CSS 4 app on Cloudflare Workers, TypeScript strict
@@ -66,7 +111,3 @@
   - [x] `app/lib/ip.ts`: client IP and salted SHA-256 hash
   - [x] `API_RATE_LIMITER` binding: 60 requests a minute per IP on `/api/*` (instead of a WAF rule)
   - [x] Tests: counters and UTC reset; 4th start 429; budget 503 while an attempt finishes; kill switch within one request
-
-## Done
-
-<!-- Move completed sprints here -->

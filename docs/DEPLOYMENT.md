@@ -186,3 +186,10 @@ Rules:
 - Every migration `NNNN_name.sql` has a hand-written `drizzle/down/NNNN_name.down.sql`. That file reverses it, for emergencies only.
 - A migration must stay compatible with the previous Worker version, so that a code rollback still works.
   For example, add a column in one release and drop the old one in a later release.
+
+## Own domain (MVP2)
+
+Staging and production run on `workers.dev` addresses until MVP2. The move is planned in
+`Product materials/task-breakdown.md` §14 (tasks T7.1-T7.5) and specified in TRD §4.18 (TR-18).
+Until then, follow §14.1 there: no host names in code, tests or emails; one `APP_ORIGIN` setting for absolute
+URLs; host-only cookies.

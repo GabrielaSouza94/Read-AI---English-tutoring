@@ -35,6 +35,7 @@ Run `npm run typecheck` after editing `wrangler.jsonc` or adding routes. It rege
 - **CI** (`.github/workflows/ci.yml`) runs check → e2e → deploy-staging (on `main`) → deploy-production (manual approval). A failing check blocks every deploy.
 - **The cross-cutting rules** in `task-breakdown.md` §3 apply to all code: the S-1 JSON error format, S-2 timeouts and retries for external calls, and the S-3 Definition of Done. Never put participant names in logs or LangSmith traces, never persist audio, and enforce every restriction server-side.
 - **Logging** goes through `log` from `app/lib/log.ts` (JSON; redacts names, IPs and secrets by key), never bare `console.*`. Admin actions call `recordAdminAction()`, and external calls call `recordProviderCall()`. Monitoring is described in `docs/DEPLOYMENT.md`.
+- **Stay domain-ready** (`task-breakdown.md` §14.1): the app moves from `workers.dev` to its own domain in MVP2, so never hard-code a host name. Use relative URLs, and one `APP_ORIGIN` setting for absolute ones. Cookies are host-only.
 - The app uses React Router **8**; the TRD still says 7. See `docs/DECISIONS.md`.
 
 ## Product materials
@@ -57,9 +58,9 @@ The documents describe two related products. Always check which one a file belon
 
 The documents are linked by ID, so a change to one usually means updating the others:
 
-- **BRD** defines business requirements `BR-01`…`BR-18`, rules `BR-RULE-xx`, use cases `UC-1`…`UC-3`, restrictions, risks `R1`… and a decisions log.
+- **BRD** defines business requirements `BR-01`…`BR-19` (BR-19, own domain, is MVP2), rules `BR-RULE-xx`, use cases `UC-1`…`UC-3`, restrictions, risks `R1`… and a decisions log.
 - **TRD** (`technical-requirements.md`) maps each BR to a `TR-xx` in §4 and contains the full texts of the four stories (§4.6).
-- **task-breakdown.md** turns BR/TR/UC into 7 epics (`E0`–`E6`) and 42 tasks (`T0.1`…). It also holds cross-cutting standards S-1 (API error codes), S-2 (timeouts and retries) and S-3 (Definition of Done), plus a traceability matrix (§11) and a test plan (§12). If you add or renumber a requirement or task, update the matrix and the epic/sprint tables.
+- **task-breakdown.md** turns BR/TR/UC into 7 epics (`E0`–`E6`) and 42 tasks (`T0.1`…), plus MVP2 Epic E7 (own domain, §14). It also holds cross-cutting standards S-1 (API error codes), S-2 (timeouts and retries) and S-3 (Definition of Done), plus a traceability matrix (§11) and a test plan (§12). If you add or renumber a requirement or task, update the matrix and the epic/sprint tables.
 - **product-documentation.md** is the developer-facing technical reference: architecture, ERD, metric formulas, mismatch rules, routes, env config.
 - **app-walkthrough.md** is the user-facing guide (participant flow, professor portal, admin, CSV export, URLs). Its screenshots are placeholders until the MVP is built.
 

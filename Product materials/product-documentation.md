@@ -489,6 +489,8 @@ npm run db:seed        # 4 tests, sentences, demo results
 | Staging | staging Worker | `read-ai-staging-db` | staging namespace |
 | Production | production Worker | `read-ai-production-db` | production namespace |
 
+In the MVP, staging and production run on Cloudflare `workers.dev` addresses. MVP2 moves them to `staging.{domain}` and `{domain}` (TR-18).
+
 ### Environment Variables
 
 | Variable | Description |
@@ -508,6 +510,8 @@ npm run db:seed        # 4 tests, sentences, demo results
 | `PRIVACY_CONTACT_EMAIL` | Contact shown on the privacy notice |
 | `ALERT_EMAIL` | Owner address for monitoring alerts |
 | `RESEND_API_KEY` | Resend key for alert email (receives no participant data) |
+| `APP_ORIGIN` | MVP2: public origin for absolute URLs, for example `https://{domain}` |
+| `ALERT_FROM` | MVP2: alert sender on the domain (default `onboarding@resend.dev`) |
 
 ---
 

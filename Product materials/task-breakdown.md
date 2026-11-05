@@ -5,14 +5,14 @@
 | **Project** | Read AI -- English Reading Fluency Assessment (Public MVP) |
 | **Owner** | Gabriela |
 | **Date** | October 20, 2026 |
-| **Version** | 1.0 |
+| **Version** | 1.5 |
 | **Sources** | Read AI BRD v1.0 (`business-requirements.md`), Read AI TRD v1.0 (`technical-requirements.md`), gaps from `INSPECTION-REPORT.md` |
 
 ---
 
 ## 1. How to Read This Document
 
-The MVP breaks into **7 epics and 42 tasks**, about **60 developer-days** over the 12-week, 6-sprint roadmap. Each task lists:
+The MVP breaks into **7 epics and 42 tasks**, about **60 developer-days** over the 12-week, 6-sprint roadmap. Epic E7 (§14) plans MVP2 work beyond it. Each task lists:
 
 - **Product requirements** -- the BRD requirements (BR-xx), business rules (BR-RULE-xx) and the behaviour a user sees.
 - **Technical requirements** -- the TRD requirements (TR-xx) and the implementation details.
@@ -42,7 +42,8 @@ Items marked **(added)** fill gaps the TRD leaves open (error formats, timeouts,
 | E4 | Professor portal | 4 | 6 d |
 | E5 | Review and moderation | 3 | 5.5 d |
 | E6 | Quality, calibration and launch | 10 | 14 d |
-| **Total** | | **42** | **60.5 d** |
+| **Total (MVP)** | | **42** | **60.5 d** |
+| E7 | Own domain (MVP2, §14) | 5 | 4 d |
 
 ### 2.2 Sprint Plan
 
@@ -57,6 +58,7 @@ Items marked **(added)** fill gaps the TRD leaves open (error formats, timeouts,
 | 5 · QA and calibration | 9-10 | T6.1-T6.7 | 8.5 d |
 | 6 · Launch and handover | 11-12 | T6.8-T6.10 | 5.5 d |
 | **Gate C** | | MVP sign-off | |
+| MVP2 · Own domain | After Gate C | T7.1-T7.5 | 4 d |
 
 A sprint holds 10 developer-days. Sprints 3 and 4 run about 2.5 days over each. With one developer, the lighter Sprints 5-6 (and the 3-day buffer in T6.10) absorb the overflow, which leaves almost no slack. A second developer for Sprints 3-4 removes the risk.
 
@@ -1098,7 +1100,7 @@ Checklist: consent recorded; only display name stored; no audio anywhere; IP onl
 
 **Technical requirements:** TRD 10.1.
 
-- Domain and DNS; production secrets; Turnstile production keys; demo seed; alerts live; budget cap 80 minutes.
+- Launch on the `workers.dev` address (the own domain is MVP2, §14); production secrets; Turnstile production keys; demo seed; alerts live; budget cap 80 minutes.
 - Smoke test on production; rollback rehearsed.
 
 **Use cases:** UC-1, UC-2, UC-3.
@@ -1161,6 +1163,7 @@ Reserved for defects from Sprints 5-6 and overflow from Sprints 3-4.
 | BR-16 | Abuse and cost controls | T1.4, T2.6, T6.4 |
 | BR-17 | Step metrics | T3.2, T3.3, T3.6, T4.2 |
 | BR-18 | Guided demo experience | T1.1, T4.2, T4.4 |
+| BR-19 | Own domain (MVP2) | T7.1-T7.5 |
 
 | Use case | Tasks |
 | -------- | ----- |
@@ -1191,7 +1194,178 @@ Reserved for defects from Sprints 5-6 and overflow from Sprints 3-4.
 
 ---
 
-## 14. Revision History
+## 14. Beyond the MVP -- Epic E7 Own Domain (MVP2)
+
+The MVP launches on Cloudflare's `workers.dev` addresses (T6.8). MVP2 moves Read AI to its own domain (BR-19, TR-18). These tasks are not part of the 42 MVP tasks or the 12-week plan.
+
+**Timing.** E7 can run at any point after T0.2. If it runs before the public launch (T6.8), no participant data exists on the old host, so the browser-id hand-over in T7.2 can be skipped and the redirects kept short.
+
+### 14.1 Rules for MVP tasks now (domain-ready)
+
+So that the move needs no rework, every MVP task follows these rules:
+
+- No host name in code, tests or emails. Use relative URLs; the only absolute ones come from one setting (`APP_ORIGIN` in T7.1).
+- Cookies are host-only: no `Domain` attribute (T5.2).
+- Turnstile widgets are created per environment, so a hostname can be added without new keys (T1.3, T5.1).
+- The participant's browser id is read and written in one module, so T7.2 can hand it over (T1.3, T1.5).
+- E2E tests read their base URL from the Playwright config, never from a literal.
+
+### 14.2 Impact on done and planned tasks
+
+| Task                                  | Status  | What changes with the own domain                                                                                      |
+| ------------------------------------- | ------- | --------------------------------------------------------------------------------------------------------------------- |
+| T0.1 Repository and CI/CD             | Done    | E2E smoke run against `APP_ORIGIN`; Access service token for staging (T7.4, T7.5)                                     |
+| T0.2 Environments and secrets         | Done    | `routes` with custom domains and `APP_ORIGIN` per environment; `workers_dev: false` for production later (T7.1, T7.2) |
+| T0.4 Logging and alerts               | Done    | Alerts sent from the domain (`ALERT_FROM`); `ALERT_EMAIL` may be any address (T7.3)                                   |
+| T0.5, T0.6 Debug routes               | Done    | Staging behind Cloudflare Access, so the debug routes are no longer public (T7.4)                                     |
+| T1.2 Privacy notice                   | Done    | Contact `privacy@{domain}` through Email Routing; Cloudflare row mentions it; new "Last updated" (T7.3)               |
+| T1.4 Rate limits                      | Done    | WAF rate-limiting rule on `/api/*` on top of `API_RATE_LIMITER` (T7.4)                                                |
+| T1.3 Start page and session start     | Planned | Turnstile hostnames; browser id stored per origin (T7.2, T7.4)                                                        |
+| T1.5 Retention and "Delete my result" | Planned | Depends on the browser id, so it needs the hand-over (T7.2)                                                           |
+| T4.2, T4.3 Result details, CSV        | Planned | Absolute links from `APP_ORIGIN` (T7.1)                                                                               |
+| T5.1 Public review                    | Planned | Turnstile hostname (T7.4)                                                                                             |
+| T5.2 Admin authentication             | Planned | `__Host-` cookie; built host-only now, so the move needs no change (T7.4)                                             |
+| T6.4 Security testing                 | Planned | Header scan repeated on the domain (T7.4)                                                                             |
+| T6.8 Production launch                | Planned | Launches on `workers.dev`; "Domain and DNS" moved here                                                                |
+
+### 14.3 Epic summary
+
+| Task      | Name                               | Estimate | Priority | Depends on       |
+| --------- | ---------------------------------- | -------- | -------- | ---------------- |
+| T7.1      | Domain, DNS and custom domains     | 1 d      | P0       | T0.2             |
+| T7.2      | Redirects and browser-id hand-over | 1 d      | P0       | T7.1, T1.3, T1.5 |
+| T7.3      | Email on the domain                | 0.5 d    | P1       | T7.1             |
+| T7.4      | Edge security on the zone          | 1 d      | P1       | T7.1             |
+| T7.5      | Cutover and documentation          | 0.5 d    | P1       | T7.1-T7.4        |
+| **Total** |                                    | **4 d**  |          |                  |
+
+Priorities apply within MVP2: **P0** blocks the move.
+
+### T7.1 Domain, DNS and custom domains
+
+| Sprint | Estimate | Priority | Depends on |
+| ------ | -------- | -------- | ---------- |
+| MVP2   | 1 d      | P0       | T0.2       |
+
+**Product requirements:** BR-19.
+
+**Technical requirements:** TR-18 (hosting and DNS).
+
+- Register the domain with Cloudflare Registrar, or move its DNS to Cloudflare, in the account that runs the Workers.
+- Workers Custom Domains: production on the apex with `www` redirecting to it; staging on `staging.{domain}`. `routes` per environment in `wrangler.jsonc` (not inherited).
+- New setting `APP_ORIGIN` per environment through `loadConfig()`, listed in `.dev.vars.example` and `docs/SECRETS.md`; `/api/health` reports it.
+- Absolute URLs (share links, CSV links, canonical tags) built from `APP_ORIGIN`.
+
+**Use cases:** UC-1, UC-2, UC-3 (all reachable on the domain).
+
+**Acceptance criteria:** Both hosts serve the app over HTTPS with valid certificates; `/api/health` is ok on both; no host name is hard-coded.
+
+**Tests:**
+
+- [Unit] `APP_ORIGIN` must be an `https://` origin with no path.
+- [E2E] Smoke suite passes against the staging domain.
+- [Manual] Certificates and DNS records checked.
+
+### T7.2 Redirects and browser-id hand-over
+
+| Sprint | Estimate | Priority | Depends on       |
+| ------ | -------- | -------- | ---------------- |
+| MVP2   | 1 d      | P0       | T7.1, T1.3, T1.5 |
+
+**Product requirements:** BR-19; BR-15 (deletion still works after the move).
+
+**Technical requirements:** TR-18 (redirects and continuity).
+
+- On the old `workers.dev` host: `/api/*` returns 308 to the same path and query on `APP_ORIGIN`; pages return a hand-over page that moves the browser id in the URL fragment and redirects.
+- The domain reads the fragment once, stores the browser id, and removes the fragment from the address bar.
+- Keep the old host for at least 90 days, then set `workers_dev: false` for production.
+- Skip the hand-over if the move happens before T6.8.
+
+**Use cases:** UC-1 (returning participant), UC-2 (shared result links).
+
+**Acceptance criteria:** An old result link opens on the domain; a participant created on the old host can still use "Delete my result" after the move.
+
+**Tests:**
+
+- [Unit] Redirect target keeps path and query, and never redirects to another host.
+- [E2E] Browser id survives the hand-over; the delete button works afterwards.
+- [Int] The fragment never appears in request logs.
+
+### T7.3 Email on the domain
+
+| Sprint | Estimate | Priority | Depends on |
+| ------ | -------- | -------- | ---------- |
+| MVP2   | 0.5 d    | P1       | T7.1       |
+
+**Product requirements:** BR-19; BR-15 (privacy contact).
+
+**Technical requirements:** TR-18 (email); S-2 (Resend).
+
+- Verify the domain in Resend (SPF, DKIM and DMARC records); send alerts from `alerts@{domain}` (new setting `ALERT_FROM`).
+- Cloudflare Email Routing: `privacy@{domain}` forwards to the owner's inbox; set `PRIVACY_CONTACT_EMAIL` to it in every environment.
+- Privacy notice: Email Routing in the Cloudflare row; new "Last updated" date.
+
+**Use cases:** n/a
+
+**Acceptance criteria:** A test alert arrives from the domain address and passes SPF, DKIM and DMARC; an email to `privacy@{domain}` reaches the owner.
+
+**Tests:**
+
+- [Unit] Sender address comes from `ALERT_FROM`; the default stays `onboarding@resend.dev`.
+- [Manual] `/api/debug/alert` on staging; message headers show SPF, DKIM and DMARC pass.
+
+### T7.4 Edge security on the zone
+
+| Sprint | Estimate | Priority | Depends on |
+| ------ | -------- | -------- | ---------- |
+| MVP2   | 1 d      | P1       | T7.1       |
+
+**Product requirements:** BR-16; BR-19.
+
+**Technical requirements:** TR-15, TR-18 (edge security).
+
+- WAF rate-limiting rule on `/api/*`; keep `API_RATE_LIMITER` as a second layer.
+- Bot Fight Mode, Always Use HTTPS, minimum TLS 1.2; HSTS (6 months) after one week without problems.
+- Cloudflare Access in front of staging; Access service token for CI.
+- Turnstile widget hostnames per environment; `robots.txt` (production indexable, staging `noindex`).
+- Check the admin cookie (`__Host-` prefix) and the Content-Security-Policy on the domain.
+
+**Use cases:** UC-3 (admin), UC-1 (captcha).
+
+**Acceptance criteria:** A burst of requests gets 429 from the WAF rule within its period; staging asks for an Access login; production passes a security-header scan with no missing headers.
+
+**Tests:**
+
+- [Manual] Burst test against `/api/health`; header scan on production.
+- [E2E] CI passes Access with the service token; an anonymous request to staging is refused.
+- [Unit] Admin cookie attributes.
+
+### T7.5 Cutover and documentation
+
+| Sprint | Estimate | Priority | Depends on |
+| ------ | -------- | -------- | ---------- |
+| MVP2   | 0.5 d    | P1       | T7.1-T7.4  |
+
+**Product requirements:** BR-19.
+
+**Technical requirements:** TR-18 (operations).
+
+- Lower DNS TTLs a day before; move staging first, then production; watch logs and alerts for a week.
+- Update `app-walkthrough.md`, `docs/DEPLOYMENT.md`, the README and the privacy notice with the new addresses.
+- Rehearse the rollback on staging: re-enable `workers_dev` and remove the routes.
+
+**Use cases:** UC-1, UC-2, UC-3.
+
+**Acceptance criteria:** The production smoke suite passes on the domain; the rollback was rehearsed on staging.
+
+**Tests:**
+
+- [E2E] Production smoke suite on the domain: start, one step, portal search, review, admin login.
+- [Manual] Rollback on staging.
+
+---
+
+## 15. Revision History
 
 | Version | Date | Author | Changes |
 | ------- | ---- | ------ | ------- |
@@ -1200,3 +1374,4 @@ Reserved for defects from Sprints 5-6 and overflow from Sprints 3-4.
 | 1.2 | November 3, 2026 | Gabriela | T3.3: chunking rules from the T0.5 decision (25-second chunks, real-recording check). |
 | 1.3 | November 4, 2026 | Gabriela | T1.3: consent-link E2E test moved from T1.2. |
 | 1.4 | November 4, 2026 | Gabriela | T1.4: Workers rate limiter instead of a WAF rule. |
+| 1.5 | November 5, 2026 | Gabriela | §14 Epic E7 Own domain (MVP2): rules for MVP tasks, impact on tasks, T7.1-T7.5; T6.8 launches on `workers.dev`; BR-19 in the matrix. |

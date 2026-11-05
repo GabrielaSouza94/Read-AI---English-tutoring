@@ -3,7 +3,7 @@
 ## 1. Cover Page
 
 **Project Name:** Read AI – English Reading Fluency Assessment (Public MVP)  
-**Version:** 1.0  
+**Version:** 1.4  
 **Date:** October 12, 2026  
 **Author:** Gabriela  
 **Document Status:** Technical Implementation Specification  
@@ -331,6 +331,51 @@ Per step and per scorer: WCPM, accuracy, fluency, attempt count, highlighted, sk
 
 Landing page explaining both sides, demo banner, seeded results, tooltips on the portal, and a one-minute microphone check before the first recording.
 
+### 4.18 BR-19 → TR-18: Own Domain (MVP2)
+
+Planned for MVP2, after Gate C. The MVP runs on Cloudflare's `workers.dev` addresses. Tasks: E7 in `task-breakdown.md` §14.
+
+**Hosting and DNS**
+
+- The domain is registered with Cloudflare Registrar, or its DNS is moved to Cloudflare, in the same account as the Workers.
+- Production is served on the apex (`{domain}`), with `www` redirecting to it. Staging is served on `staging.{domain}`.
+- Both use Workers Custom Domains (`routes` with `custom_domain: true` in each `wrangler.jsonc` environment). Certificates are issued and renewed automatically.
+- A new setting, `APP_ORIGIN` (for example `https://{domain}`), is loaded by `loadConfig()` in every environment. It is the only source of absolute URLs: share links to results, CSV links, email links and canonical tags. Everything else uses relative URLs.
+
+**Redirects and continuity**
+
+- The old `workers.dev` host keeps answering for at least one retention period (90 days):
+  - `/api/*` returns 308 to the same path and query on the domain.
+  - Pages return a small hand-over page. It copies the participant's browser id from local storage into the URL fragment and redirects to the domain, which stores it again. Local storage belongs to one origin, so without the hand-over a participant created before the move loses "Delete my result" in that browser. Deletion by email still works. Fragments are never sent to the server, so the id does not reach logs.
+- After that period, production sets `workers_dev: false`.
+- Shared result links (`/portal/results/{id}`) keep working through the redirects.
+
+**Email**
+
+- Resend: the domain is verified with SPF, DKIM and DMARC records in Cloudflare DNS. Alerts are sent from `alerts@{domain}` (new setting `ALERT_FROM`). `ALERT_EMAIL` can then be any address; `onboarding@resend.dev` only sends to the Resend account owner.
+- Cloudflare Email Routing forwards `privacy@{domain}` to the owner's inbox. `PRIVACY_CONTACT_EMAIL` changes to it in every environment, and the privacy notice lists Email Routing under Cloudflare and gets a new "Last updated" date.
+
+**Edge security (available once the zone exists)**
+
+- A WAF rate-limiting rule on `/api/*` (the Free plan includes one rule). The Workers limiter `API_RATE_LIMITER` stays as a second layer; T1.4 measured it as loose (about 275 requests passed in one minute).
+- Bot Fight Mode, Always Use HTTPS, minimum TLS 1.2, and HSTS (6 months) after one week without problems.
+- Cloudflare Access (Zero Trust, free plan) in front of `staging.{domain}`, so staging data and the debug routes are no longer public. CI reaches staging with an Access service token.
+- Turnstile: each environment's widget lists its new hostname.
+- The admin session cookie (T5.2) uses the `__Host-` prefix, `Secure`, `HttpOnly`, `SameSite=Lax` and no `Domain` attribute. The admin signs in again after the move.
+- The Content-Security-Policy (TR-15) keeps `'self'` and the Turnstile sources; no host names are hard-coded.
+- `robots.txt`: production can be indexed; staging is `noindex`.
+
+**Privacy (LGPD)**
+
+- No new personal data. Cloudflare already processes every request; Email Routing adds the emails sent to the privacy address.
+
+**Operations and cost**
+
+- CI runs the E2E smoke suite against `APP_ORIGIN` after each deploy.
+- `app-walkthrough.md` (`{BASE_URL}`), `docs/DEPLOYMENT.md` and the README list the new addresses.
+- Rollback: re-enable `workers_dev` and remove the routes; the app does not depend on its host.
+- Cost: the domain, about $10-15 a year (Cloudflare Registrar charges cost price). The other items are on free plans.
+
 ---
 
 ## 5. Data Design
@@ -650,10 +695,13 @@ erDiagram
 
 For comparison, the ReadAssist design with SpeechAce Premium would cost about $130 a month at the same volume.
 
+**MVP2:** an own domain adds about $10-15 a year (TR-18).
+
 ---
 
 ## 12. Future Enhancements
 
+- Own domain (MVP2): DNS, redirects, email on the domain and edge security (TR-18; `task-breakdown.md` E7).
 - Choose a single scorer after enough trusted-review data.
 - Phoneme-level feedback using Azure phoneme scores.
 - Text-to-speech pronunciation models for highlighted words.
@@ -697,6 +745,7 @@ For comparison, the ReadAssist design with SpeechAce Premium would cost about $1
 
 | Version | Date | Author | Changes |
 | ------- | ---- | ------ | ------- |
+| 1.4 | November 5, 2026 | Gabriela | §4.18 TR-18 Own domain (MVP2); §11 domain cost; §12 entry. |
 | 1.3 | November 4, 2026 | Gabriela | §4.12, §4.15: kill switch read from D1 only; Workers rate limiter instead of a WAF rule (T1.4). |
 | 1.2 | November 3, 2026 | Gabriela | §6.4: prompt tags per environment and one tracing project per environment (T0.6). |
 | 1.1 | November 3, 2026 | Gabriela | §6.2: long-audio approach decided by the T0.5 spike (sentence-boundary chunks of at most 25 s; 30-second hard limit; fluency bias; WebSocket rejected). |

@@ -8,7 +8,7 @@
 | **Owner**           | Gabriela Souza (professional portfolio project)                         |
 | **Document Author** | Gabriela Souza                                                          |
 | **Date**            | October 12, 2026                                                        |
-| **Version**         | 1.0                                                                     |
+| **Version**         | 1.2                                                                     |
 | **Status**          | Approved for build                                                      |
 | **Based on**        | ReadAssist AI Reading Fluency PoC (BRD v2.2, November 2025)             |
 
@@ -52,6 +52,7 @@ Read AI reuses the proven design of the ReadAssist AI PoC (progressive sentence 
 - Phoneme-level coaching exercises, text-to-speech pronunciation models.
 - LMS or third-party integrations.
 - Production SLAs.
+- An own domain: the MVP runs on Cloudflare's `workers.dev` address, and the move is planned for MVP2 (BR-19).
 
 ### 2.3 Audience
 
@@ -118,6 +119,7 @@ Read AI takes that design to adult English learners and the general public, as a
 | **BR-16** | Critical | Abuse and Cost Controls                       | Rate limits per IP, recording size limits, input validation, a blocked-word filter for names, a daily speech-minute budget and a kill switch keep the public site safe and affordable. |
 | **BR-17** | High     | Reading Step Metrics                          | For every step the system stores WCPM, accuracy, fluency, attempt count, highlighted, skipped and added words, from both scorers. |
 | **BR-18** | Medium   | Guided Demo Experience                        | A demo banner, seeded example results (including flagged ones) and short explanations on the portal help first-time visitors understand the platform. |
+| **BR-19** | MVP2     | Own Domain                                    | Read AI moves from the `workers.dev` address to its own domain. Features, limits and privacy guarantees stay the same. Links to the old address keep working, participants can still delete their results after the move, and alerts and the privacy contact use addresses on the domain. |
 
 ---
 
@@ -227,7 +229,7 @@ Numbers are starting values, to be tuned after launch.
 - Google Gemini 2.5 Flash Lite (paid tier).
 - LangSmith (Developer plan).
 - Cloudflare Workers, D1, KV and Turnstile.
-- A domain for the public site and a contact email for the privacy notice.
+- A contact email for the privacy notice. The MVP uses Cloudflare's `workers.dev` address; an own domain follows in MVP2 (BR-19).
 
 ---
 
@@ -240,6 +242,7 @@ Numbers are starting values, to be tuned after launch.
 - Mobile apps, offline use, other languages.
 - Phoneme-level coaching, text-to-speech models.
 - LMS integrations, real-time teacher monitoring, gamification.
+- An own domain in the MVP (planned for MVP2, BR-19).
 
 ---
 
@@ -274,6 +277,7 @@ Numbers are starting values, to be tuned after launch.
 | Pilot | 5 | 9-10 | Browser and microphone tests, abuse and load tests, LGPD review, dry run, tune mismatch limits and prompts |
 | Pilot | 6 | 11-12 | Public launch with seeded demo results, budget cap live, AI-vs-trusted-review accuracy report |
 | **Gate C** | | | MVP sign-off |
+| MVP2 | -- | After Gate C | Own domain (BR-19): DNS, redirects, email on the domain, edge security |
 
 ---
 
@@ -291,6 +295,7 @@ Numbers are starting values, to be tuned after launch.
 | Data controller | Gabriela Souza (professional portfolio) | Oct 7, 2026 |
 | Story content | AI-drafted, approved by Gabriela | Oct 7, 2026 |
 | Speech scorers | Deepgram + Azure pronunciation assessment (SpeechAce dropped for cost) | Oct 8, 2026 |
+| Public address | MVP on `workers.dev`; own domain in MVP2 (BR-19) | Nov 5, 2026 |
 
 ---
 
@@ -340,5 +345,6 @@ Full texts are in the Technical Requirements Document, section 4.6.
 
 | Version | Date | Author | Changes |
 | ------- | ---- | ------ | ------- |
+| 1.2 | November 5, 2026 | Gabriela Souza | BR-19 Own domain added for MVP2; scope, dependencies, exclusions, roadmap and decisions updated. |
 | 1.1 | November 3, 2026 | Gabriela Souza | Risk R8 resolved by the T0.5 spike. |
 | 1.0 | October 12, 2026 | Gabriela Souza | Read AI BRD created from the ReadAssist AI BRD v2.2: public access model, name + code tracking, consent gate, 4 graded tests, mismatch detection, public review with audit and revert, admin moderation, LGPD privacy, abuse and cost restrictions, Deepgram + Azure scoring, 12-week roadmap. |

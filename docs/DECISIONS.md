@@ -23,6 +23,13 @@
 - **Decision:** Remove the Python code and keep the workflow parts: the `/plan`, `/next`, `/review` and `/fix-tests` commands, the subagents, `docs/` and the format hook. Adapt them to npm, Vitest, ESLint and Prettier.
 - **Consequences:** `global/CLAUDE.md` holds personal preferences from the template and is left as is.
 
+## 2026-11-05: MVP on workers.dev, own domain in MVP2 (BR-19)
+
+- **Context:** The owner plans to move Read AI to its own domain, but not as part of the MVP. T6.8 had listed "Domain and DNS" as a launch step.
+- **Decision:** The MVP launches on `workers.dev`. The move is BR-19 / TR-18, Epic E7 (T7.1-T7.5, about 4 days) in `task-breakdown.md` §14. MVP tasks stay domain-ready (§14.1).
+- **Alternatives:** Buy the domain now and launch on it. This avoids the browser-id hand-over in T7.2, and is still possible: E7 only depends on T0.2.
+- **Consequences:** Until the move, the Workers rate limiter is the only per-minute limit (no WAF), staging is public, and alerts come from `onboarding@resend.dev`. Moving after launch needs redirects for at least 90 days, plus the browser-id hand-over.
+
 ## 2026-11-04: Limits: kill switch in D1, Workers rate limiter (T1.4)
 
 - **Context:** The TRD mirrors the kill switch in KV and asks for a WAF rule on `/api/*`. KV reads can be up to 60 seconds stale in other locations, so a KV switch would not refuse "within one request". WAF rules need a zone (custom domain), and the app runs on `workers.dev`.
