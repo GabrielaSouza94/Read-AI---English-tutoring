@@ -35,10 +35,12 @@ Build every MVP task domain-ready (`task-breakdown.md` §14.1): no host names, r
   - [x] Stub scorer behind `STUB_SCORER` (always passes; local and staging, never production)
   - [x] `POST /api/assessment/begin` (uses one of the 3 daily tests) and `POST /api/attempts` (WAV checks, then the scorer)
   - [x] Tests: step builder (7 and 9 steps); retry logic; begin and submit against D1/KV; E2E test 1 end to end (Gate A); reload resumes step 3
-- [ ] **T2.4 Word highlighting and acknowledgment**
-  - [ ] Highlight words by position; each word a toggle button (`aria-pressed`); record disabled until all are reviewed
-  - [ ] Instruction audio plays once, with replay
-  - [ ] Tests: word matching (repeats, capitals, punctuation); E2E record disabled until 3 words clicked
+- [x] **T2.4 Word highlighting and acknowledgment**
+  - [x] Highlight words by position (`app/lib/highlight.ts`); each word a toggle button (`aria-pressed`); Record disabled with a written reason until all are reviewed; "3 words to review" announced
+  - [x] Scorer may return `highlightedWords`; kept on the KV session for the retry and returned with the attempt
+  - [x] Instruction audio `public/audio/word-review-instruction.mp3` (Azure neural voice, `npm run audio:instructions`) plays once, with replay
+  - [x] Tests: word matching (repeats, capitals, punctuation, "farmers'"); D1/KV keeps and clears the words; E2E Record disabled until 3 words clicked (mouse and keyboard)
+  - [ ] Manual: keyboard-only and screen-reader pass (NVDA or VoiceOver) (owner)
 - [ ] **T2.6 Participant error, empty and edge states**
   - [ ] Microphone denied, upload failed, provider error, demo paused, rate limited, bad `testId`, expired session, unsupported browser
   - [ ] Tests: E2E each state through mocked 403, 429, 503, 502, network abort and 404

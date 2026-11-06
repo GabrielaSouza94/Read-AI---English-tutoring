@@ -23,6 +23,13 @@
 - **Decision:** Remove the Python code and keep the workflow parts: the `/plan`, `/next`, `/review` and `/fix-tests` commands, the subagents, `docs/` and the format hook. Adapt them to npm, Vitest, ESLint and Prettier.
 - **Consequences:** `global/CLAUDE.md` holds personal preferences from the template and is left as is.
 
+## 2026-11-06: Word review: matching by position, instruction audio as a static file (T2.4)
+
+- **Context:** The scorer (Gemini, T3.5) returns the words to practise as a deduplicated list in text order. The same word can appear more than once in a story, and the scorer may drop or keep punctuation. TR-07 asks for a spoken instruction in an adult tone.
+- **Decision:** `matchHighlights` walks the text in order: each scorer word marks the next unused matching word after the previous one, ignoring capitals and anything that is not a letter or digit, so "farmers'" matches "farmers". Unknown words are ignored. The words are kept on the KV session for the retry, so a reload shows them again; the review itself (which words were clicked) is not kept. The instruction is an MP3 made once with an Azure neural voice (`npm run audio:instructions`, key read from `.dev.vars`) and served from `public/audio/` by relative URL. Autoplay may be blocked by the browser, so a replay button is always shown.
+- **Alternatives:** Browser speech synthesis (voice and tone differ per device). Generating the audio per request (cost and latency for the same sentence every time).
+- **Consequences:** Changing the instruction text means running the script again and committing the new file. The E2E test mocks the failed attempt, because the Gate A stub scorer always passes.
+
 ## 2026-11-05: Audio tests in CI: virtual speaker, one worker, voice-like fake microphone
 
 - **Context:** CI failed on T2.2 twice (the test and its retry): the GitHub runner has no audio device, so Firefox never starts Web Audio, `resume()` never settles, and the recorder waited forever at "Allow the microphone". Reproduced in the Playwright Linux image (`mcr.microsoft.com/playwright:v1.64.1-noble`). Chromium was fine: it falls back to a fake output.

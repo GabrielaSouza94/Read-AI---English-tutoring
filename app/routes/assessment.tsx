@@ -4,11 +4,12 @@
  * until then the Gate A stub scorer passes every attempt where it is switched on.
  */
 import { env } from "cloudflare:workers";
-import { useState, useSyncExternalStore } from "react";
+import { useCallback, useState, useSyncExternalStore } from "react";
 import { data, Link, redirect, useRevalidator } from "react-router";
 
 import { MicCheck, Recorder } from "~/components/recorder";
 import { useHydrated } from "~/components/use-hydrated";
+import { WordReview } from "~/components/word-review";
 import type { AttemptResponse } from "~/lib/assessment";
 import { readBrowserIdCookie } from "~/lib/browser-id";
 import { getTest, parseTestId } from "~/lib/catalog";
@@ -47,6 +48,7 @@ export async function loader({ request }: Route.LoaderArgs) {
       stepNumber: session.stepNumber,
       attempt: session.attempt,
       done: session.done,
+      highlightedWords: session.highlightedWords ?? [],
     },
   };
 }
@@ -128,6 +130,8 @@ export default function Assessment({ loaderData }: Route.ComponentProps) {
   const [feedback, setFeedback] = useState<AttemptResponse | null>(null);
   const [error, setError] = useState("");
   const [starting, setStarting] = useState(false);
+  const [wordsReviewed, setWordsReviewed] = useState(false);
+  const onReviewComplete = useCallback((complete: boolean) => setWordsReviewed(complete), []);
   const hydrated = useHydrated();
 
   async function begin() {
@@ -162,6 +166,12 @@ export default function Assessment({ loaderData }: Route.ComponentProps) {
   }
 
   const step = session ? steps[session.stepNumber - 1] : null;
+  // The latest attempt's words, or after a reload the ones kept on the session (T2.4).
+  const highlightedWords =
+    feedback && session && feedback.stepNumber === session.stepNumber
+      ? feedback.highlightedWords
+      : (session?.highlightedWords ?? []);
+  const mustReview = highlightedWords.length > 0 && !wordsReviewed;
 
   return (
     <main id="main" tabIndex={-1} className="mx-auto max-w-content px-8 py-12">
@@ -206,12 +216,27 @@ export default function Assessment({ loaderData }: Route.ComponentProps) {
               <p className="mt-1 text-sm text-gray-600">
                 Attempt {session.attempt + 1} of {test.maxAttempts}
               </p>
-              <p className="mt-4 text-reading text-gray-900" data-testid="step-text">
-                {step.text}
-              </p>
+              {highlightedWords.length > 0 ? (
+                <WordReview
+                  key={`${session.stepNumber}-${session.attempt}-${highlightedWords.join(" ")}`}
+                  text={step.text}
+                  words={highlightedWords}
+                  onComplete={onReviewComplete}
+                />
+              ) : (
+                <p className="mt-4 text-reading text-gray-900" data-testid="step-text">
+                  {step.text}
+                </p>
+              )}
             </section>
             {micPassed ? (
-              <Recorder key={`${session.stepNumber}-${session.attempt}`} onSubmit={submit} />
+              <Recorder
+                key={`${session.stepNumber}-${session.attempt}`}
+                onSubmit={submit}
+                blockedReason={
+                  mustReview ? "Review every highlighted word before you record again." : undefined
+                }
+              />
             ) : (
               <MicCheck onPassed={markMicPassed} />
             )}

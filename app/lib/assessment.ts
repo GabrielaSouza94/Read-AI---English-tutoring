@@ -28,7 +28,7 @@ export type StepScorer = (input: {
   wav: Uint8Array;
   step: Step;
   test: TestDetail;
-}) => Promise<{ passed: boolean }>;
+}) => Promise<{ passed: boolean; highlightedWords?: string[] }>;
 
 /** Gate A stand-in (T2.3): every attempt passes. */
 export const stubScorer: StepScorer = async () => ({ passed: true });
@@ -62,6 +62,8 @@ export async function beginTest(input: BeginInput): Promise<TestSession | Respon
 }
 
 export type AttemptResponse = {
+  /** Words to practise before the retry (T2.4); empty when the test moves on. */
+  highlightedWords: string[];
   outcome: AttemptOutcome;
   passed: boolean;
   message: string;
@@ -124,7 +126,8 @@ export async function submitAttempt(input: SubmitInput): Promise<Response> {
   }
   const steps = buildSteps(test.sentences.map((s) => s.id));
   const step = steps[session.stepNumber - 1];
-  const { passed } = await input.scorer({ wav: input.audio, step, test });
+  const scored = await input.scorer({ wav: input.audio, step, test });
+  const passed = scored.passed;
 
   const next = applyAttempt(
     session,
@@ -132,6 +135,8 @@ export async function submitAttempt(input: SubmitInput): Promise<Response> {
     { maxAttempts: test.maxAttemptsPerStep, stepCount: steps.length },
     now,
   );
+  // The words stay on the session for the retry, so a reload shows them again (T2.4).
+  next.session.highlightedWords = next.outcome === "retry" ? (scored.highlightedWords ?? []) : [];
   await saveTestSession(kv, next.session);
 
   const body: AttemptResponse = {
@@ -141,6 +146,7 @@ export async function submitAttempt(input: SubmitInput): Promise<Response> {
     stepNumber: next.session.stepNumber,
     attempt: next.session.attempt,
     done: next.session.done,
+    highlightedWords: next.session.highlightedWords,
   };
   return Response.json(body, { headers: { "Cache-Control": "no-store" } });
 }

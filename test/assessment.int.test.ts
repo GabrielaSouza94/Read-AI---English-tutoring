@@ -135,6 +135,28 @@ describe("submitAttempt", () => {
     expect(outcomes[2].message).toMatch(/^Good effort!/);
   });
 
+  it("keeps the words to highlight for the retry, and clears them when the test moves on", async () => {
+    await begin();
+    const words: StepScorer = async () => ({
+      passed: false,
+      highlightedWords: ["Maria", "bus", "morning"],
+    });
+    const retry = (await (await submit(1, { scorer: words })).json()) as AttemptResponse;
+    expect(retry).toMatchObject({
+      outcome: "retry",
+      highlightedWords: ["Maria", "bus", "morning"],
+    });
+    expect((await loadTestSession(kv, PARTICIPANT, 1))?.highlightedWords).toEqual([
+      "Maria",
+      "bus",
+      "morning",
+    ]);
+
+    const passed = (await (await submit(1)).json()) as AttemptResponse;
+    expect(passed).toMatchObject({ outcome: "passed", highlightedWords: [] });
+    expect((await loadTestSession(kv, PARTICIPANT, 1))?.highlightedWords).toEqual([]);
+  });
+
   it("refuses a recording for a step that is no longer current", async () => {
     await begin();
     await submit(1);

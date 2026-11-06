@@ -188,7 +188,14 @@ export function MicCheck({ onPassed }: { onPassed: () => void }) {
  * Record, stop, play back and record again; stops by itself at 2 minutes. With `onSubmit`, a ready
  * recording can be sent; the parent shows the result and remounts the recorder for the next try.
  */
-export function Recorder({ onSubmit }: { onSubmit?: (wav: Blob) => Promise<void> }) {
+export function Recorder({
+  onSubmit,
+  blockedReason,
+}: {
+  onSubmit?: (wav: Blob) => Promise<void>;
+  /** When set, Record is disabled and this reason is shown next to it (T2.4 word review). */
+  blockedReason?: string;
+}) {
   const [state, dispatch] = useReducer(recorderReducer, INITIAL_STATE);
   const hydrated = useHydrated();
   const [audioUrl, setAudioUrl] = useState<string | null>(null);
@@ -300,9 +307,22 @@ export function Recorder({ onSubmit }: { onSubmit?: (wav: Blob) => Promise<void>
               <p className="text-sm text-gray-600">The recording stopped at the 2-minute limit.</p>
             )}
             {state.status === "idle" && (
-              <button type="button" onClick={record} disabled={!hydrated} className={primaryButton}>
-                Record
-              </button>
+              <div className="flex flex-wrap items-center gap-4">
+                <button
+                  type="button"
+                  onClick={record}
+                  disabled={!hydrated || Boolean(blockedReason)}
+                  aria-describedby={blockedReason ? "record-blocked" : undefined}
+                  className={primaryButton}
+                >
+                  Record
+                </button>
+                {blockedReason && (
+                  <p id="record-blocked" className="text-gray-600">
+                    {blockedReason}
+                  </p>
+                )}
+              </div>
             )}
             {state.status === "recording" && (
               <button

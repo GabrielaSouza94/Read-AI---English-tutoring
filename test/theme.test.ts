@@ -25,6 +25,8 @@ const TEXT_PAIRS: [text: string, background: string][] = [
   ["success", "success-light"],
   ["warning", "white"],
   ["warning", "warning-light"],
+  // Highlighted word, not yet reviewed.
+  ["gray-900", "warning-light"],
   ["danger", "white"],
   ["danger", "danger-light"],
   ["white", "danger"],
@@ -38,6 +40,10 @@ const NON_TEXT_PAIRS: [part: string, background: string][] = [
   ["focus", "banner"],
   ["input-border", "white"],
   ["recording", "white"],
+  // Word-review underline and replay button border; focus ring on a highlighted word.
+  ["warning", "white"],
+  ["focus", "warning-light"],
+  ["success", "success-light"],
   // Level meter fill on its track.
   ["success", "gray-200"],
 ];

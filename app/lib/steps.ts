@@ -47,6 +47,8 @@ export type TestSession = {
   /** Attempts already made on the current step. */
   attempt: number;
   history: StepRecord[];
+  /** Words to practise before retrying the current step (T2.4), if the last attempt failed. */
+  highlightedWords?: string[];
   done: boolean;
   startedAt: number;
   updatedAt: number;
