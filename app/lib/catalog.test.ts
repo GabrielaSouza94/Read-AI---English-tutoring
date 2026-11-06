@@ -6,6 +6,7 @@ describe("parseTestId", () => {
   it.each([
     ["1", 1],
     ["4", 4],
+    ["12", 12],
     ["0", null],
     ["-1", null],
     ["1.5", null],

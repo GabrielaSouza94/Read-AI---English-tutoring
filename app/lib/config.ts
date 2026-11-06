@@ -211,3 +211,13 @@ export function loadStartConfig(source: Source): StartConfig {
   }
   return { ...loadSubset(source, keys), retentionDays, dailySttMinutesCap };
 }
+
+export type ScoringConfig = { stubScorer: boolean };
+
+/**
+ * Whether the Gate A stub scorer (always passes) is on (T2.3). Only the exact value "true" turns
+ * it on, and production never does, whatever the setting says.
+ */
+export function loadScoringConfig(source: Source): ScoringConfig {
+  return { stubScorer: text(source, "STUB_SCORER") === "true" && source.APP_ENV !== "production" };
+}

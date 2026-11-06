@@ -27,6 +27,8 @@
     "ALERT_EMAIL": "gabrielasouza94@gmail.com",
     "LANGSMITH_PROJECT": "read-ai-local",
     "LANGSMITH_FEEDBACK_PROMPT_ID": "read-ai-feedback",
+    // Gate A stand-in scorer that always passes (T2.3). Never "true" in production.
+    "STUB_SCORER": "true",
   },
   "d1_databases": [
     {
@@ -53,6 +55,7 @@
         "ALERT_EMAIL": "gabrielasouza94@gmail.com",
         "LANGSMITH_PROJECT": "read-ai-staging",
         "LANGSMITH_FEEDBACK_PROMPT_ID": "read-ai-feedback:staging",
+        "STUB_SCORER": "true",
       },
       "d1_databases": [
         {
@@ -81,6 +84,7 @@
         "ALERT_EMAIL": "gabrielasouza94@gmail.com",
         "LANGSMITH_PROJECT": "read-ai-production",
         "LANGSMITH_FEEDBACK_PROMPT_ID": "read-ai-feedback:production",
+        "STUB_SCORER": "false",
       },
       "d1_databases": [
         {

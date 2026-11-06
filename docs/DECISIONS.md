@@ -23,6 +23,13 @@
 - **Decision:** Remove the Python code and keep the workflow parts: the `/plan`, `/next`, `/review` and `/fix-tests` commands, the subagents, `docs/` and the format hook. Adapt them to npm, Vitest, ESLint and Prettier.
 - **Consequences:** `global/CLAUDE.md` holds personal preferences from the template and is left as is.
 
+## 2026-11-05: Daily tests count test starts; Gate A stub scorer (T2.3)
+
+- **Context:** T1.3 counted each session start towards the IP's 3 daily tests, so one start could run all four tests. TR-15 and the walkthrough say "3 tests per day". Gate A needs a full test before the scorers exist (Epic E3).
+- **Decision:** `guardTestStart` uses up a test when a test begins (`POST /api/assessment/begin`); resuming a test in progress does not. `guardSessionStart` now only checks the kill switch, the budget and that a test is left. Progress is `session:{participantId}:{testId}` in KV (1 hour, refreshed on each attempt). `POST /api/attempts` checks the WAV (16 kHz mono, 0.5 s to 2 min, 10 MB) and scores it with a `StepScorer`; until E3 that is the stub, which always passes and is on only where `STUB_SCORER` is `"true"` (local, staging; never production). Without a scorer the endpoint answers 502 `PROVIDER_ERROR`.
+- **Alternatives:** Keep counting session starts (rejected: does not limit tests). Store attempts in D1 now (left to T3.1, with the real scores).
+- **Consequences:** Supersedes the T1.3 note that a session start counts. The group code cookie is still unused until the result row is created (T3.7). E2E sends a per-test client IP on every own API request.
+
 ## 2026-11-05: Recorder: worklet plus page-side downsampling (T2.2)
 
 - **Context:** The TRD asks for 16 kHz mono WAV. Firefox cannot connect a microphone to an `AudioContext` running at a different rate from the device, so `new AudioContext({ sampleRate: 16000 })` is not portable.

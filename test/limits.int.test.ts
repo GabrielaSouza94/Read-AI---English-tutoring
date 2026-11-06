@@ -1,12 +1,13 @@
 /**
  * T1.4: the session-start and review guards against a real local D1 and KV.
- * The session-start route arrives in T1.3; it calls guardSessionStart() last, after validation.
+ * Session start (T1.3) only checks; test start (T2.3) uses up one of the IP's 3 daily tests.
  */
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
 
 import {
   guardReviewSave,
   guardSessionStart,
+  guardTestStart,
   readDemoStatus,
   recordSpeechMinutes,
   setPaused,
@@ -29,6 +30,8 @@ afterEach(async () => {
 const NOW = new Date("2026-11-04T12:00:00Z");
 const CAP = 80;
 const start = (ipHash = "ip-a", now = NOW) =>
+  guardTestStart({ db, kv, ipHash, dailySttMinutesCap: CAP, now });
+const sessionStart = (ipHash = "ip-a", now = NOW) =>
   guardSessionStart({ db, kv, ipHash, dailySttMinutesCap: CAP, now });
 
 async function errorCode(response: Response | null) {
@@ -38,7 +41,7 @@ async function errorCode(response: Response | null) {
 }
 
 describe("tests per IP", () => {
-  it("allows 3 session starts, then refuses the 4th with 429 RATE_LIMITED", async () => {
+  it("allows 3 test starts, then refuses the 4th with 429 RATE_LIMITED", async () => {
     for (let i = 0; i < 3; i++) expect(await start()).toBeNull();
     const refused = await errorCode(await start());
     expect(refused).toMatchObject({ status: 429, code: "RATE_LIMITED", retryable: false });
@@ -54,6 +57,27 @@ describe("tests per IP", () => {
       .bind("2026-11-04")
       .first<{ n: number }>();
     expect(row?.n).toBe(2);
+  });
+});
+
+describe("session start", () => {
+  it("never uses up a test, but is refused once the IP has none left", async () => {
+    for (let i = 0; i < 5; i++) expect(await sessionStart()).toBeNull();
+    expect(await kv.get("tests:ip-a:2026-11-04")).toBeNull();
+    for (let i = 0; i < 3; i++) await start();
+    expect(await errorCode(await sessionStart())).toMatchObject({
+      status: 429,
+      code: "RATE_LIMITED",
+    });
+    expect(await sessionStart("ip-b")).toBeNull();
+  });
+
+  it("is refused while the demo is paused", async () => {
+    await setPaused(db, NOW, true);
+    expect(await errorCode(await sessionStart())).toMatchObject({
+      status: 503,
+      code: "DEMO_PAUSED",
+    });
   });
 });
 

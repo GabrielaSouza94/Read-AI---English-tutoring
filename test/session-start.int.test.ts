@@ -4,7 +4,8 @@
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
 
 import { BROWSER_ID_COOKIE } from "../app/lib/browser-id";
-import { setPaused } from "../app/lib/limits";
+import { hashIp } from "../app/lib/ip";
+import { guardTestStart, setPaused } from "../app/lib/limits";
 import { startSession, type StartResponse } from "../app/lib/session-start";
 import type { CaptchaResult } from "../app/lib/turnstile";
 import { applyMigrations, count, createTestDatabase, type TestD1, type TestKV } from "./d1";
@@ -101,12 +102,15 @@ describe("refusals", () => {
     expect(Object.keys(error.fields ?? {})).toEqual(["name", "groupCode"]);
   });
 
-  it("a refused form does not use up one of the IP's daily tests", async () => {
-    await start({ ...VALID, consent: false });
-    await start({ ...VALID, name: "1" });
-    await start(VALID, { captcha: { ok: false, reason: "invalid" } });
-    for (let i = 0; i < 3; i++) expect((await start(VALID)).status).toBe(201);
-    expect((await errorOf(await start(VALID))).code).toBe("RATE_LIMITED");
+  it("never uses up a test, and is refused once the IP has used its 3 tests", async () => {
+    for (let i = 0; i < 4; i++) {
+      expect((await start({ ...VALID, name: `Ana ${"BCDE"[i]}` })).status).toBe(201);
+    }
+    const ipHash = await hashIp("203.0.113.7", CONFIG.ipHashSalt);
+    for (let i = 0; i < 3; i++) {
+      await guardTestStart({ db, kv, ipHash, dailySttMinutesCap: 80, now: NOW });
+    }
+    expect(await errorOf(await start(VALID))).toMatchObject({ status: 429, code: "RATE_LIMITED" });
   });
 
   it("kill switch on → 503 DEMO_PAUSED and no participant", async () => {

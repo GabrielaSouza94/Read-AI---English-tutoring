@@ -29,11 +29,12 @@ Build every MVP task domain-ready (`task-breakdown.md` §14.1): no host names, r
   - [x] On `/assessment?testId=`: participant required, unknown test 404 (the steps arrive in T2.3)
   - [x] Tests: WAV header and length; state machine and 120 s stop; downsampling and mic check; E2E fake microphone records 5 s (Chromium, Firefox)
   - [ ] Manual: Chrome, Edge, Firefox, Safari and a Chromebook: permission prompt, denied state, re-record (owner)
-- [ ] **T2.3 Progressive step engine and session state**
-  - [ ] n progressive steps + 2 full reads; progress bar ("Step 3 of 7"); retry limit and auto-progress
-  - [ ] Session state in KV (`session:{participantId}:{testId}`, 1-hour TTL); reload resumes
-  - [ ] Stub scorer behind a flag (always passes)
-  - [ ] Tests: step builder (7 and 9 steps); retry logic; E2E test 1 end to end (Gate A); reload resumes step 3
+- [x] **T2.3 Progressive step engine and session state**
+  - [x] n progressive steps + 2 full reads; progress bar ("Step 3 of 7"); retry limit and auto-progress with an encouraging message
+  - [x] Session state in KV (`session:{participantId}:{testId}`, 1-hour TTL); reload resumes
+  - [x] Stub scorer behind `STUB_SCORER` (always passes; local and staging, never production)
+  - [x] `POST /api/assessment/begin` (uses one of the 3 daily tests) and `POST /api/attempts` (WAV checks, then the scorer)
+  - [x] Tests: step builder (7 and 9 steps); retry logic; begin and submit against D1/KV; E2E test 1 end to end (Gate A); reload resumes step 3
 - [ ] **T2.4 Word highlighting and acknowledgment**
   - [ ] Highlight words by position; each word a toggle button (`aria-pressed`); record disabled until all are reviewed
   - [ ] Instruction audio plays once, with replay

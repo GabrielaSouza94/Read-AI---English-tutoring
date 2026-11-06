@@ -29,7 +29,15 @@ it("lists the 4 tests from easiest to hardest, with sentence counts and time", a
   ]);
 });
 
-it("finds one test by id, and null for an unknown one", async () => {
-  expect(await getTest(db, 4)).toEqual({ id: 4, cefr: "C1", title: "The Mapmaker's Problem" });
+it("finds one test with its retry limit and sentences in order, and null for an unknown one", async () => {
+  const test = await getTest(db, 4);
+  expect(test).toMatchObject({
+    id: 4,
+    cefr: "C1",
+    title: "The Mapmaker's Problem",
+    maxAttemptsPerStep: 2,
+  });
+  expect(test?.sentences.map((s) => s.id)).toEqual([401, 402, 403, 404, 405, 406, 407]);
+  expect((await getTest(db, 1))?.maxAttemptsPerStep).toBe(3);
   expect(await getTest(db, 99)).toBeNull();
 });

@@ -7,6 +7,8 @@ export default [
   route("tests", "routes/tests.tsx"),
   route("assessment", "routes/assessment.tsx"),
   route("api/session/start", "routes/api.session.start.ts"),
+  route("api/assessment/begin", "routes/api.assessment.begin.ts"),
+  route("api/attempts", "routes/api.attempts.ts"),
   route("api/health", "routes/api.health.ts"),
   route("api/debug/error", "routes/api.debug.error.ts"),
   route("api/debug/alert", "routes/api.debug.alert.ts"),

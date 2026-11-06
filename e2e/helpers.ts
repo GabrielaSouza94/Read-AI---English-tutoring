@@ -1,14 +1,16 @@
-import { expect, type Page } from "@playwright/test";
+import { expect, test, type Page } from "@playwright/test";
 
 /**
- * Every successful start uses one of the IP's 3 daily tests, and local KV keeps the count between
- * runs. A fresh client IP per test keeps the suite repeatable; Cloudflare overwrites this header in
- * staging and production. Only our own endpoint gets it: Turnstile's servers refuse requests that carry it.
+ * Each test start uses one of the IP's 3 daily tests, and local KV keeps the count between runs.
+ * A fresh client IP per test keeps the suite repeatable; Cloudflare overwrites this header in
+ * staging and production. Only our own API gets it: Turnstile's servers refuse requests that carry it.
  */
 export async function withFreshClientIp(page: Page): Promise<void> {
   const octet = () => Math.floor(Math.random() * 254) + 1;
   const ip = `198.18.${octet()}.${octet()}`;
-  await page.route("**/api/session/start", (route) =>
+  const app = new URL(test.info().project.use.baseURL ?? "http://invalid").origin;
+  const ownApi = (url: URL) => url.origin === app && url.pathname.startsWith("/api/");
+  await page.route(ownApi, (route) =>
     route.continue({ headers: { ...route.request().headers(), "cf-connecting-ip": ip } }),
   );
 }
@@ -27,4 +29,22 @@ export async function startAsParticipant(page: Page, name = "Ana Silva"): Promis
   await waitForCaptcha(page);
   await page.getByRole("button", { name: "Continue" }).click();
   await expect(page).toHaveURL(/\/tests$/);
+}
+
+/** Runs the microphone check (fake microphone in Chromium and Firefox) and waits for it to pass. */
+export async function passMicCheck(page: Page): Promise<void> {
+  await page.getByRole("button", { name: "Check my microphone" }).click();
+  // A passed check gives way to the next control: "Begin the test" or the recorder.
+  await expect(page.getByRole("button", { name: /^(Begin the test|Record)$/ })).toBeVisible({
+    timeout: 10_000,
+  });
+}
+
+/** Records for about `ms` and sends the recording for the current step. */
+export async function recordAndSubmit(page: Page, ms = 1200): Promise<void> {
+  await page.getByRole("button", { name: "Record", exact: true }).click();
+  await expect(page.getByRole("button", { name: "Stop" })).toBeVisible();
+  await page.waitForTimeout(ms);
+  await page.getByRole("button", { name: "Stop" }).click();
+  await page.getByRole("button", { name: "Use this recording" }).click();
 }

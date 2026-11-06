@@ -1,6 +1,6 @@
 import { expect, test, type Page } from "@playwright/test";
 
-import { startAsParticipant } from "./helpers";
+import { passMicCheck, startAsParticipant } from "./helpers";
 
 const WAV_HEADER_BYTES = 44;
 const BYTES_PER_SECOND = 16_000 * 2; // 16 kHz, 16-bit, mono
@@ -42,11 +42,8 @@ test.describe("with a microphone", () => {
     await page.goto("/assessment?testId=1");
     await expect(page.getByRole("heading", { level: 1 })).toHaveText("The Lost Umbrella");
 
-    await page.getByRole("button", { name: "Check my microphone" }).click();
-    // A passed check moves straight on to the recorder.
-    await expect(page.getByRole("main")).toContainText("Your microphone works.", {
-      timeout: 10_000,
-    });
+    await passMicCheck(page);
+    await page.getByRole("button", { name: "Begin the test" }).click();
 
     await page.getByRole("button", { name: "Record", exact: true }).click();
     await expect(page.getByRole("status")).toHaveText(/^Recording 0:0\d$/);
@@ -78,13 +75,10 @@ test.describe("with a microphone", () => {
   test("the microphone check is not repeated after a reload", async ({ page }) => {
     await startAsParticipant(page);
     await page.goto("/assessment?testId=2");
-    await page.getByRole("button", { name: "Check my microphone" }).click();
-    // A passed check moves straight on to the recorder.
-    await expect(page.getByRole("main")).toContainText("Your microphone works.", {
-      timeout: 10_000,
-    });
+    await passMicCheck(page);
     await page.reload();
-    await expect(page.getByRole("button", { name: "Record", exact: true })).toBeVisible();
+    await expect(page.getByRole("button", { name: "Begin the test" })).toBeVisible();
+    await expect(page.getByRole("button", { name: "Check my microphone" })).toHaveCount(0);
   });
 
   for (const [name, title] of [

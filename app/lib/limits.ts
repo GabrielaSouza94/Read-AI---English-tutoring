@@ -30,6 +30,21 @@ export function counterKey(kind: LimitKind, ipHash: string, at: Date): string {
 
 export type LimitResult = { allowed: boolean; used: number; limit: number };
 
+/** How many of today's uses are left, without counting one. */
+export async function peekDailyLimit(
+  kv: KVLike,
+  kind: LimitKind,
+  ipHash: string,
+  at: Date,
+): Promise<LimitResult> {
+  const limit = DAILY_LIMITS[kind];
+  const raw = await kv.get(counterKey(kind, ipHash, at));
+  const parsed = raw === null ? 0 : Number(raw);
+  // A value we cannot read counts as used up: failing closed costs one visitor a day, not money.
+  const used = Number.isInteger(parsed) && parsed >= 0 ? parsed : limit;
+  return { allowed: used < limit, used, limit };
+}
+
 /** Counts one use if the IP is under today's limit. A refused request is not counted. */
 export async function consumeDailyLimit(
   kv: KVLike,
@@ -37,15 +52,11 @@ export async function consumeDailyLimit(
   ipHash: string,
   at: Date,
 ): Promise<LimitResult> {
-  const limit = DAILY_LIMITS[kind];
-  const key = counterKey(kind, ipHash, at);
-  const raw = await kv.get(key);
-  const parsed = raw === null ? 0 : Number(raw);
-  // A value we cannot read counts as used up: failing closed costs one visitor a day, not money.
-  const used = Number.isInteger(parsed) && parsed >= 0 ? parsed : limit;
-  if (used >= limit) return { allowed: false, used, limit };
-  await kv.put(key, String(used + 1), { expirationTtl: COUNTER_TTL_SECONDS });
-  return { allowed: true, used: used + 1, limit };
+  const current = await peekDailyLimit(kv, kind, ipHash, at);
+  if (!current.allowed) return current;
+  const used = current.used + 1;
+  await kv.put(counterKey(kind, ipHash, at), String(used), { expirationTtl: COUNTER_TTL_SECONDS });
+  return { ...current, used };
 }
 
 // --- usage_daily: speech budget and kill switch ---
@@ -116,18 +127,36 @@ export type SessionGuardInput = {
   now: Date;
 };
 
+async function demoPaused(input: SessionGuardInput): Promise<Response | null> {
+  const status = await readDemoStatus(input.db, input.now);
+  if (status.paused) return apiError("DEMO_PAUSED", MESSAGES.paused);
+  if (status.sttMinutes >= input.dailySttMinutesCap) {
+    return apiError("DEMO_PAUSED", MESSAGES.budget);
+  }
+  return null;
+}
+
 /**
- * Checks the kill switch, the speech budget and the IP's daily test limit, then counts the test.
- * Call it last, after consent and captcha pass, so a rejected form does not use up a test.
+ * Session start (T1.3): checks the kill switch, the speech budget and that the IP has a test left
+ * today, without using one up. Call it last, after consent and captcha pass.
  */
 export async function guardSessionStart(input: SessionGuardInput): Promise<Response | null> {
-  const { db, kv, ipHash, dailySttMinutesCap, now } = input;
-  const status = await readDemoStatus(db, now);
-  if (status.paused) return apiError("DEMO_PAUSED", MESSAGES.paused);
-  if (status.sttMinutes >= dailySttMinutesCap) return apiError("DEMO_PAUSED", MESSAGES.budget);
-  const tests = await consumeDailyLimit(kv, "tests", ipHash, now);
+  const paused = await demoPaused(input);
+  if (paused) return paused;
+  const tests = await peekDailyLimit(input.kv, "tests", input.ipHash, input.now);
+  return tests.allowed ? null : apiError("RATE_LIMITED", MESSAGES.tests);
+}
+
+/**
+ * Test start (T2.3): the same checks, then uses up one of the IP's 3 daily tests and counts the
+ * start in `usage_daily`. A test already in progress is resumed without calling this.
+ */
+export async function guardTestStart(input: SessionGuardInput): Promise<Response | null> {
+  const paused = await demoPaused(input);
+  if (paused) return paused;
+  const tests = await consumeDailyLimit(input.kv, "tests", input.ipHash, input.now);
   if (!tests.allowed) return apiError("RATE_LIMITED", MESSAGES.tests);
-  await recordTestStarted(db, now);
+  await recordTestStarted(input.db, input.now);
   return null;
 }
 

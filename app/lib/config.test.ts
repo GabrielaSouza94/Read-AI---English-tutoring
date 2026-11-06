@@ -7,6 +7,7 @@ import {
   loadLangSmithConfig,
   loadMonitoringConfig,
   loadPrivacyConfig,
+  loadScoringConfig,
   loadStartConfig,
 } from "./config";
 
@@ -166,6 +167,20 @@ describe("loadStartConfig", () => {
   it("names every problem without printing values", () => {
     expect(() => loadStartConfig({ TURNSTILE_SITE_KEY: "ts-site", RETENTION_DAYS: "x" })).toThrow(
       "Invalid configuration: TURNSTILE_SECRET_KEY is missing; IP_HASH_SALT is missing; RETENTION_DAYS must be a positive whole number; DAILY_STT_MINUTES_CAP must be a positive whole number",
+    );
+  });
+});
+
+describe("loadScoringConfig", () => {
+  it('turns the stub scorer on only for the exact value "true", and never in production', () => {
+    expect(loadScoringConfig({ STUB_SCORER: "true", APP_ENV: "staging" })).toEqual({
+      stubScorer: true,
+    });
+    expect(loadScoringConfig({ STUB_SCORER: "TRUE", APP_ENV: "staging" }).stubScorer).toBe(false);
+    expect(loadScoringConfig({ STUB_SCORER: "1", APP_ENV: "local" }).stubScorer).toBe(false);
+    expect(loadScoringConfig({ APP_ENV: "local" }).stubScorer).toBe(false);
+    expect(loadScoringConfig({ STUB_SCORER: "true", APP_ENV: "production" }).stubScorer).toBe(
+      false,
     );
   });
 });

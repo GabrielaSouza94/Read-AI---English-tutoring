@@ -177,10 +177,14 @@ export function MicCheck({ onPassed }: { onPassed: () => void }) {
   );
 }
 
-/** Record, stop, play back and record again; stops by itself at 2 minutes. */
-export function Recorder() {
+/**
+ * Record, stop, play back and record again; stops by itself at 2 minutes. With `onSubmit`, a ready
+ * recording can be sent; the parent shows the result and remounts the recorder for the next try.
+ */
+export function Recorder({ onSubmit }: { onSubmit?: (wav: Blob) => Promise<void> }) {
   const [state, dispatch] = useReducer(recorderReducer, INITIAL_STATE);
   const [audioUrl, setAudioUrl] = useState<string | null>(null);
+  const recording = useRef<Blob | null>(null);
   const [meter, setMeter] = useState(0);
   const { start, stop, levelRef } = useLiveCapture();
   const chunks = useRef<Float32Array[]>([]);
@@ -223,7 +227,8 @@ export function Recorder() {
         await stop();
         const wav = encodeWav(chunks.current, TARGET_SAMPLE_RATE);
         if (cancelled) return;
-        setAudioUrl(URL.createObjectURL(new Blob([wav], { type: "audio/wav" })));
+        recording.current = new Blob([wav], { type: "audio/wav" });
+        setAudioUrl(URL.createObjectURL(recording.current));
         dispatch({
           type: "encoded",
           durationSec: samples.current / TARGET_SAMPLE_RATE,
@@ -246,8 +251,21 @@ export function Recorder() {
 
   function recordAgain() {
     setAudioUrl(null);
+    recording.current = null;
     chunks.current = [];
     dispatch({ type: "rerecord" });
+  }
+
+  async function submit() {
+    if (!onSubmit || !recording.current) return;
+    dispatch({ type: "submit" });
+    try {
+      await onSubmit(recording.current);
+    } finally {
+      recording.current = null;
+      setAudioUrl(null);
+      dispatch({ type: "uploaded" });
+    }
   }
 
   return (
@@ -290,9 +308,16 @@ export function Recorder() {
             {state.status === "ready" && audioUrl && (
               <div className="space-y-4">
                 <audio controls src={audioUrl} className="w-full" aria-label="Your recording" />
-                <button type="button" onClick={recordAgain} className={secondaryButton}>
-                  Record again
-                </button>
+                <div className="flex flex-wrap items-center gap-4">
+                  {onSubmit && (
+                    <button type="button" onClick={submit} className={primaryButton}>
+                      Use this recording
+                    </button>
+                  )}
+                  <button type="button" onClick={recordAgain} className={secondaryButton}>
+                    Record again
+                  </button>
+                </div>
               </div>
             )}
           </>

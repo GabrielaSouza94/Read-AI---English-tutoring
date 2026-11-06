@@ -32,7 +32,12 @@
     "app/lib/browser-id.ts",
     "app/lib/turnstile.ts",
     "app/lib/session-start.ts",
-    "app/lib/catalog.ts"
+    "app/lib/catalog.ts",
+    "app/lib/steps.ts",
+    "app/lib/test-session.ts",
+    "app/lib/assessment.ts",
+    "app/lib/recorder-machine.ts",
+    "app/lib/wav.ts"
   ],
   "compilerOptions": {
     "composite": true,
