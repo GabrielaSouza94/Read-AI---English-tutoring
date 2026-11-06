@@ -23,6 +23,13 @@
 - **Decision:** Remove the Python code and keep the workflow parts: the `/plan`, `/next`, `/review` and `/fix-tests` commands, the subagents, `docs/` and the format hook. Adapt them to npm, Vitest, ESLint and Prettier.
 - **Consequences:** `global/CLAUDE.md` holds personal preferences from the template and is left as is.
 
+## 2026-11-05: Audio tests in CI: virtual speaker, one worker, voice-like fake microphone
+
+- **Context:** CI failed on T2.2 twice (the test and its retry): the GitHub runner has no audio device, so Firefox never starts Web Audio, `resume()` never settles, and the recorder waited forever at "Allow the microphone". Reproduced in the Playwright Linux image (`mcr.microsoft.com/playwright:v1.64.1-noble`). Chromium was fine: it falls back to a fake output.
+- **Decision:** The capture code allows the audio engine 3 seconds to start, then shows "Your browser could not start audio" (state `no-audio`) instead of hanging. The CI E2E job starts PulseAudio with a null sink, so Firefox has a silent output. CI runs one test at a time. Chromium's fake microphone plays a generated voice-like file instead of its short beep, which sat right at the microphone check's threshold. Buttons that need JavaScript stay disabled until the page has hydrated, so an early click is not lost.
+- **Alternatives:** Skip the Firefox audio tests in CI (rejected: Firefox is a supported browser). Lower the check threshold to suit the beep (rejected: tunes the product to a test device).
+- **Consequences:** CI E2E takes about 5 minutes. A full run of the suite twice in the Linux image (2 CPUs) passed 168 of 168 with no flakes.
+
 ## 2026-11-05: Daily tests count test starts; Gate A stub scorer (T2.3)
 
 - **Context:** T1.3 counted each session start towards the IP's 3 daily tests, so one start could run all four tests. TR-15 and the walkthrough say "3 tests per day". Gate A needs a full test before the scorers exist (Epic E3).

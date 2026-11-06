@@ -118,6 +118,7 @@ describe("mediaErrorKind", () => {
     ["OverconstrainedError", "no-device"],
     ["NotReadableError", "busy"],
     ["NotSupportedError", "unsupported"],
+    ["TimeoutError", "no-audio"],
     ["TypeError", "failed"],
   ])("%s → %s", (name, kind) => {
     expect(mediaErrorKind(Object.assign(new Error("x"), { name }))).toBe(kind);

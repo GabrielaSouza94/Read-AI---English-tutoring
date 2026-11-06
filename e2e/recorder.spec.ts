@@ -38,6 +38,8 @@ test.describe("with a microphone", () => {
   );
 
   test("microphone check, then a 5-second recording gives a 16 kHz mono WAV", async ({ page }) => {
+    // Start, check, begin and 5 s of audio: more than the default 30 s under parallel load.
+    test.setTimeout(60_000);
     await startAsParticipant(page);
     await page.goto("/assessment?testId=1");
     await expect(page.getByRole("heading", { level: 1 })).toHaveText("The Lost Umbrella");
@@ -79,6 +81,24 @@ test.describe("with a microphone", () => {
     await page.reload();
     await expect(page.getByRole("button", { name: "Begin the test" })).toBeVisible();
     await expect(page.getByRole("button", { name: "Check my microphone" })).toHaveCount(0);
+  });
+
+  test("an audio engine that never starts gives a clear message instead of hanging", async ({
+    page,
+  }) => {
+    // What Firefox does on a machine without an audio output device.
+    await page.addInitScript({
+      content: `
+        Object.defineProperty(AudioContext.prototype, "state", { get: () => "suspended" });
+        AudioContext.prototype.resume = () => new Promise(() => {});
+      `,
+    });
+    await startAsParticipant(page);
+    await page.goto("/assessment?testId=1");
+    await page.getByRole("button", { name: "Check my microphone" }).click();
+    await expect(page.getByRole("alert")).toContainText("Your browser could not start audio.", {
+      timeout: 10_000,
+    });
   });
 
   for (const [name, title] of [

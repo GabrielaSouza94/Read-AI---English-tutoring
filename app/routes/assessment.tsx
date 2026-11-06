@@ -8,6 +8,7 @@ import { useState, useSyncExternalStore } from "react";
 import { data, Link, redirect, useRevalidator } from "react-router";
 
 import { MicCheck, Recorder } from "~/components/recorder";
+import { useHydrated } from "~/components/use-hydrated";
 import type { AttemptResponse } from "~/lib/assessment";
 import { readBrowserIdCookie } from "~/lib/browser-id";
 import { getTest, parseTestId } from "~/lib/catalog";
@@ -127,6 +128,7 @@ export default function Assessment({ loaderData }: Route.ComponentProps) {
   const [feedback, setFeedback] = useState<AttemptResponse | null>(null);
   const [error, setError] = useState("");
   const [starting, setStarting] = useState(false);
+  const hydrated = useHydrated();
 
   async function begin() {
     setStarting(true);
@@ -231,7 +233,12 @@ export default function Assessment({ loaderData }: Route.ComponentProps) {
               </ul>
             </section>
             {micPassed ? (
-              <button type="button" onClick={begin} disabled={starting} className={primaryButton}>
+              <button
+                type="button"
+                onClick={begin}
+                disabled={starting || !hydrated}
+                className={primaryButton}
+              >
                 {starting ? "Starting…" : "Begin the test"}
               </button>
             ) : (

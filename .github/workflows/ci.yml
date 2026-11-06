@@ -38,6 +38,13 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npx playwright install --with-deps
+      # The runner has no audio device, and Firefox cannot start Web Audio without one (T2.2):
+      # a PulseAudio null sink gives it a silent output.
+      - name: Virtual audio output
+        run: |
+          sudo apt-get install -y -qq pulseaudio
+          pulseaudio -D --exit-idle-time=-1
+          pactl load-module module-null-sink sink_name=ci
       - run: npm run db:migrate:local
       - run: npm run db:seed:local
       # CI has no .dev.vars: Cloudflare's published Turnstile test keys (always pass) and a throwaway salt.

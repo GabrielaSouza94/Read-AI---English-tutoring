@@ -28,7 +28,14 @@ export async function startAsParticipant(page: Page, name = "Ana Silva"): Promis
   await page.getByLabel(/I am 18 or older/).check();
   await waitForCaptcha(page);
   await page.getByRole("button", { name: "Continue" }).click();
-  await expect(page).toHaveURL(/\/tests$/);
+  // The first start after a build compiles the Worker and calls Turnstile, which can take a while.
+  // If the start is refused, fail with the page's message rather than a bare URL mismatch.
+  const refusal = page.getByRole("alert").filter({ hasText: /\S/ });
+  const outcome = await Promise.race([
+    page.waitForURL(/\/tests$/, { timeout: 20_000 }).then(() => null),
+    refusal.waitFor({ timeout: 20_000 }).then(() => refusal.textContent()),
+  ]);
+  if (outcome !== null) throw new Error(`Start was refused: ${outcome}`);
 }
 
 /** Runs the microphone check (fake microphone in Chromium and Firefox) and waits for it to pass. */

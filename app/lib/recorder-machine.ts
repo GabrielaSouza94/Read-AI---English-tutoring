@@ -8,7 +8,8 @@
 export const MAX_RECORDING_MS = 120_000;
 export const MAX_RECORDING_BYTES = 10 * 1024 * 1024;
 
-export type MediaErrorKind = "permission-denied" | "no-device" | "busy" | "unsupported" | "failed";
+export type MediaErrorKind =
+  "permission-denied" | "no-device" | "busy" | "no-audio" | "unsupported" | "failed";
 
 export type RecorderState =
   | { status: "idle" }
@@ -84,6 +85,8 @@ export function mediaErrorKind(
   if (name === "NotAllowedError" || name === "SecurityError") return "permission-denied";
   if (name === "NotFoundError" || name === "OverconstrainedError") return "no-device";
   if (name === "NotReadableError") return "busy";
+  // Raised by our own capture code when the audio engine does not start (no output device).
+  if (name === "TimeoutError") return "no-audio";
   return "failed";
 }
 

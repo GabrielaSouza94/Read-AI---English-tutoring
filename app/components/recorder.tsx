@@ -16,6 +16,8 @@ import {
 } from "~/lib/recorder-machine";
 import { encodeWav } from "~/lib/wav";
 
+import { useHydrated } from "./use-hydrated";
+
 const MAX_SAMPLES = (MAX_RECORDING_MS / 1000) * TARGET_SAMPLE_RATE;
 const UI_REFRESH_MS = 100;
 
@@ -31,6 +33,10 @@ export const MEDIA_ERROR_TEXT: Record<MediaErrorKind, { title: string; help: str
   busy: {
     title: "Your microphone is in use by another app.",
     help: "Close the other app (for example a video call), then try again.",
+  },
+  "no-audio": {
+    title: "Your browser could not start audio.",
+    help: "Check that speakers or headphones are connected and that sound is not blocked for this site, then reload the page.",
   },
   unsupported: {
     title: "This browser cannot record audio.",
@@ -117,6 +123,7 @@ type CheckState =
 /** Speak for 3 seconds; the level must show a voice before the first recording. */
 export function MicCheck({ onPassed }: { onPassed: () => void }) {
   const [state, setState] = useState<CheckState>({ status: "idle" });
+  const hydrated = useHydrated();
   const { start, stop, levelRef } = useLiveCapture();
   const timer = useRef<ReturnType<typeof setInterval> | undefined>(undefined);
   useEffect(() => () => clearInterval(timer.current), []);
@@ -166,7 +173,7 @@ export function MicCheck({ onPassed }: { onPassed: () => void }) {
                 "We could not hear you. Move closer to the microphone or turn it up, then try again."}
             </p>
             {(state.status === "idle" || state.status === "too-quiet") && (
-              <button type="button" onClick={run} className={primaryButton}>
+              <button type="button" onClick={run} disabled={!hydrated} className={primaryButton}>
                 {state.status === "idle" ? "Check my microphone" : "Check again"}
               </button>
             )}
@@ -183,6 +190,7 @@ export function MicCheck({ onPassed }: { onPassed: () => void }) {
  */
 export function Recorder({ onSubmit }: { onSubmit?: (wav: Blob) => Promise<void> }) {
   const [state, dispatch] = useReducer(recorderReducer, INITIAL_STATE);
+  const hydrated = useHydrated();
   const [audioUrl, setAudioUrl] = useState<string | null>(null);
   const recording = useRef<Blob | null>(null);
   const [meter, setMeter] = useState(0);
@@ -292,7 +300,7 @@ export function Recorder({ onSubmit }: { onSubmit?: (wav: Blob) => Promise<void>
               <p className="text-sm text-gray-600">The recording stopped at the 2-minute limit.</p>
             )}
             {state.status === "idle" && (
-              <button type="button" onClick={record} className={primaryButton}>
+              <button type="button" onClick={record} disabled={!hydrated} className={primaryButton}>
                 Record
               </button>
             )}

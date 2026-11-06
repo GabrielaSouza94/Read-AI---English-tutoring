@@ -19,6 +19,28 @@ registerProcessor("pcm-tap", PcmTap);
 
 export type Capture = { stop(): Promise<void> };
 
+/**
+ * How long the audio engine may take to start. Without an audio output device (or with sound
+ * blocked), Firefox never starts it and `resume()` never settles; we stop waiting and say so.
+ */
+export const AUDIO_START_TIMEOUT_MS = 3000;
+
+async function startAudio(context: AudioContext): Promise<void> {
+  if (context.state === "running") return;
+  let timer: ReturnType<typeof setTimeout> | undefined;
+  const timeout = new Promise<never>((_, reject) => {
+    timer = setTimeout(
+      () => reject(new DOMException("Audio could not start", "TimeoutError")),
+      AUDIO_START_TIMEOUT_MS,
+    );
+  });
+  try {
+    await Promise.race([context.resume(), timeout]);
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
 export function captureSupported(): boolean {
   return (
     typeof navigator !== "undefined" &&
@@ -63,7 +85,7 @@ export async function startCapture(onSamples: (samples: Float32Array) => void): 
       if (samples.length > 0) onSamples(samples);
     };
     source.connect(tap).connect(mute).connect(context.destination);
-    if (context.state === "suspended") await context.resume();
+    await startAudio(context);
 
     return {
       async stop() {
