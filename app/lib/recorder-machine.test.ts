@@ -69,8 +69,29 @@ describe("recorder state machine (product documentation, Recording State Machine
       encoded,
       { type: "submit" },
     ]);
-    expect(uploading).toEqual({ status: "uploading" });
+    expect(uploading).toEqual({
+      status: "uploading",
+      durationSec: 5,
+      bytes: 160_044,
+      limitReached: false,
+    });
     expect(recorderReducer(uploading, { type: "uploaded" })).toEqual(INITIAL_STATE);
+  });
+
+  it("a failed upload goes back to ready with the same recording (T2.6)", () => {
+    const uploading = run([
+      { type: "record" },
+      { type: "granted", at: 0 },
+      { type: "stop" },
+      encoded,
+      { type: "submit" },
+    ]);
+    expect(recorderReducer(uploading, { type: "uploadFailed" })).toEqual({
+      status: "ready",
+      durationSec: 5,
+      bytes: 160_044,
+      limitReached: false,
+    });
   });
 
   it("stops by itself at 120 seconds", () => {
@@ -103,7 +124,11 @@ describe("recorder state machine (product documentation, Recording State Machine
       [{ type: "submit" }, INITIAL_STATE],
       [{ type: "granted", at: 0 }, INITIAL_STATE],
       [{ type: "record" }, { status: "recording", startedAt: 0, elapsedMs: 0 }],
-      [{ type: "rerecord" }, { status: "uploading" }],
+      [
+        { type: "rerecord" },
+        { status: "uploading", durationSec: 1, bytes: 1, limitReached: false },
+      ],
+      [{ type: "uploadFailed" }, INITIAL_STATE],
       [encoded, { status: "requesting" }],
     ];
     for (const [event, state] of ignored) expect(recorderReducer(state, event)).toBe(state);

@@ -55,3 +55,15 @@ export async function recordAndSubmit(page: Page, ms = 1200): Promise<void> {
   await page.getByRole("button", { name: "Stop" }).click();
   await page.getByRole("button", { name: "Use this recording" }).click();
 }
+
+/** Marks the microphone check as passed in this tab, so tests that do not record can go on. */
+export async function skipMicCheck(page: Page): Promise<void> {
+  await page.addInitScript({
+    content: 'try { sessionStorage.setItem("read-ai.mic-check-passed", "1"); } catch {}',
+  });
+}
+
+/** An S-1 error response for page.route. */
+export function apiErrorJson(status: number, code: string, message: string, retryable = false) {
+  return { status, json: { error: { code, message, retryable } } };
+}

@@ -122,14 +122,6 @@ test.describe("with a microphone", () => {
   }
 });
 
-test("a browser that cannot record says so", async ({ page }) => {
-  await page.addInitScript({ content: "delete window.AudioWorkletNode;" });
-  await startAsParticipant(page);
-  await page.goto("/assessment?testId=1");
-  await page.getByRole("button", { name: "Check my microphone" }).click();
-  await expect(page.getByRole("alert")).toContainText("This browser cannot record audio.");
-});
-
 test("an unknown test is not found, and no session redirects to /start", async ({ page }) => {
   await page.goto("/assessment?testId=1");
   await expect(page).toHaveURL(/\/start$/);

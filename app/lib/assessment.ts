@@ -64,6 +64,8 @@ export async function beginTest(input: BeginInput): Promise<TestSession | Respon
 export type AttemptResponse = {
   /** Words to practise before the retry (T2.4); empty when the test moves on. */
   highlightedWords: string[];
+  /** One of the two scorers failed but the attempt was saved (T2.6; set from Epic E3). */
+  scorerUnavailable?: boolean;
   outcome: AttemptOutcome;
   passed: boolean;
   message: string;

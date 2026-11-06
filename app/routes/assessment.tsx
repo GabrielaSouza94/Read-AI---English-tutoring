@@ -5,15 +5,15 @@
  */
 import { env } from "cloudflare:workers";
 import { useCallback, useState, useSyncExternalStore } from "react";
-import { data, Link, redirect, useRevalidator } from "react-router";
+import { data, isRouteErrorResponse, Link, redirect, useRevalidator } from "react-router";
 
 import { MicCheck, Recorder } from "~/components/recorder";
 import { useHydrated } from "~/components/use-hydrated";
 import { WordReview } from "~/components/word-review";
+import { postJson, RequestError, UNEXPECTED } from "~/lib/api-client";
 import type { AttemptResponse } from "~/lib/assessment";
 import { readBrowserIdCookie } from "~/lib/browser-id";
 import { getTest, parseTestId } from "~/lib/catalog";
-import type { ApiErrorBody } from "~/lib/errors";
 import { findParticipant } from "~/lib/session-start";
 import { buildSteps } from "~/lib/steps";
 import { loadTestSession } from "~/lib/test-session";
@@ -84,16 +84,8 @@ function useMicCheckPassed() {
 
 type StepView = Route.ComponentProps["loaderData"]["steps"][number];
 
-/** POSTs and returns the JSON body, or throws with the S-1 message. */
-async function post(url: string, init: RequestInit): Promise<unknown> {
-  const response = await fetch(url, { method: "POST", ...init });
-  const body: unknown = await response.json().catch(() => null);
-  if (!response.ok) {
-    const message = (body as ApiErrorBody | null)?.error?.message;
-    throw new Error(message ?? "Something went wrong. Please try again.");
-  }
-  return body;
-}
+const asRequestError = (failure: unknown) =>
+  failure instanceof RequestError ? failure : new RequestError(UNEXPECTED, "UNKNOWN", false);
 
 function ProgressBar({ current, total }: { current: number; total: number }) {
   return (
@@ -133,36 +125,59 @@ export default function Assessment({ loaderData }: Route.ComponentProps) {
   const [wordsReviewed, setWordsReviewed] = useState(false);
   const onReviewComplete = useCallback((complete: boolean) => setWordsReviewed(complete), []);
   const hydrated = useHydrated();
+  const [sendFailed, setSendFailed] = useState(false);
+  const [expired, setExpired] = useState(false);
 
   async function begin() {
     setStarting(true);
     setError("");
     try {
-      await post("/api/assessment/begin", {
+      await postJson("/api/assessment/begin", {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ testId: test.id }),
       });
+      setExpired(false);
+      setFeedback(null);
       await revalidator.revalidate();
     } catch (failure) {
-      setError((failure as Error).message);
+      // Demo paused (503) and today's 3 tests (429) arrive here with their S-1 message.
+      setError(asRequestError(failure).message);
     } finally {
       setStarting(false);
     }
   }
 
-  async function submit(wav: Blob) {
-    if (!session) return;
+  async function submit(wav: Blob): Promise<"sent" | "keep"> {
+    if (!session) return "sent";
     setError("");
     const form = new FormData();
     form.set("testId", String(test.id));
     form.set("stepNumber", String(session.stepNumber));
     form.set("audio", wav, "recording.wav");
     try {
-      setFeedback((await post("/api/attempts", { body: form })) as AttemptResponse);
+      setFeedback((await postJson("/api/attempts", { body: form })) as AttemptResponse);
+      setSendFailed(false);
+      await revalidator.revalidate();
+      return "sent";
     } catch (failure) {
-      setError((failure as Error).message);
+      const problem = asRequestError(failure);
+      if (problem.code === "NOT_FOUND") {
+        // The KV session is gone: more than an hour without activity.
+        setExpired(true);
+        await revalidator.revalidate();
+        return "sent";
+      }
+      if (problem.retryable) {
+        // Connection lost, scorer down, too many requests: keep the recording for another try.
+        setError(`${problem.message} Your recording is kept: press Send again.`);
+        setSendFailed(true);
+        return "keep";
+      }
+      setError(problem.message);
+      setSendFailed(false);
+      await revalidator.revalidate();
+      return "sent";
     }
-    await revalidator.revalidate();
   }
 
   const step = session ? steps[session.stepNumber - 1] : null;
@@ -189,7 +204,22 @@ export default function Assessment({ loaderData }: Route.ComponentProps) {
       </div>
 
       <div className="mt-6 space-y-6">
-        {session?.done ? (
+        {expired ? (
+          <section className="rounded-card bg-gray-50 p-6">
+            <h2 className="text-h2 font-semibold text-gray-900">Your test session expired</h2>
+            <p className="mt-2 text-gray-600">
+              A test stops after an hour without activity. Restart it to begin again from step 1.
+            </p>
+            <button
+              type="button"
+              onClick={begin}
+              disabled={starting || !hydrated}
+              className={`${primaryButton} mt-4`}
+            >
+              {starting ? "Starting…" : "Restart the test"}
+            </button>
+          </section>
+        ) : session?.done ? (
           <section className="rounded-card bg-gray-50 p-6">
             <h2 className="text-h2 font-semibold text-gray-900">You finished the test</h2>
             <p className="mt-2 text-gray-600">
@@ -204,7 +234,16 @@ export default function Assessment({ loaderData }: Route.ComponentProps) {
           <>
             <ProgressBar current={session.stepNumber} total={steps.length} />
             <p role="status" className="font-medium text-gray-900 empty:hidden">
-              {feedback && !feedback.done ? feedback.message : ""}
+              {feedback && !feedback.done
+                ? [
+                    feedback.message,
+                    feedback.scorerUnavailable
+                      ? "One scorer is unavailable; your attempt was saved."
+                      : "",
+                  ]
+                    .filter(Boolean)
+                    .join(" ")
+                : ""}
             </p>
             <section
               aria-labelledby="step-title"
@@ -233,6 +272,7 @@ export default function Assessment({ loaderData }: Route.ComponentProps) {
               <Recorder
                 key={`${session.stepNumber}-${session.attempt}`}
                 onSubmit={submit}
+                submitLabel={sendFailed ? "Send again" : undefined}
                 blockedReason={
                   mustReview ? "Review every highlighted word before you record again." : undefined
                 }
@@ -272,6 +312,26 @@ export default function Assessment({ loaderData }: Route.ComponentProps) {
           </>
         )}
       </div>
+    </main>
+  );
+}
+
+/** An unknown or malformed testId (T2.6), or any other error on this page. */
+export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
+  const notFound = isRouteErrorResponse(error) && error.status === 404;
+  return (
+    <main id="main" tabIndex={-1} className="mx-auto max-w-content px-8 py-12">
+      <h1 className="text-h1 font-bold text-gray-900">
+        {notFound ? "Test not found" : "Something went wrong"}
+      </h1>
+      <p className="mt-4 text-gray-600">
+        {notFound
+          ? "This test does not exist. Choose one of the four tests instead."
+          : "The test could not be loaded. Please try again in a moment."}
+      </p>
+      <Link to="/tests" className="mt-6 inline-block font-semibold text-primary underline">
+        Choose a test
+      </Link>
     </main>
   );
 }

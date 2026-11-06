@@ -23,6 +23,13 @@
 - **Decision:** Remove the Python code and keep the workflow parts: the `/plan`, `/next`, `/review` and `/fix-tests` commands, the subagents, `docs/` and the format hook. Adapt them to npm, Vitest, ESLint and Prettier.
 - **Consequences:** `global/CLAUDE.md` holds personal preferences from the template and is left as is.
 
+## 2026-11-06: Participant error states (T2.6)
+
+- **Context:** A failed send threw the recording away, and a network failure showed the browser's own text ("Failed to fetch"). An expired session gave a bare error.
+- **Decision:** `postJson` (`app/lib/api-client.ts`) turns every failure into a RequestError with the S-1 message, code and retryable flag; a network failure is "Connection lost". When a send is retryable (network, 5xx, `PROVIDER_ERROR`, the API rate limit), the recorder goes back to ready with the same recording and the button becomes "Send again". A 404 from `/api/attempts` means the KV session is gone, so the page offers "Restart the test". `AttemptResponse.scorerUnavailable` (set from Epic E3) adds "One scorer is unavailable; your attempt was saved."
+- **Alternatives:** Keep the recording in IndexedDB so it survives a reload (rejected: TR-01 keeps audio in memory only).
+- **Consequences:** Restarting an expired test uses one of the IP's 3 daily tests, like any new start. A reload during a failed send loses the recording.
+
 ## 2026-11-06: Word review: matching by position, instruction audio as a static file (T2.4)
 
 - **Context:** The scorer (Gemini, T3.5) returns the words to practise as a deduplicated list in text order. The same word can appear more than once in a story, and the scorer may drop or keep punctuation. TR-07 asks for a spoken instruction in an adult tone.

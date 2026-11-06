@@ -1,5 +1,6 @@
 import {
   isRouteErrorResponse,
+  Link,
   Links,
   Meta,
   Outlet,
@@ -64,6 +65,9 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
     <main id="main" tabIndex={-1} className="mx-auto max-w-content px-8 py-12">
       <h1 className="text-h1 font-bold text-gray-900">{message}</h1>
       <p className="mt-4">{details}</p>
+      <Link to="/" className="mt-6 inline-block font-semibold text-primary underline">
+        Go to the home page
+      </Link>
       {stack && (
         <pre className="w-full p-4 overflow-x-auto">
           <code>{stack}</code>

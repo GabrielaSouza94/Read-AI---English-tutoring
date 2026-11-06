@@ -2,7 +2,7 @@
  * Microphone check and recorder (T2.2). The logic lives in `~/lib/recorder-machine` and
  * `~/lib/audio-level`; these components wire it to the Web Audio capture and show the states.
  */
-import { useCallback, useEffect, useReducer, useRef, useState } from "react";
+import { useCallback, useEffect, useReducer, useRef, useState, useSyncExternalStore } from "react";
 
 import { captureSupported, startCapture, type Capture } from "~/audio/capture";
 import { createMicCheck, level, TARGET_SAMPLE_RATE, type MicCheckResult } from "~/lib/audio-level";
@@ -72,17 +72,26 @@ function LevelMeter({ value }: { value: number }) {
   );
 }
 
-function MediaError({ kind, onRetry }: { kind: MediaErrorKind; onRetry: () => void }) {
+function MediaError({ kind, onRetry }: { kind: MediaErrorKind; onRetry?: () => void }) {
   const text = MEDIA_ERROR_TEXT[kind];
   return (
     <div role="alert" className="rounded-control bg-danger-light px-4 py-3 text-danger">
       <p className="font-semibold">{text.title}</p>
       <p className="mt-1">{text.help}</p>
-      <button type="button" onClick={onRetry} className={`${secondaryButton} mt-3 bg-white`}>
-        Try again
-      </button>
+      {onRetry && (
+        <button type="button" onClick={onRetry} className={`${secondaryButton} mt-3 bg-white`}>
+          Try again
+        </button>
+      )}
     </div>
   );
+}
+
+const noSubscription = () => () => {};
+
+/** False in a browser that cannot record (no AudioWorklet or no microphone API). */
+function useCaptureSupported(): boolean {
+  return useSyncExternalStore(noSubscription, captureSupported, () => true);
 }
 
 /** Feeds 16 kHz samples to `onSamples` while active; reports the level for the meter. */
@@ -124,6 +133,7 @@ type CheckState =
 export function MicCheck({ onPassed }: { onPassed: () => void }) {
   const [state, setState] = useState<CheckState>({ status: "idle" });
   const hydrated = useHydrated();
+  const supported = useCaptureSupported();
   const { start, stop, levelRef } = useLiveCapture();
   const timer = useRef<ReturnType<typeof setInterval> | undefined>(undefined);
   useEffect(() => () => clearInterval(timer.current), []);
@@ -159,7 +169,10 @@ export function MicCheck({ onPassed }: { onPassed: () => void }) {
         Press the button and say a few words, for example your name, for 3 seconds.
       </p>
       <div className="mt-4 space-y-4">
-        {state.status === "error" ? (
+        {!supported ? (
+          // Said up front (T2.6): there is nothing to try again in this browser.
+          <MediaError kind="unsupported" />
+        ) : state.status === "error" ? (
           <MediaError kind={state.error} onRetry={() => setState({ status: "idle" })} />
         ) : (
           <>
@@ -190,9 +203,13 @@ export function MicCheck({ onPassed }: { onPassed: () => void }) {
  */
 export function Recorder({
   onSubmit,
+  submitLabel = "Use this recording",
   blockedReason,
 }: {
-  onSubmit?: (wav: Blob) => Promise<void>;
+  /** Sends the recording; "keep" means it failed but can be sent again, so it stays (T2.6). */
+  onSubmit?: (wav: Blob) => Promise<"sent" | "keep">;
+  /** Label of the send button, for example "Send again" after a failed send. */
+  submitLabel?: string;
   /** When set, Record is disabled and this reason is shown next to it (T2.4 word review). */
   blockedReason?: string;
 }) {
@@ -274,13 +291,14 @@ export function Recorder({
   async function submit() {
     if (!onSubmit || !recording.current) return;
     dispatch({ type: "submit" });
-    try {
-      await onSubmit(recording.current);
-    } finally {
-      recording.current = null;
-      setAudioUrl(null);
-      dispatch({ type: "uploaded" });
+    const result = await onSubmit(recording.current).catch(() => "keep" as const);
+    if (result === "keep") {
+      dispatch({ type: "uploadFailed" });
+      return;
     }
+    recording.current = null;
+    setAudioUrl(null);
+    dispatch({ type: "uploaded" });
   }
 
   return (
@@ -339,7 +357,7 @@ export function Recorder({
                 <div className="flex flex-wrap items-center gap-4">
                   {onSubmit && (
                     <button type="button" onClick={submit} className={primaryButton}>
-                      Use this recording
+                      {submitLabel}
                     </button>
                   )}
                   <button type="button" onClick={recordAgain} className={secondaryButton}>

@@ -1,7 +1,8 @@
 /**
  * Recording states (T2.2), as drawn in product-documentation.md "Recording State Machine":
  * idle → requesting → recording → encoding → ready → uploading → idle, with error → idle on dismiss
- * and ready → idle on re-record. Recording stops by itself at 2 minutes. Events that do not apply
+ * and ready → idle on re-record. A failed upload that can be retried goes back to ready with the
+ * same recording (T2.6), so the participant does not have to read again. Recording stops by itself at 2 minutes. Events that do not apply
  * to the current state are ignored, so a double click or a late timer cannot break the flow.
  */
 
@@ -17,7 +18,7 @@ export type RecorderState =
   | { status: "recording"; startedAt: number; elapsedMs: number }
   | { status: "encoding"; limitReached: boolean }
   | { status: "ready"; durationSec: number; bytes: number; limitReached: boolean }
-  | { status: "uploading" }
+  | { status: "uploading"; durationSec: number; bytes: number; limitReached: boolean }
   | { status: "error"; error: MediaErrorKind };
 
 export type RecorderEvent =
@@ -30,6 +31,7 @@ export type RecorderEvent =
   | { type: "failed" }
   | { type: "submit" }
   | { type: "uploaded" }
+  | { type: "uploadFailed" }
   | { type: "rerecord" }
   | { type: "dismiss" };
 
@@ -65,10 +67,11 @@ export function recorderReducer(state: RecorderState, event: RecorderEvent): Rec
       }
       return event.type === "failed" ? { status: "error", error: "failed" } : state;
     case "ready":
-      if (event.type === "submit") return { status: "uploading" };
+      if (event.type === "submit") return { ...state, status: "uploading" };
       return event.type === "rerecord" ? INITIAL_STATE : state;
     case "uploading":
-      return event.type === "uploaded" ? INITIAL_STATE : state;
+      if (event.type === "uploaded") return INITIAL_STATE;
+      return event.type === "uploadFailed" ? { ...state, status: "ready" } : state;
     case "error":
       return event.type === "dismiss" ? INITIAL_STATE : state;
   }

@@ -41,9 +41,11 @@ Build every MVP task domain-ready (`task-breakdown.md` §14.1): no host names, r
   - [x] Instruction audio `public/audio/word-review-instruction.mp3` (Azure neural voice, `npm run audio:instructions`) plays once, with replay
   - [x] Tests: word matching (repeats, capitals, punctuation, "farmers'"); D1/KV keeps and clears the words; E2E Record disabled until 3 words clicked (mouse and keyboard)
   - [ ] Manual: keyboard-only and screen-reader pass (NVDA or VoiceOver) (owner)
-- [ ] **T2.6 Participant error, empty and edge states**
-  - [ ] Microphone denied, upload failed, provider error, demo paused, rate limited, bad `testId`, expired session, unsupported browser
-  - [ ] Tests: E2E each state through mocked 403, 429, 503, 502, network abort and 404
+- [x] **T2.6 Participant error, empty and edge states**
+  - [x] Microphone denied, upload failed ("Connection lost", recording kept, "Send again"), provider error (kept and resendable; "One scorer is unavailable; your attempt was saved"), demo paused, rate limited, bad `testId` (404 with "Choose a test"), expired session ("Restart the test"), unsupported browser (shown up front)
+  - [x] `app/lib/api-client.ts`: every failure becomes a plain message and a retryable flag; no raw browser error text
+  - [x] Tests: E2E each state through mocked 403, 429, 503, 502, network abort and 404; Send again succeeds without re-recording
+  - [ ] Manual: disconnect the network during an upload; Send again succeeds (owner)
 - [ ] **Gate A:** full test on staging with the stub scorer
 
 ## MVP2: Own domain (after Gate C, or earlier -- see `task-breakdown.md` §14)
