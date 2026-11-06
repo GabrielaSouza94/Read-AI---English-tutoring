@@ -1,6 +1,7 @@
 /**
- * Minimal WAV (RIFF, PCM) reader and slicer. Recordings are 16 kHz, 16-bit, mono PCM (TRD §3),
- * the format both Deepgram and Azure accept. Used to cut long reads into chunks for Azure (T0.5).
+ * Minimal WAV (RIFF, PCM) encoder, reader and slicer. Recordings are 16 kHz, 16-bit, mono PCM (TRD §3),
+ * the format both Deepgram and Azure accept. The browser encodes recordings with it (T2.2), and the
+ * server cuts long reads into chunks for Azure (T0.5).
  */
 
 export type WavInfo = {
@@ -106,5 +107,23 @@ export function sliceWav(
   const out = new Uint8Array(header.length + end - start);
   out.set(header);
   out.set(bytes.subarray(info.dataOffset + start, info.dataOffset + end), header.length);
+  return out;
+}
+
+/** A 16-bit mono PCM WAV from float samples (-1..1, clipped), given as one or more chunks. */
+export function encodeWav(chunks: Float32Array[], sampleRate: number): Uint8Array<ArrayBuffer> {
+  const samples = chunks.reduce((total, chunk) => total + chunk.length, 0);
+  const header = wavHeader({ sampleRate, channels: 1, bitsPerSample: 16, dataLength: samples * 2 });
+  const out = new Uint8Array(header.length + samples * 2);
+  out.set(header);
+  const view = new DataView(out.buffer);
+  let offset = header.length;
+  for (const chunk of chunks) {
+    for (const sample of chunk) {
+      const clipped = Math.max(-1, Math.min(1, sample));
+      view.setInt16(offset, clipped < 0 ? clipped * 0x8000 : clipped * 0x7fff, true);
+      offset += 2;
+    }
+  }
   return out;
 }

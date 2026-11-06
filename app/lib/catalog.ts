@@ -26,6 +26,21 @@ export function estimatedMinutes(sentences: number): number {
   return Math.round((stepCount(sentences) * SECONDS_PER_STEP + MIC_CHECK_SECONDS) / 60);
 }
 
+export type TestSummary = Pick<TestCard, "id" | "cefr" | "title">;
+
+/** One test by id, or null for an unknown id. */
+export async function getTest(db: D1Like, id: number): Promise<TestSummary | null> {
+  return db
+    .prepare("SELECT id, cefr, title FROM tests WHERE id = ?1")
+    .bind(id)
+    .first<TestSummary>();
+}
+
+/** The `testId` query value as a test id, or null when it is not a positive whole number. */
+export function parseTestId(value: string | null): number | null {
+  return value !== null && /^[1-9]d{0,5}$/.test(value) ? Number(value) : null;
+}
+
 export async function listTests(db: D1Like): Promise<TestCard[]> {
   const { results } = await db
     .prepare(

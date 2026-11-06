@@ -27,6 +27,7 @@ const TEXT_PAIRS: [text: string, background: string][] = [
   ["warning", "warning-light"],
   ["danger", "white"],
   ["danger", "danger-light"],
+  ["white", "danger"],
   // Disabled button.
   ["gray-700", "gray-300"],
 ];
@@ -37,6 +38,8 @@ const NON_TEXT_PAIRS: [part: string, background: string][] = [
   ["focus", "banner"],
   ["input-border", "white"],
   ["recording", "white"],
+  // Level meter fill on its track.
+  ["success", "gray-200"],
 ];
 
 describe("theme tokens meet WCAG AA", () => {

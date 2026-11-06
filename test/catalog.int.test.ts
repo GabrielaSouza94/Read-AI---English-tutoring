@@ -4,7 +4,7 @@
 import { afterEach, beforeEach, expect, it } from "vitest";
 
 import { contentSeedStatements } from "../app/db/seed";
-import { listTests } from "../app/lib/catalog";
+import { getTest, listTests } from "../app/lib/catalog";
 import { applyMigrations, createTestDatabase, runStatements, type TestD1 } from "./d1";
 
 let db: TestD1;
@@ -27,4 +27,9 @@ it("lists the 4 tests from easiest to hardest, with sentence counts and time", a
     { id: 3, cefr: "B2", title: "The Night Shift", sentences: 6, minutes: 7 },
     { id: 4, cefr: "C1", title: "The Mapmaker's Problem", sentences: 7, minutes: 8 },
   ]);
+});
+
+it("finds one test by id, and null for an unknown one", async () => {
+  expect(await getTest(db, 4)).toEqual({ id: 4, cefr: "C1", title: "The Mapmaker's Problem" });
+  expect(await getTest(db, 99)).toBeNull();
 });

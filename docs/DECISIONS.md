@@ -23,6 +23,13 @@
 - **Decision:** Remove the Python code and keep the workflow parts: the `/plan`, `/next`, `/review` and `/fix-tests` commands, the subagents, `docs/` and the format hook. Adapt them to npm, Vitest, ESLint and Prettier.
 - **Consequences:** `global/CLAUDE.md` holds personal preferences from the template and is left as is.
 
+## 2026-11-05: Recorder: worklet plus page-side downsampling (T2.2)
+
+- **Context:** The TRD asks for 16 kHz mono WAV. Firefox cannot connect a microphone to an `AudioContext` running at a different rate from the device, so `new AudioContext({ sampleRate: 16000 })` is not portable.
+- **Decision:** The context runs at the browser's rate; an AudioWorklet (loaded from a Blob, so no extra file or host name) passes the samples to the page, which averages them down to 16 kHz and encodes WAV. The microphone check passes on 300 ms above -40 dBFS within 3 seconds.
+- **Alternatives:** MediaRecorder (gives WebM or MP4, which Azure REST does not accept); resampling on the server (more Worker CPU, and the 10 MB limit would cover less audio).
+- **Consequences:** The browser tests use fake microphones in Chromium and Firefox. Playwright's WebKit cannot capture audio, so Safari is part of the manual browser check. The check thresholds may need tuning in Sprint 5 with real microphones.
+
 ## 2026-11-05: Session start: resume by browser, group code cookie (T1.3)
 
 - **Context:** TR-04 says a returning browser is the same participant, and the group code is stored on each result (`test_results.group_code`), which T2.3 creates later.

@@ -357,6 +357,10 @@ The final score is the latest non-reverted review; with no review it is the AI b
 
 WAV is used because Azure's REST endpoint does not accept WebM, and Deepgram accepts WAV.
 
+**Capture:** an AudioWorklet copies the microphone samples at the browser's rate (usually 44.1 or 48 kHz), and the page averages them down to 16 kHz before encoding (`app/lib/audio-level.ts`, `app/lib/wav.ts`). Audio stays in memory until it is sent.
+
+**Microphone check:** before the first recording of a visit, the participant speaks for 3 seconds. The check passes when at least 300 ms of that time is louder than -40 dBFS (a quiet room is around -60 dBFS). A passed check is remembered for the browser tab.
+
 ### Recording State Machine
 
 ```mermaid

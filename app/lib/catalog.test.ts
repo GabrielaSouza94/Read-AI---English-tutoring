@@ -1,6 +1,22 @@
 import { describe, expect, it } from "vitest";
 
-import { estimatedMinutes, stepCount } from "./catalog";
+import { estimatedMinutes, parseTestId, stepCount } from "./catalog";
+
+describe("parseTestId", () => {
+  it.each([
+    ["1", 1],
+    ["4", 4],
+    ["0", null],
+    ["-1", null],
+    ["1.5", null],
+    ["abc", null],
+    ["", null],
+    [null, null],
+    ["1e3", null],
+  ])("%j → %j", (value, id) => {
+    expect(parseTestId(value)).toBe(id);
+  });
+});
 
 describe("test catalogue", () => {
   it("has n progressive steps plus 2 full reads", () => {
