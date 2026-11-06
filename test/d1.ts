@@ -14,6 +14,7 @@ const MIGRATIONS_DIR = join(ROOT, "drizzle", "migrations");
 type Statement = {
   bind(...values: unknown[]): Statement;
   first<T = unknown>(column?: string): Promise<T | null>;
+  all<T = unknown>(): Promise<{ results: T[] }>;
   run(): Promise<unknown>;
 };
 export type TestD1 = {

@@ -1,17 +1,11 @@
 import { expect, test } from "@playwright/test";
 
-// Every successful start uses one of the IP's 3 daily tests, and local KV keeps the count between
-// runs. A fresh client IP per test keeps the suite repeatable; Cloudflare overwrites this header in
-// staging and production. Only our own endpoint gets it: Turnstile's servers refuse requests that carry it.
+import { withFreshClientIp, waitForCaptcha } from "./helpers";
+
 test.beforeEach(async ({ page }) => {
-  const octet = () => Math.floor(Math.random() * 254) + 1;
-  const ip = `198.18.${octet()}.${octet()}`;
-  await page.route("**/api/session/start", (route) =>
-    route.continue({ headers: { ...route.request().headers(), "cf-connecting-ip": ip } }),
-  );
+  await withFreshClientIp(page);
 });
 
-// Turnstile test keys (local and CI): the widget passes on its own after a moment.
 const continueButton = (page: import("@playwright/test").Page) =>
   page.getByRole("button", { name: "Continue" });
 
@@ -30,7 +24,7 @@ test("full start flow lands on /tests, and the browser keeps its participant", a
   await page.getByLabel("Name or nickname").fill("Ana Silva");
   await page.getByLabel("Group code").fill("e2e-1");
   await page.getByLabel(/I am 18 or older/).check();
-  await expect(continueButton(page)).toBeEnabled({ timeout: 15_000 });
+  await waitForCaptcha(page);
   await continueButton(page).click();
   await expect(page).toHaveURL(/\/tests$/);
 
@@ -50,7 +44,7 @@ test("field errors are shown next to the field and announced", async ({ page }) 
   await page.goto("/start");
   await page.getByLabel("Name or nickname").fill("A");
   await page.getByLabel(/I am 18 or older/).check();
-  await expect(continueButton(page)).toBeEnabled({ timeout: 15_000 });
+  await waitForCaptcha(page);
   await continueButton(page).click();
 
   await expect(page.getByRole("alert")).toHaveText("Please check the highlighted fields.");
@@ -63,7 +57,7 @@ test("field errors are shown next to the field and announced", async ({ page }) 
 test("without consent the start is refused", async ({ page }) => {
   await page.goto("/start");
   await page.getByLabel("Name or nickname").fill("Ana Silva");
-  await expect(continueButton(page)).toBeEnabled({ timeout: 15_000 });
+  await waitForCaptcha(page);
   await continueButton(page).click();
   await expect(page.getByRole("alert")).toContainText("Please confirm you are 18 or older");
   await expect(page.getByLabel(/I am 18 or older/)).toHaveAttribute("aria-invalid", "true");

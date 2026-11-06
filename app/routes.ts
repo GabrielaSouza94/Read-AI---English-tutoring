@@ -4,6 +4,7 @@ export default [
   index("routes/home.tsx"),
   route("privacy", "routes/privacy.tsx"),
   route("start", "routes/start.tsx"),
+  route("tests", "routes/tests.tsx"),
   route("api/session/start", "routes/api.session.start.ts"),
   route("api/health", "routes/api.health.ts"),
   route("api/debug/error", "routes/api.debug.error.ts"),

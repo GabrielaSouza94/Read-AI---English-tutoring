@@ -39,6 +39,7 @@ jobs:
       - run: npm ci
       - run: npx playwright install --with-deps
       - run: npm run db:migrate:local
+      - run: npm run db:seed:local
       # CI has no .dev.vars: Cloudflare's published Turnstile test keys (always pass) and a throwaway salt.
       - name: Local settings for the E2E run
         run: |

@@ -31,7 +31,8 @@
     "app/lib/blocked-words.ts",
     "app/lib/browser-id.ts",
     "app/lib/turnstile.ts",
-    "app/lib/session-start.ts"
+    "app/lib/session-start.ts",
+    "app/lib/catalog.ts"
   ],
   "compilerOptions": {
     "composite": true,

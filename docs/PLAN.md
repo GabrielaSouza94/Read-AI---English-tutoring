@@ -18,9 +18,11 @@ Build every MVP task domain-ready (`task-breakdown.md` §14.1): no host names, r
   - [x] Display name and unique 4-character code; `browser_id` (host-only cookie + local storage, in `app/lib/browser-id.ts`); `consent_at`, `ip_hash`, `delete_after`; `group_code` session cookie for T2.3
   - [x] Tests: display name and code units; 403 `CONSENT_REQUIRED` / `CAPTCHA_FAILED`; same browser keeps its participant; E2E consent link opens `/privacy`; full flow lands on `/tests` (Turnstile test keys)
   - [ ] Staging: Turnstile widget hostnames match the `workers.dev` addresses (owner, Cloudflare dashboard)
-- [ ] **T2.1 Test picker**
-  - [ ] `/tests`: 4 cards (level, title, sentences, time); without a session, redirect to `/start`
-  - [ ] Tests: E2E each card opens the right test; direct visit without a session redirects
+- [x] **T2.1 Test picker**
+  - [x] `/tests`: 4 cards (level, title, sentences, time); without a participant for this browser, redirect to `/start`
+  - [x] Estimated time: 45 s per step + 1 min microphone check (6, 7, 7 and 8 minutes; `app/lib/catalog.ts`)
+  - [x] Tests: E2E each card opens the right test; direct visit without a session redirects; catalogue unit and D1 tests
+  - [x] CI seeds the local database before the E2E run
 - [ ] **T2.2 Audio capture (WAV) and microphone check**
   - [ ] AudioWorklet 16 kHz mono PCM → WAV; record, stop, play back, re-record; stop at 120 s; level meter with text status
   - [ ] Microphone check before the first recording; permission-denied and no-device states
