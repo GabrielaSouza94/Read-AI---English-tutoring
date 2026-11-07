@@ -3,7 +3,61 @@
 > Claude works through these one at a time (`/next`). Task ids, acceptance criteria and tests come from
 > `Product materials/task-breakdown.md`. Tick a task only when its acceptance criteria are met.
 
-## Sprint 2: Participant flow (weeks 3-4)
+## Sprint 3: Scoring pipeline (weeks 5-6)
+
+Goal: every attempt is scored by Deepgram and Azure, gets Gemini feedback, is saved in D1, and a
+finished test shows its result. Ends with a full test on staging with the real scorers
+(`STUB_SCORER` off on staging; the stub stays for CI). Gate B follows Sprint 4.
+Reuse the T0.5 spike code: `app/lib/deepgram.ts`, `azure.ts`, `azure-chunks.ts`, `align.ts`.
+
+- [ ] **T3.8 Audio fixture library** (first: the other tasks test against it)
+  - [ ] Fixture loader in `test/fixtures/`; every file checked as 16 kHz mono WAV
+  - [ ] Synthetic fixtures now (Azure neural voice, `npm run audio:instructions`-style script): clean, slow, skipped sentence, added words, silence, long full read; noise added in code
+  - [ ] Saved Deepgram and Azure responses per fixture, so integration tests run without live calls
+  - [ ] Recorded fixtures by consenting adults: the 8 for tests 1 and 4, clean + slow for tests 2 and 3 (owner)
+- [ ] **T3.2 Deepgram client and metrics**
+  - [ ] `nova-3`, `en-US`, `smart_format`; accuracy, WCPM (confidence ≥ 0.75 per minute of speech), fluency with similarity
+  - [ ] `provider_error` after one retry; `recordProviderCall()`
+  - [ ] Decide Deepgram `mip_opt_out` (privacy notice review) and record it
+  - [ ] Tests: metrics on a fixture response; similarity (1, 0.9, 0); timeout then success; two failures
+- [ ] **T3.3 Azure pronunciation client, chunking and metrics**
+  - [ ] Accuracy, fluency, completeness, prosody; miscues; WCPM from ErrorType None
+  - [ ] Chunk over 25 s at sentence pauses (T0.5), in parallel, weighted average; one chunk failing twice → `provider_error: azure`
+  - [ ] Tests: header, 90 s chunk plan, weighted average and WCPM on a fixture; chunk failure
+- [ ] **T3.4 Text alignment and problem-word candidates**
+  - [ ] Skipped and added words per scorer; candidates = Deepgram confidence < 0.75 ∪ Azure mispronunciation/omission or word accuracy < 70, in text order
+  - [ ] Tests: skipped, added, repeated, reordered; union and order
+- [ ] **T3.5 Gemini feedback via LangSmith**
+  - [ ] Prompt from Hub (5-minute cache, last copy in KV); two Gemini 2.5 Flash Lite calls in parallel; schema check; fallback to the T3.4 candidates and a generic message
+  - [ ] LangSmith traces with ids only, never the display name
+  - [ ] Tests: schema validator; timeout → fallback; trace payload has no name
+- [ ] **T3.6 Pass rule, step mismatch flags and persistence**
+  - [ ] Best-of WCPM, accuracy, fluency against the test thresholds; flags `accuracy_gap`, `wcpm_gap`, `verdict_split`, `unreliable_input`; provider error raises none
+  - [ ] `attempts`, `attempt_step`, `attempt_stt` in one transaction
+  - [ ] Tests: pass rule table for all 4 tests; each flag at its limit; forced D1 failure leaves no rows
+- [ ] **T3.1 Attempt endpoint and orchestration** (replaces the stub in `POST /api/attempts`)
+  - [ ] Speech minutes into `usage_daily`; Deepgram and Azure in parallel, then feedback, then T3.6; response with `attemptId`, feedback, metrics, `providerError`
+  - [ ] Audio in memory only; P95 under 12 s for a 30 s recording
+  - [ ] Tests: happy path schema; 400/413 cases; no binary in D1, KV or logs; usage minutes
+- [ ] **T3.7 Idempotent finalize and final mismatch check**
+  - [ ] `POST /api/results/:id/finalize`: `test_step_result` averages, best-of scores, flags, `agreement_score`, `review_status`; group code from the `group_code` cookie (T1.3)
+  - [ ] Tests: aggregation (50 and 100 → 75); agreement 100; concurrent finalize → one row; flags → `needs_review`
+- [ ] **T2.5 Completion page**
+  - [ ] `/assessment/completed`: scores, feedback, "Ana S. · K7Q2", portal link (portal in T4.x); reload shows the same result
+  - [ ] Tests: E2E with mocked scorers, reload 5 times; portal link target
+- [ ] **Sprint check:** full test on staging with the real scorers; costs within the TRD estimate
+
+## MVP2: Own domain (after Gate C, or earlier -- see `task-breakdown.md` §14)
+
+- [ ] T7.1 Domain, DNS and custom domains (`APP_ORIGIN`)
+- [ ] T7.2 Redirects and browser-id hand-over (skip the hand-over if done before launch)
+- [ ] T7.3 Email on the domain (Resend sender, `privacy@` through Email Routing)
+- [ ] T7.4 Edge security on the zone (WAF rule, Access on staging, HSTS, Turnstile hostnames)
+- [ ] T7.5 Cutover and documentation
+
+## Done
+
+### Sprint 2: Participant flow (weeks 3-4) -- done 2026-11-07
 
 Goal: **Gate A** -- a participant finishes a full test on staging, with the stub scorer.
 Build every MVP task domain-ready (`task-breakdown.md` §14.1): no host names, relative URLs, host-only cookies.
@@ -17,7 +71,7 @@ Build every MVP task domain-ready (`task-breakdown.md` §14.1): no host names, r
   - [x] `POST /api/session/start`: Turnstile verified server-side (5 s, fail closed), consent required, name rules and blocked words; `guardSessionStart()` last
   - [x] Display name and unique 4-character code; `browser_id` (host-only cookie + local storage, in `app/lib/browser-id.ts`); `consent_at`, `ip_hash`, `delete_after`; `group_code` session cookie for T2.3
   - [x] Tests: display name and code units; 403 `CONSENT_REQUIRED` / `CAPTCHA_FAILED`; same browser keeps its participant; E2E consent link opens `/privacy`; full flow lands on `/tests` (Turnstile test keys)
-  - [ ] Staging: Turnstile widget hostnames match the `workers.dev` addresses (owner, Cloudflare dashboard)
+  - [x] Staging: Turnstile widget hostnames match the `workers.dev` addresses (owner, Cloudflare dashboard)
 - [x] **T2.1 Test picker**
   - [x] `/tests`: 4 cards (level, title, sentences, time); without a participant for this browser, redirect to `/start`
   - [x] Estimated time: 45 s per step + 1 min microphone check (6, 7, 7 and 8 minutes; `app/lib/catalog.ts`)
@@ -46,17 +100,7 @@ Build every MVP task domain-ready (`task-breakdown.md` §14.1): no host names, r
   - [x] `app/lib/api-client.ts`: every failure becomes a plain message and a retryable flag; no raw browser error text
   - [x] Tests: E2E each state through mocked 403, 429, 503, 502, network abort and 404; Send again succeeds without re-recording
   - [ ] Manual: disconnect the network during an upload; Send again succeeds (owner)
-- [ ] **Gate A:** full test on staging with the stub scorer
-
-## MVP2: Own domain (after Gate C, or earlier -- see `task-breakdown.md` §14)
-
-- [ ] T7.1 Domain, DNS and custom domains (`APP_ORIGIN`)
-- [ ] T7.2 Redirects and browser-id hand-over (skip the hand-over if done before launch)
-- [ ] T7.3 Email on the domain (Resend sender, `privacy@` through Email Routing)
-- [ ] T7.4 Edge security on the zone (WAF rule, Access on staging, HSTS, Turnstile hostnames)
-- [ ] T7.5 Cutover and documentation
-
-## Done
+- [x] **Gate A:** full test on staging with the stub scorer (owner, 2026-11-07)
 
 ### Sprint 1: Setup and data model (weeks 1-2) -- done 2026-11-04
 
