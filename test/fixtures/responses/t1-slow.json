@@ -1,0 +1,374 @@
+{
+  "fixtureId": "t1-slow",
+  "savedAt": "2026-11-07T13:25:35.541Z",
+  "deepgramUrl": "https://api.deepgram.com/v1/listen?model=nova-3&language=en-US&smart_format=true",
+  "deepgram": {
+    "metadata": {
+      "transaction_key": "deprecated",
+      "request_id": "01a1b62f-89a5-7900-bbec-7ecc5bbe6900",
+      "sha256": "0d377cbfecc30aee0634aa063b043a934525b6d0dbf9a29b357a959598d4ff14",
+      "created": "2026-11-07T13:25:31.536Z",
+      "duration": 13.2,
+      "channels": 1,
+      "models": ["2187e11a-3532-4498-b076-81fa530bdd49"],
+      "model_info": {
+        "2187e11a-3532-4498-b076-81fa530bdd49": {
+          "name": "general-nova-3",
+          "version": "2025-07-31.0",
+          "arch": "nova-3"
+        }
+      }
+    },
+    "results": {
+      "channels": [
+        {
+          "alternatives": [
+            {
+              "transcript": "Maria takes the bus to work every morning.",
+              "confidence": 0.99902344,
+              "words": [
+                {
+                  "word": "maria",
+                  "start": 0.56,
+                  "end": 1.44,
+                  "confidence": 1,
+                  "punctuated_word": "Maria"
+                },
+                {
+                  "word": "takes",
+                  "start": 2.1599998,
+                  "end": 3.04,
+                  "confidence": 0.99609375,
+                  "punctuated_word": "takes"
+                },
+                {
+                  "word": "the",
+                  "start": 3.76,
+                  "end": 4.64,
+                  "confidence": 0.99902344,
+                  "punctuated_word": "the"
+                },
+                {
+                  "word": "bus",
+                  "start": 4.96,
+                  "end": 6,
+                  "confidence": 0.95947266,
+                  "punctuated_word": "bus"
+                },
+                {
+                  "word": "to",
+                  "start": 6.72,
+                  "end": 7.6,
+                  "confidence": 0.9970703,
+                  "punctuated_word": "to"
+                },
+                {
+                  "word": "work",
+                  "start": 8.32,
+                  "end": 9.2,
+                  "confidence": 1,
+                  "punctuated_word": "work"
+                },
+                {
+                  "word": "every",
+                  "start": 10,
+                  "end": 10.879999,
+                  "confidence": 0.99902344,
+                  "punctuated_word": "every"
+                },
+                {
+                  "word": "morning",
+                  "start": 11.759999,
+                  "end": 12.32,
+                  "confidence": 0.9980469,
+                  "punctuated_word": "morning."
+                }
+              ],
+              "paragraphs": {
+                "transcript": "\nMaria takes the bus to work every morning.",
+                "paragraphs": [
+                  {
+                    "sentences": [
+                      {
+                        "text": "Maria takes the bus to work every morning.",
+                        "start": 0.56,
+                        "end": 12.32
+                      }
+                    ],
+                    "num_words": 8,
+                    "start": 0.56,
+                    "end": 12.32
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "azure": [
+    {
+      "startSec": 0,
+      "endSec": 13.2,
+      "referenceText": "Maria takes the bus to work every morning.",
+      "response": {
+        "RecognitionStatus": "Success",
+        "Offset": 3400000,
+        "Duration": 123900000,
+        "DisplayText": "Maria takes the bus to work every morning.",
+        "SNR": 44.734734,
+        "NBest": [
+          {
+            "Confidence": 0.976895,
+            "Lexical": "maria takes the bus to work every morning",
+            "ITN": "maria takes the bus to work every morning",
+            "MaskedITN": "maria takes the bus to work every morning",
+            "Display": "Maria takes the bus to work every morning.",
+            "AccuracyScore": 63,
+            "FluencyScore": 72,
+            "ProsodyScore": 73.3,
+            "CompletenessScore": 62,
+            "PronScore": 66.5,
+            "Words": [
+              {
+                "Word": "maria",
+                "Offset": 3400000,
+                "Duration": 11100000,
+                "Confidence": 0,
+                "AccuracyScore": 88,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": ["Monotone"],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.3754049
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "takes",
+                "Offset": 20000000,
+                "Duration": 11800000,
+                "Confidence": 0,
+                "AccuracyScore": 43,
+                "ErrorType": "Mispronunciation",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 0.7826087
+                      },
+                      "MissingBreak": {
+                        "Confidence": 0
+                      },
+                      "BreakLength": 5400000
+                    },
+                    "Intonation": {
+                      "ErrorTypes": ["Monotone"],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.3754049
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "the",
+                "Offset": 36800000,
+                "Duration": 8700000,
+                "Confidence": 0,
+                "AccuracyScore": 62,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 0.71014494
+                      },
+                      "MissingBreak": {
+                        "Confidence": 0
+                      },
+                      "BreakLength": 4900000
+                    },
+                    "Intonation": {
+                      "ErrorTypes": ["Monotone"],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.3754049
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "bus",
+                "Offset": 50400000,
+                "Duration": 10900000,
+                "Confidence": 0,
+                "AccuracyScore": 88,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 0.6956522
+                      },
+                      "MissingBreak": {
+                        "Confidence": 0
+                      },
+                      "BreakLength": 4800000
+                    },
+                    "Intonation": {
+                      "ErrorTypes": ["Monotone"],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.3754049
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "to",
+                "Offset": 67000000,
+                "Duration": 9500000,
+                "Confidence": 0,
+                "AccuracyScore": 60,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 0.81159425
+                      },
+                      "MissingBreak": {
+                        "Confidence": 0
+                      },
+                      "BreakLength": 5600000
+                    },
+                    "Intonation": {
+                      "ErrorTypes": ["Monotone"],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.3754049
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "work",
+                "Offset": 80600000,
+                "Duration": 12700000,
+                "Confidence": 0,
+                "AccuracyScore": 47,
+                "ErrorType": "Mispronunciation",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 0.5797101
+                      },
+                      "MissingBreak": {
+                        "Confidence": 0
+                      },
+                      "BreakLength": 4000000
+                    },
+                    "Intonation": {
+                      "ErrorTypes": ["Monotone"],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.3754049
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "every",
+                "Offset": 98800000,
+                "Duration": 11100000,
+                "Confidence": 0,
+                "AccuracyScore": 45,
+                "ErrorType": "Mispronunciation",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 0.7826087
+                      },
+                      "MissingBreak": {
+                        "Confidence": 0
+                      },
+                      "BreakLength": 5400000
+                    },
+                    "Intonation": {
+                      "ErrorTypes": ["Monotone"],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.3754049
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "morning",
+                "Offset": 114200000,
+                "Duration": 13100000,
+                "Confidence": 0,
+                "AccuracyScore": 69,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 0.6086957
+                      },
+                      "MissingBreak": {
+                        "Confidence": 0
+                      },
+                      "BreakLength": 4200000
+                    },
+                    "Intonation": {
+                      "ErrorTypes": ["Monotone"],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.3754049
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

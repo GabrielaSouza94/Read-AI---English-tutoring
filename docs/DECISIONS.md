@@ -23,6 +23,13 @@
 - **Decision:** Remove the Python code and keep the workflow parts: the `/plan`, `/next`, `/review` and `/fix-tests` commands, the subagents, `docs/` and the format hook. Adapt them to npm, Vitest, ESLint and Prettier.
 - **Consequences:** `global/CLAUDE.md` holds personal preferences from the template and is left as is.
 
+## 2026-11-07: Audio fixtures: synthetic first, raw responses saved (T3.8)
+
+- **Context:** Every scoring task (T3.2-T3.7) needs audio with known problems, and tests must not call paid services. T3.8 asks for recordings by consenting adults, which take the owner's time.
+- **Decision:** 20 synthetic fixtures now, made by `npm run fixtures` with an Azure neural voice; most read step 2 (about 8 s) to keep the repository small (11 MB). Each has the raw Deepgram response and one raw Azure response per chunk, so tests exercise the real parsing. The Deepgram call now uses the T3.2 parameters (`nova-3`, `en-US`, `smart_format=true`), and the clients expose `fetchTranscription` and `fetchAssessment` for the raw bodies. Recorded fixtures replace synthetic ones one by one (`source: "recorded"`, never overwritten).
+- **Alternatives:** Mocked provider JSON written by hand (does not catch real response shapes); Git LFS for the audio (more setup than 11 MB justifies).
+- **Consequences:** Changing a provider call means re-saving with `--responses`; the fixture test fails if the Deepgram URL changed. Synthetic voices are too clean for calibration, so Sprint 5 needs the recorded set.
+
 ## 2026-11-06: Participant error states (T2.6)
 
 - **Context:** A failed send threw the recording away, and a network failure showed the browser's own text ("Failed to fetch"). An expired session gave a bare error.

@@ -1,0 +1,522 @@
+{
+  "fixtureId": "t2-slow",
+  "savedAt": "2026-11-07T13:25:43.842Z",
+  "deepgramUrl": "https://api.deepgram.com/v1/listen?model=nova-3&language=en-US&smart_format=true",
+  "deepgram": {
+    "metadata": {
+      "transaction_key": "deprecated",
+      "request_id": "01a1b62f-a3b6-7de3-8688-a23279a3ec4e",
+      "sha256": "8f408b373f62957bf78c4fa498a1521fc683d69061316c421fb2b27b1bf0bd33",
+      "created": "2026-11-07T13:25:38.406Z",
+      "duration": 20.875,
+      "channels": 1,
+      "models": ["2187e11a-3532-4498-b076-81fa530bdd49"],
+      "model_info": {
+        "2187e11a-3532-4498-b076-81fa530bdd49": {
+          "name": "general-nova-3",
+          "version": "2025-07-31.0",
+          "arch": "nova-3"
+        }
+      }
+    },
+    "results": {
+      "channels": [
+        {
+          "alternatives": [
+            {
+              "transcript": "Every Saturday, Daniel visits the Farmers Market near the old train station.",
+              "confidence": 0.9980469,
+              "words": [
+                {
+                  "word": "every",
+                  "start": 0.56,
+                  "end": 1.28,
+                  "confidence": 0.99902344,
+                  "punctuated_word": "Every"
+                },
+                {
+                  "word": "saturday",
+                  "start": 2.24,
+                  "end": 3.28,
+                  "confidence": 0.9970703,
+                  "punctuated_word": "Saturday,"
+                },
+                {
+                  "word": "daniel",
+                  "start": 3.84,
+                  "end": 4.8,
+                  "confidence": 0.9980469,
+                  "punctuated_word": "Daniel"
+                },
+                {
+                  "word": "visits",
+                  "start": 5.68,
+                  "end": 6.64,
+                  "confidence": 0.99902344,
+                  "punctuated_word": "visits"
+                },
+                {
+                  "word": "the",
+                  "start": 7.44,
+                  "end": 8.32,
+                  "confidence": 0.99609375,
+                  "punctuated_word": "the"
+                },
+                {
+                  "word": "farmers",
+                  "start": 8.96,
+                  "end": 9.999999,
+                  "confidence": 0.37841797,
+                  "punctuated_word": "Farmers"
+                },
+                {
+                  "word": "market",
+                  "start": 11.12,
+                  "end": 11.679999,
+                  "confidence": 0.95410156,
+                  "punctuated_word": "Market"
+                },
+                {
+                  "word": "near",
+                  "start": 12.74,
+                  "end": 13.62,
+                  "confidence": 0.9980469,
+                  "punctuated_word": "near"
+                },
+                {
+                  "word": "the",
+                  "start": 14.34,
+                  "end": 15.059999,
+                  "confidence": 0.99902344,
+                  "punctuated_word": "the"
+                },
+                {
+                  "word": "old",
+                  "start": 15.78,
+                  "end": 16.58,
+                  "confidence": 1,
+                  "punctuated_word": "old"
+                },
+                {
+                  "word": "train",
+                  "start": 17.380001,
+                  "end": 18.34,
+                  "confidence": 1,
+                  "punctuated_word": "train"
+                },
+                {
+                  "word": "station",
+                  "start": 19.14,
+                  "end": 19.86,
+                  "confidence": 0.9724121,
+                  "punctuated_word": "station."
+                }
+              ],
+              "paragraphs": {
+                "transcript": "\nEvery Saturday, Daniel visits the Farmers Market near the old train station.",
+                "paragraphs": [
+                  {
+                    "sentences": [
+                      {
+                        "text": "Every Saturday, Daniel visits the Farmers Market near the old train station.",
+                        "start": 0.56,
+                        "end": 19.86
+                      }
+                    ],
+                    "num_words": 12,
+                    "start": 0.56,
+                    "end": 19.86
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "azure": [
+    {
+      "startSec": 0,
+      "endSec": 20.875,
+      "referenceText": "Every Saturday, Daniel visits the farmers' market near the old train station.",
+      "response": {
+        "RecognitionStatus": "Success",
+        "Offset": 3300000,
+        "Duration": 200500000,
+        "DisplayText": "Every Saturday, Daniel visits the farmers market near the old train station.",
+        "SNR": 44.44297,
+        "NBest": [
+          {
+            "Confidence": 0.9873504,
+            "Lexical": "every saturday daniel visits the farmers market near the old train station",
+            "ITN": "every saturday daniel visits the farmers market near the old train station",
+            "MaskedITN": "every saturday daniel visits the farmers market near the old train station",
+            "Display": "Every Saturday, Daniel visits the farmers market near the old train station.",
+            "AccuracyScore": 63,
+            "FluencyScore": 75,
+            "ProsodyScore": 78.8,
+            "CompletenessScore": 58,
+            "PronScore": 66.6,
+            "Words": [
+              {
+                "Word": "every",
+                "Offset": 3300000,
+                "Duration": 11200000,
+                "Confidence": 0,
+                "AccuracyScore": 46,
+                "ErrorType": "Mispronunciation",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": ["Monotone"],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.49330297
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "saturday",
+                "Offset": 19100000,
+                "Duration": 14500000,
+                "Confidence": 0,
+                "AccuracyScore": 64,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 0.62665784
+                      },
+                      "MissingBreak": {
+                        "Confidence": 0
+                      },
+                      "BreakLength": 4500000
+                    },
+                    "Intonation": {
+                      "ErrorTypes": ["Monotone"],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.49330297
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "daniel",
+                "Offset": 36500000,
+                "Duration": 12100000,
+                "Confidence": 0,
+                "AccuracyScore": 97,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 0.38992044
+                      },
+                      "MissingBreak": {
+                        "Confidence": 0
+                      },
+                      "BreakLength": 2800000
+                    },
+                    "Intonation": {
+                      "ErrorTypes": ["Monotone"],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.49330297
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "visits",
+                "Offset": 53900000,
+                "Duration": 14900000,
+                "Confidence": 0,
+                "AccuracyScore": 41,
+                "ErrorType": "Mispronunciation",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 0.7241379
+                      },
+                      "MissingBreak": {
+                        "Confidence": 0
+                      },
+                      "BreakLength": 5200000
+                    },
+                    "Intonation": {
+                      "ErrorTypes": ["Monotone"],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.49330297
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "the",
+                "Offset": 73900000,
+                "Duration": 8700000,
+                "Confidence": 0,
+                "AccuracyScore": 61,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 0.69628644
+                      },
+                      "MissingBreak": {
+                        "Confidence": 0
+                      },
+                      "BreakLength": 5000000
+                    },
+                    "Intonation": {
+                      "ErrorTypes": ["Monotone"],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.49330297
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "farmers",
+                "Offset": 87100000,
+                "Duration": 15100000,
+                "Confidence": 0,
+                "AccuracyScore": 68,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 0.6127321
+                      },
+                      "MissingBreak": {
+                        "Confidence": 0
+                      },
+                      "BreakLength": 4400000
+                    },
+                    "Intonation": {
+                      "ErrorTypes": ["Monotone"],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.49330297
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "market",
+                "Offset": 107100000,
+                "Duration": 13200000,
+                "Confidence": 0,
+                "AccuracyScore": 36,
+                "ErrorType": "Mispronunciation",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 0.668435
+                      },
+                      "MissingBreak": {
+                        "Confidence": 0
+                      },
+                      "BreakLength": 4800000
+                    },
+                    "Intonation": {
+                      "ErrorTypes": ["Monotone"],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.49330297
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "near",
+                "Offset": 125300000,
+                "Duration": 11700000,
+                "Confidence": 0,
+                "AccuracyScore": 91,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 0.6823607
+                      },
+                      "MissingBreak": {
+                        "Confidence": 0
+                      },
+                      "BreakLength": 4900000
+                    },
+                    "Intonation": {
+                      "ErrorTypes": ["Monotone"],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.49330297
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "the",
+                "Offset": 142900000,
+                "Duration": 7700000,
+                "Confidence": 0,
+                "AccuracyScore": 49,
+                "ErrorType": "Mispronunciation",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 0.8076923
+                      },
+                      "MissingBreak": {
+                        "Confidence": 0
+                      },
+                      "BreakLength": 5800000
+                    },
+                    "Intonation": {
+                      "ErrorTypes": ["Monotone"],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.49330297
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "old",
+                "Offset": 154900000,
+                "Duration": 11700000,
+                "Confidence": 0,
+                "AccuracyScore": 85,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 0.58488065
+                      },
+                      "MissingBreak": {
+                        "Confidence": 0
+                      },
+                      "BreakLength": 4200000
+                    },
+                    "Intonation": {
+                      "ErrorTypes": ["Monotone"],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.49330297
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "train",
+                "Offset": 171500000,
+                "Duration": 13700000,
+                "Confidence": 0,
+                "AccuracyScore": 91,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 0.668435
+                      },
+                      "MissingBreak": {
+                        "Confidence": 0
+                      },
+                      "BreakLength": 4800000
+                    },
+                    "Intonation": {
+                      "ErrorTypes": ["Monotone"],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.49330297
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "station",
+                "Offset": 188700000,
+                "Duration": 15100000,
+                "Confidence": 0,
+                "AccuracyScore": 30,
+                "ErrorType": "Mispronunciation",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 0.4734748
+                      },
+                      "MissingBreak": {
+                        "Confidence": 0
+                      },
+                      "BreakLength": 3400000
+                    },
+                    "Intonation": {
+                      "ErrorTypes": ["Monotone"],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.49330297
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

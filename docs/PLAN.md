@@ -10,10 +10,11 @@ finished test shows its result. Ends with a full test on staging with the real s
 (`STUB_SCORER` off on staging; the stub stays for CI). Gate B follows Sprint 4.
 Reuse the T0.5 spike code: `app/lib/deepgram.ts`, `azure.ts`, `azure-chunks.ts`, `align.ts`.
 
-- [ ] **T3.8 Audio fixture library** (first: the other tasks test against it)
-  - [ ] Fixture loader in `test/fixtures/`; every file checked as 16 kHz mono WAV
-  - [ ] Synthetic fixtures now (Azure neural voice, `npm run audio:instructions`-style script): clean, slow, skipped sentence, added words, silence, long full read; noise added in code
-  - [ ] Saved Deepgram and Azure responses per fixture, so integration tests run without live calls
+- [x] **T3.8 Audio fixture library** (first: the other tasks test against it)
+  - [x] Manifest and loader in `test/fixtures/fixtures.ts`; `test/fixtures.test.ts` checks every file is 16 kHz mono WAV, reference texts match the steps, responses are current
+  - [x] 20 synthetic fixtures (`npm run fixtures`, Azure neural voice): all 8 kinds for tests 1 and 4, clean + slow for tests 2 and 3; noise and silence made in code
+  - [x] Raw Deepgram response and one raw Azure response per chunk saved per fixture (`test/fixtures/responses/`)
+  - [x] Findings in `test/fixtures/README.md`: Azure REST stops at long pauses (check with recorded slow reads in T3.3); Deepgram homophones ("Four centuries")
   - [ ] Recorded fixtures by consenting adults: the 8 for tests 1 and 4, clean + slow for tests 2 and 3 (owner)
 - [ ] **T3.2 Deepgram client and metrics**
   - [ ] `nova-3`, `en-US`, `smart_format`; accuracy, WCPM (confidence ≥ 0.75 per minute of speech), fluency with similarity

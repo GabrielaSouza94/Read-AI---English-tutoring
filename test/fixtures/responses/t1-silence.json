@@ -1,0 +1,133 @@
+{
+  "fixtureId": "t1-silence",
+  "savedAt": "2026-11-07T13:23:18.395Z",
+  "deepgramUrl": "https://api.deepgram.com/v1/listen?model=nova-3&language=en-US&smart_format=true",
+  "deepgram": {
+    "metadata": {
+      "transaction_key": "deprecated",
+      "request_id": "01a1b62d-7da9-7e73-97cf-926ee20801e5",
+      "sha256": "f751fd7094be088dc785125e4a1a0222a17c2bd20469aa31728ca5e515ed5809",
+      "created": "2026-11-07T13:23:17.077Z",
+      "duration": 4,
+      "channels": 1,
+      "models": ["2187e11a-3532-4498-b076-81fa530bdd49"],
+      "model_info": {
+        "2187e11a-3532-4498-b076-81fa530bdd49": {
+          "name": "general-nova-3",
+          "version": "2025-07-31.0",
+          "arch": "nova-3"
+        }
+      }
+    },
+    "results": {
+      "channels": [
+        {
+          "alternatives": [
+            {
+              "transcript": "",
+              "confidence": 0,
+              "words": [],
+              "paragraphs": {
+                "transcript": "\n",
+                "paragraphs": []
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "azure": [
+    {
+      "startSec": 0,
+      "endSec": 4,
+      "referenceText": "Maria takes the bus to work every morning.",
+      "response": {
+        "RecognitionStatus": "Success",
+        "Offset": 0,
+        "Duration": 40000000,
+        "DisplayText": ".",
+        "SNR": 0,
+        "NBest": [
+          {
+            "Confidence": 0,
+            "Lexical": ".",
+            "ITN": ".",
+            "MaskedITN": ".",
+            "Display": ".",
+            "AccuracyScore": 0,
+            "FluencyScore": 0,
+            "CompletenessScore": 0,
+            "PronScore": 0,
+            "Words": [
+              {
+                "Word": "Maria",
+                "Offset": 0,
+                "Duration": 0,
+                "Confidence": 0,
+                "AccuracyScore": 0,
+                "ErrorType": "Omission"
+              },
+              {
+                "Word": "takes",
+                "Offset": 0,
+                "Duration": 0,
+                "Confidence": 0,
+                "AccuracyScore": 0,
+                "ErrorType": "Omission"
+              },
+              {
+                "Word": "the",
+                "Offset": 0,
+                "Duration": 0,
+                "Confidence": 0,
+                "AccuracyScore": 0,
+                "ErrorType": "Omission"
+              },
+              {
+                "Word": "bus",
+                "Offset": 0,
+                "Duration": 0,
+                "Confidence": 0,
+                "AccuracyScore": 0,
+                "ErrorType": "Omission"
+              },
+              {
+                "Word": "to",
+                "Offset": 0,
+                "Duration": 0,
+                "Confidence": 0,
+                "AccuracyScore": 0,
+                "ErrorType": "Omission"
+              },
+              {
+                "Word": "work",
+                "Offset": 0,
+                "Duration": 0,
+                "Confidence": 0,
+                "AccuracyScore": 0,
+                "ErrorType": "Omission"
+              },
+              {
+                "Word": "every",
+                "Offset": 0,
+                "Duration": 0,
+                "Confidence": 0,
+                "AccuracyScore": 0,
+                "ErrorType": "Omission"
+              },
+              {
+                "Word": "morning",
+                "Offset": 0,
+                "Duration": 0,
+                "Confidence": 0,
+                "AccuracyScore": 0,
+                "ErrorType": "Omission"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

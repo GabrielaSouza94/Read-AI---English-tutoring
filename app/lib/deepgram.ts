@@ -4,26 +4,29 @@
  */
 import { callWithRetry, type CallPolicy, ProviderError } from "./http";
 
-const ENDPOINT = "https://api.deepgram.com/v1/listen?model=nova-3&language=en&smart_format=false";
+/** The call T3.2 specifies; the saved fixture responses (T3.8) are made with the same URL. */
+export const DEEPGRAM_LISTEN_URL =
+  "https://api.deepgram.com/v1/listen?model=nova-3&language=en-US&smart_format=true";
 
 export type SpokenWord = { word: string; start: number; end: number; confidence: number };
 export type DeepgramResult = { transcript: string; words: SpokenWord[]; durationSec: number };
 
-type DeepgramResponse = {
+export type DeepgramResponse = {
   metadata?: { duration?: number };
   results?: {
     channels?: { alternatives?: { transcript?: string; words?: SpokenWord[] }[] }[];
   };
 };
 
-export async function transcribe(
+/** The raw Deepgram response (saved as a fixture by T3.8; parsed by `parseDeepgramResponse`). */
+export async function fetchTranscription(
   apiKey: string,
   wav: Uint8Array<ArrayBuffer>,
   policy: Partial<CallPolicy> = {},
-): Promise<DeepgramResult> {
+): Promise<DeepgramResponse> {
   const response = await callWithRetry(
     "deepgram",
-    ENDPOINT,
+    DEEPGRAM_LISTEN_URL,
     {
       method: "POST",
       headers: { Authorization: `Token ${apiKey}`, "Content-Type": "audio/wav" },
@@ -31,7 +34,14 @@ export async function transcribe(
     },
     { timeoutMs: 20_000, ...policy },
   );
-  const body = (await response.json()) as DeepgramResponse;
+  try {
+    return (await response.json()) as DeepgramResponse;
+  } catch {
+    throw new ProviderError("deepgram", "response is not valid JSON");
+  }
+}
+
+export function parseDeepgramResponse(body: DeepgramResponse): DeepgramResult {
   const best = body.results?.channels?.[0]?.alternatives?.[0];
   if (!best) throw new ProviderError("deepgram", "response has no transcript");
   return {
@@ -44,4 +54,12 @@ export async function transcribe(
     })),
     durationSec: body.metadata?.duration ?? 0,
   };
+}
+
+export async function transcribe(
+  apiKey: string,
+  wav: Uint8Array<ArrayBuffer>,
+  policy: Partial<CallPolicy> = {},
+): Promise<DeepgramResult> {
+  return parseDeepgramResponse(await fetchTranscription(apiKey, wav, policy));
 }

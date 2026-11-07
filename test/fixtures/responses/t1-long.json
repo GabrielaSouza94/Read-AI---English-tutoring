@@ -1,0 +1,2155 @@
+{
+  "fixtureId": "t1-long",
+  "savedAt": "2026-11-07T13:25:08.147Z",
+  "deepgramUrl": "https://api.deepgram.com/v1/listen?model=nova-3&language=en-US&smart_format=true",
+  "deepgram": {
+    "metadata": {
+      "transaction_key": "deprecated",
+      "request_id": "01a1b62f-18af-7d01-94b7-e18dae3006b6",
+      "sha256": "de051d807833e3a275b8b9d25663b24ac3491335800d0f627e6aad09ad4d139f",
+      "created": "2026-11-07T13:25:02.703Z",
+      "duration": 33.65019,
+      "channels": 1,
+      "models": ["2187e11a-3532-4498-b076-81fa530bdd49"],
+      "model_info": {
+        "2187e11a-3532-4498-b076-81fa530bdd49": {
+          "name": "general-nova-3",
+          "version": "2025-07-31.0",
+          "arch": "nova-3"
+        }
+      }
+    },
+    "results": {
+      "channels": [
+        {
+          "alternatives": [
+            {
+              "transcript": "Maria takes the bus to work every morning. Today, it is raining, so she brings her blue umbrella. At her stop, she runs to the office and forgets it on the seat. In the afternoon, the driver finds the umbrella and keeps it safe. The next day, he smiles and gives it back to her.",
+              "confidence": 1,
+              "words": [
+                {
+                  "word": "maria",
+                  "start": 0.48,
+                  "end": 1.12,
+                  "confidence": 1,
+                  "punctuated_word": "Maria"
+                },
+                {
+                  "word": "takes",
+                  "start": 1.12,
+                  "end": 1.5999999,
+                  "confidence": 1,
+                  "punctuated_word": "takes"
+                },
+                {
+                  "word": "the",
+                  "start": 1.5999999,
+                  "end": 1.92,
+                  "confidence": 1,
+                  "punctuated_word": "the"
+                },
+                {
+                  "word": "bus",
+                  "start": 1.92,
+                  "end": 2.48,
+                  "confidence": 1,
+                  "punctuated_word": "bus"
+                },
+                {
+                  "word": "to",
+                  "start": 2.48,
+                  "end": 2.8,
+                  "confidence": 1,
+                  "punctuated_word": "to"
+                },
+                {
+                  "word": "work",
+                  "start": 2.8,
+                  "end": 3.5199997,
+                  "confidence": 1,
+                  "punctuated_word": "work"
+                },
+                {
+                  "word": "every",
+                  "start": 3.52,
+                  "end": 4,
+                  "confidence": 1,
+                  "punctuated_word": "every"
+                },
+                {
+                  "word": "morning",
+                  "start": 4,
+                  "end": 4.88,
+                  "confidence": 1,
+                  "punctuated_word": "morning."
+                },
+                {
+                  "word": "today",
+                  "start": 5.68,
+                  "end": 6.3999996,
+                  "confidence": 0.93652344,
+                  "punctuated_word": "Today,"
+                },
+                {
+                  "word": "it",
+                  "start": 6.3999996,
+                  "end": 6.56,
+                  "confidence": 1,
+                  "punctuated_word": "it"
+                },
+                {
+                  "word": "is",
+                  "start": 6.56,
+                  "end": 6.7999997,
+                  "confidence": 1,
+                  "punctuated_word": "is"
+                },
+                {
+                  "word": "raining",
+                  "start": 6.7999997,
+                  "end": 7.68,
+                  "confidence": 0.9567871,
+                  "punctuated_word": "raining,"
+                },
+                {
+                  "word": "so",
+                  "start": 7.9199996,
+                  "end": 8.08,
+                  "confidence": 1,
+                  "punctuated_word": "so"
+                },
+                {
+                  "word": "she",
+                  "start": 8.08,
+                  "end": 8.48,
+                  "confidence": 1,
+                  "punctuated_word": "she"
+                },
+                {
+                  "word": "brings",
+                  "start": 8.48,
+                  "end": 8.96,
+                  "confidence": 1,
+                  "punctuated_word": "brings"
+                },
+                {
+                  "word": "her",
+                  "start": 8.96,
+                  "end": 9.36,
+                  "confidence": 1,
+                  "punctuated_word": "her"
+                },
+                {
+                  "word": "blue",
+                  "start": 9.36,
+                  "end": 9.84,
+                  "confidence": 1,
+                  "punctuated_word": "blue"
+                },
+                {
+                  "word": "umbrella",
+                  "start": 9.84,
+                  "end": 10.959999,
+                  "confidence": 0.98999023,
+                  "punctuated_word": "umbrella."
+                },
+                {
+                  "word": "at",
+                  "start": 11.759999,
+                  "end": 12,
+                  "confidence": 1,
+                  "punctuated_word": "At"
+                },
+                {
+                  "word": "her",
+                  "start": 12,
+                  "end": 12.32,
+                  "confidence": 1,
+                  "punctuated_word": "her"
+                },
+                {
+                  "word": "stop",
+                  "start": 12.32,
+                  "end": 12.88,
+                  "confidence": 1,
+                  "punctuated_word": "stop,"
+                },
+                {
+                  "word": "she",
+                  "start": 13.884999,
+                  "end": 14.205,
+                  "confidence": 1,
+                  "punctuated_word": "she"
+                },
+                {
+                  "word": "runs",
+                  "start": 14.205,
+                  "end": 14.684999,
+                  "confidence": 1,
+                  "punctuated_word": "runs"
+                },
+                {
+                  "word": "to",
+                  "start": 14.684999,
+                  "end": 15.004999,
+                  "confidence": 1,
+                  "punctuated_word": "to"
+                },
+                {
+                  "word": "the",
+                  "start": 15.004999,
+                  "end": 15.245,
+                  "confidence": 1,
+                  "punctuated_word": "the"
+                },
+                {
+                  "word": "office",
+                  "start": 15.245,
+                  "end": 16.045,
+                  "confidence": 1,
+                  "punctuated_word": "office"
+                },
+                {
+                  "word": "and",
+                  "start": 16.125,
+                  "end": 16.605,
+                  "confidence": 0.9892578,
+                  "punctuated_word": "and"
+                },
+                {
+                  "word": "forgets",
+                  "start": 16.605,
+                  "end": 17.324999,
+                  "confidence": 0.99560547,
+                  "punctuated_word": "forgets"
+                },
+                {
+                  "word": "it",
+                  "start": 17.324999,
+                  "end": 17.645,
+                  "confidence": 0.9716797,
+                  "punctuated_word": "it"
+                },
+                {
+                  "word": "on",
+                  "start": 17.645,
+                  "end": 17.885,
+                  "confidence": 1,
+                  "punctuated_word": "on"
+                },
+                {
+                  "word": "the",
+                  "start": 17.885,
+                  "end": 18.125,
+                  "confidence": 0.99902344,
+                  "punctuated_word": "the"
+                },
+                {
+                  "word": "seat",
+                  "start": 18.125,
+                  "end": 18.925,
+                  "confidence": 0.9995117,
+                  "punctuated_word": "seat."
+                },
+                {
+                  "word": "in",
+                  "start": 19.645,
+                  "end": 19.965,
+                  "confidence": 1,
+                  "punctuated_word": "In"
+                },
+                {
+                  "word": "the",
+                  "start": 19.965,
+                  "end": 20.125,
+                  "confidence": 1,
+                  "punctuated_word": "the"
+                },
+                {
+                  "word": "afternoon",
+                  "start": 20.125,
+                  "end": 21.164999,
+                  "confidence": 1,
+                  "punctuated_word": "afternoon,"
+                },
+                {
+                  "word": "the",
+                  "start": 21.645,
+                  "end": 22.044998,
+                  "confidence": 1,
+                  "punctuated_word": "the"
+                },
+                {
+                  "word": "driver",
+                  "start": 22.044998,
+                  "end": 22.925,
+                  "confidence": 1,
+                  "punctuated_word": "driver"
+                },
+                {
+                  "word": "finds",
+                  "start": 22.925,
+                  "end": 23.485,
+                  "confidence": 1,
+                  "punctuated_word": "finds"
+                },
+                {
+                  "word": "the",
+                  "start": 23.485,
+                  "end": 23.805,
+                  "confidence": 1,
+                  "punctuated_word": "the"
+                },
+                {
+                  "word": "umbrella",
+                  "start": 23.805,
+                  "end": 25.005,
+                  "confidence": 1,
+                  "punctuated_word": "umbrella"
+                },
+                {
+                  "word": "and",
+                  "start": 25.005,
+                  "end": 25.564999,
+                  "confidence": 0.9970703,
+                  "punctuated_word": "and"
+                },
+                {
+                  "word": "keeps",
+                  "start": 25.564999,
+                  "end": 25.965,
+                  "confidence": 1,
+                  "punctuated_word": "keeps"
+                },
+                {
+                  "word": "it",
+                  "start": 25.965,
+                  "end": 26.285,
+                  "confidence": 0.99902344,
+                  "punctuated_word": "it"
+                },
+                {
+                  "word": "safe",
+                  "start": 26.285,
+                  "end": 26.765,
+                  "confidence": 1,
+                  "punctuated_word": "safe."
+                },
+                {
+                  "word": "the",
+                  "start": 27.975187,
+                  "end": 28.295187,
+                  "confidence": 1,
+                  "punctuated_word": "The"
+                },
+                {
+                  "word": "next",
+                  "start": 28.295187,
+                  "end": 28.615189,
+                  "confidence": 1,
+                  "punctuated_word": "next"
+                },
+                {
+                  "word": "day",
+                  "start": 28.615189,
+                  "end": 29.255188,
+                  "confidence": 0.9848633,
+                  "punctuated_word": "day,"
+                },
+                {
+                  "word": "he",
+                  "start": 29.255188,
+                  "end": 29.575188,
+                  "confidence": 1,
+                  "punctuated_word": "he"
+                },
+                {
+                  "word": "smiles",
+                  "start": 29.575188,
+                  "end": 30.775187,
+                  "confidence": 0.9995117,
+                  "punctuated_word": "smiles"
+                },
+                {
+                  "word": "and",
+                  "start": 30.935188,
+                  "end": 31.335188,
+                  "confidence": 0.9941406,
+                  "punctuated_word": "and"
+                },
+                {
+                  "word": "gives",
+                  "start": 31.335188,
+                  "end": 31.815187,
+                  "confidence": 1,
+                  "punctuated_word": "gives"
+                },
+                {
+                  "word": "it",
+                  "start": 31.815187,
+                  "end": 32.055187,
+                  "confidence": 1,
+                  "punctuated_word": "it"
+                },
+                {
+                  "word": "back",
+                  "start": 32.055187,
+                  "end": 32.375187,
+                  "confidence": 1,
+                  "punctuated_word": "back"
+                },
+                {
+                  "word": "to",
+                  "start": 32.375187,
+                  "end": 32.61519,
+                  "confidence": 1,
+                  "punctuated_word": "to"
+                },
+                {
+                  "word": "her",
+                  "start": 32.61519,
+                  "end": 32.855186,
+                  "confidence": 0.9980469,
+                  "punctuated_word": "her."
+                }
+              ],
+              "paragraphs": {
+                "transcript": "\nMaria takes the bus to work every morning. Today, it is raining, so she brings her blue umbrella. At her stop, she runs to the office and forgets it on the seat. In the afternoon, the driver finds the umbrella and keeps it safe. The next day, he smiles and gives it back to her.",
+                "paragraphs": [
+                  {
+                    "sentences": [
+                      {
+                        "text": "Maria takes the bus to work every morning.",
+                        "start": 0.48,
+                        "end": 4.88
+                      },
+                      {
+                        "text": "Today, it is raining, so she brings her blue umbrella.",
+                        "start": 5.68,
+                        "end": 10.959999
+                      },
+                      {
+                        "text": "At her stop, she runs to the office and forgets it on the seat.",
+                        "start": 11.759999,
+                        "end": 18.925
+                      },
+                      {
+                        "text": "In the afternoon, the driver finds the umbrella and keeps it safe.",
+                        "start": 19.645,
+                        "end": 26.765
+                      },
+                      {
+                        "text": "The next day, he smiles and gives it back to her.",
+                        "start": 27.975187,
+                        "end": 32.855186
+                      }
+                    ],
+                    "num_words": 55,
+                    "start": 0.48,
+                    "end": 32.855186
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "azure": [
+    {
+      "startSec": 0,
+      "endSec": 19.285,
+      "referenceText": "Maria takes the bus to work every morning. Today it is raining, so she brings her blue umbrella. At her stop, she runs to the office and forgets it on the seat.",
+      "response": {
+        "RecognitionStatus": "Success",
+        "Offset": 2900000,
+        "Duration": 186900000,
+        "DisplayText": "Maria takes the bus to work every morning. Today it is raining, so she brings her blue umbrella at her stop. She runs to the office and forgets it on the seat.",
+        "SNR": 40.55065,
+        "NBest": [
+          {
+            "Confidence": 0.98732835,
+            "Lexical": "maria takes the bus to work every morning today it is raining so she brings her blue umbrella at her stop she runs to the office and forgets it on the seat",
+            "ITN": "maria takes the bus to work every morning today it is raining so she brings her blue umbrella at her stop she runs to the office and forgets it on the seat",
+            "MaskedITN": "maria takes the bus to work every morning today it is raining so she brings her blue umbrella at her stop she runs to the office and forgets it on the seat",
+            "Display": "Maria takes the bus to work every morning. Today it is raining, so she brings her blue umbrella at her stop. She runs to the office and forgets it on the seat.",
+            "AccuracyScore": 91,
+            "FluencyScore": 91,
+            "ProsodyScore": 87.9,
+            "CompletenessScore": 91,
+            "PronScore": 89.8,
+            "Words": [
+              {
+                "Word": "maria",
+                "Offset": 2900000,
+                "Duration": 8300000,
+                "Confidence": 0,
+                "AccuracyScore": 94,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.55069005
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "takes",
+                "Offset": 11300000,
+                "Duration": 5300000,
+                "Confidence": 0,
+                "AccuracyScore": 94,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 2.5175645e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.55069005
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "the",
+                "Offset": 16700000,
+                "Duration": 1700000,
+                "Confidence": 0,
+                "AccuracyScore": 94,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 2.5175645e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.55069005
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "bus",
+                "Offset": 18500000,
+                "Duration": 6100000,
+                "Confidence": 0,
+                "AccuracyScore": 100,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 2.5175645e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.55069005
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "to",
+                "Offset": 24700000,
+                "Duration": 2900000,
+                "Confidence": 0,
+                "AccuracyScore": 91,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 2.5175645e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.55069005
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "work",
+                "Offset": 27700000,
+                "Duration": 5600000,
+                "Confidence": 0,
+                "AccuracyScore": 82,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 2.5175645e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.55069005
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "every",
+                "Offset": 34300000,
+                "Duration": 5500000,
+                "Confidence": 0,
+                "AccuracyScore": 91,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 0.22658081
+                      },
+                      "MissingBreak": {
+                        "Confidence": 0
+                      },
+                      "BreakLength": 900000
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.55069005
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "morning",
+                "Offset": 39900000,
+                "Duration": 10700000,
+                "Confidence": 0,
+                "AccuracyScore": 61,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 2.5175645e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.55069005
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "today",
+                "Offset": 55700000,
+                "Duration": 7800000,
+                "Confidence": 0,
+                "AccuracyScore": 53,
+                "ErrorType": "Mispronunciation",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 1.2587821
+                      },
+                      "MissingBreak": {
+                        "Confidence": 0
+                      },
+                      "BreakLength": 5000000
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.55069005
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "it",
+                "Offset": 63600000,
+                "Duration": 1600000,
+                "Confidence": 0,
+                "AccuracyScore": 100,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 2.5175645e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.55069005
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "is",
+                "Offset": 65300000,
+                "Duration": 2500000,
+                "Confidence": 0,
+                "AccuracyScore": 97,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 2.5175645e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.55069005
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "raining",
+                "Offset": 67900000,
+                "Duration": 8900000,
+                "Confidence": 0,
+                "AccuracyScore": 94,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 2.5175645e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.55069005
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "so",
+                "Offset": 77100000,
+                "Duration": 3500000,
+                "Confidence": 0,
+                "AccuracyScore": 97,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 0.05035131
+                      },
+                      "MissingBreak": {
+                        "Confidence": 0.97482437
+                      },
+                      "BreakLength": 200000
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.55069005
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "she",
+                "Offset": 80700000,
+                "Duration": 3700000,
+                "Confidence": 0,
+                "AccuracyScore": 97,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 2.5175645e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.55069005
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "brings",
+                "Offset": 84500000,
+                "Duration": 5500000,
+                "Confidence": 0,
+                "AccuracyScore": 94,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 2.5175645e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.55069005
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "her",
+                "Offset": 90100000,
+                "Duration": 2900000,
+                "Confidence": 0,
+                "AccuracyScore": 100,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 2.5175645e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.55069005
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "blue",
+                "Offset": 93100000,
+                "Duration": 5500000,
+                "Confidence": 0,
+                "AccuracyScore": 100,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 2.5175645e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.55069005
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "umbrella",
+                "Offset": 98700000,
+                "Duration": 11100000,
+                "Confidence": 0,
+                "AccuracyScore": 94,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 2.5175645e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.55069005
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "at",
+                "Offset": 116600000,
+                "Duration": 3200000,
+                "Confidence": 0,
+                "AccuracyScore": 97,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 1.6867682
+                      },
+                      "MissingBreak": {
+                        "Confidence": 0
+                      },
+                      "BreakLength": 6700000
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.55069005
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "her",
+                "Offset": 119900000,
+                "Duration": 2900000,
+                "Confidence": 0,
+                "AccuracyScore": 97,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 2.5175645e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.55069005
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "stop",
+                "Offset": 122900000,
+                "Duration": 10000000,
+                "Confidence": 0,
+                "AccuracyScore": 94,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 2.5175645e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.55069005
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "she",
+                "Offset": 136200000,
+                "Duration": 5200000,
+                "Confidence": 0,
+                "AccuracyScore": 46,
+                "ErrorType": "Mispronunciation",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 0.8056206
+                      },
+                      "MissingBreak": {
+                        "Confidence": 0
+                      },
+                      "BreakLength": 3200000
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.55069005
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "runs",
+                "Offset": 141500000,
+                "Duration": 5900000,
+                "Confidence": 0,
+                "AccuracyScore": 100,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 2.5175645e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.55069005
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "to",
+                "Offset": 147500000,
+                "Duration": 1900000,
+                "Confidence": 0,
+                "AccuracyScore": 97,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 2.5175645e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.55069005
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "the",
+                "Offset": 149500000,
+                "Duration": 2800000,
+                "Confidence": 0,
+                "AccuracyScore": 94,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 2.5175645e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.55069005
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "office",
+                "Offset": 152400000,
+                "Duration": 9800000,
+                "Confidence": 0,
+                "AccuracyScore": 94,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 2.5175645e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.55069005
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "and",
+                "Offset": 162500000,
+                "Duration": 3700000,
+                "Confidence": 0,
+                "AccuracyScore": 55,
+                "ErrorType": "Mispronunciation",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 0.05035131
+                      },
+                      "MissingBreak": {
+                        "Confidence": 0.97482437
+                      },
+                      "BreakLength": 200000
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.55069005
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "forgets",
+                "Offset": 166300000,
+                "Duration": 8300000,
+                "Confidence": 0,
+                "AccuracyScore": 100,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 2.5175645e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.55069005
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "it",
+                "Offset": 174700000,
+                "Duration": 1700000,
+                "Confidence": 0,
+                "AccuracyScore": 100,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 2.5175645e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.55069005
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "on",
+                "Offset": 176500000,
+                "Duration": 2500000,
+                "Confidence": 0,
+                "AccuracyScore": 97,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 2.5175645e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.55069005
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "the",
+                "Offset": 179100000,
+                "Duration": 1700000,
+                "Confidence": 0,
+                "AccuracyScore": 94,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 2.5175645e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.55069005
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "seat",
+                "Offset": 180900000,
+                "Duration": 8900000,
+                "Confidence": 0,
+                "AccuracyScore": 100,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 2.5175645e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.55069005
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "startSec": 19.285,
+      "endSec": 33.605186,
+      "referenceText": "In the afternoon, the driver finds the umbrella and keeps it safe. The next day, he smiles and gives it back to her.",
+      "response": {
+        "RecognitionStatus": "Success",
+        "Offset": 3000000,
+        "Duration": 135700000,
+        "DisplayText": "In the afternoon, the driver finds the umbrella and keeps it safe. The next day, he smiles and gives it back to her.",
+        "SNR": 38.242752,
+        "NBest": [
+          {
+            "Confidence": 0.9875981,
+            "Lexical": "in the afternoon the driver finds the umbrella and keeps it safe the next day he smiles and gives it back to her",
+            "ITN": "in the afternoon the driver finds the umbrella and keeps it safe the next day he smiles and gives it back to her",
+            "MaskedITN": "in the afternoon the driver finds the umbrella and keeps it safe the next day he smiles and gives it back to her",
+            "Display": "In the afternoon, the driver finds the umbrella and keeps it safe. The next day, he smiles and gives it back to her.",
+            "AccuracyScore": 94,
+            "FluencyScore": 94,
+            "ProsodyScore": 87.7,
+            "CompletenessScore": 100,
+            "PronScore": 92.7,
+            "Words": [
+              {
+                "Word": "in",
+                "Offset": 3000000,
+                "Duration": 2900000,
+                "Confidence": 0,
+                "AccuracyScore": 94,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": ["Monotone"],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.49387014
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "the",
+                "Offset": 6000000,
+                "Duration": 1500000,
+                "Confidence": 0,
+                "AccuracyScore": 91,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 2.1857923e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": ["Monotone"],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.49387014
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "afternoon",
+                "Offset": 7600000,
+                "Duration": 14500000,
+                "Confidence": 0,
+                "AccuracyScore": 94,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 2.1857923e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": ["Monotone"],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.49387014
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "the",
+                "Offset": 23900000,
+                "Duration": 2200000,
+                "Confidence": 0,
+                "AccuracyScore": 94,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 0.37158474
+                      },
+                      "MissingBreak": {
+                        "Confidence": 0
+                      },
+                      "BreakLength": 1700000
+                    },
+                    "Intonation": {
+                      "ErrorTypes": ["Monotone"],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.49387014
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "driver",
+                "Offset": 26200000,
+                "Duration": 9100000,
+                "Confidence": 0,
+                "AccuracyScore": 94,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 2.1857923e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": ["Monotone"],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.49387014
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "finds",
+                "Offset": 35400000,
+                "Duration": 7100000,
+                "Confidence": 0,
+                "AccuracyScore": 100,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 2.1857923e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": ["Monotone"],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.49387014
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "the",
+                "Offset": 42600000,
+                "Duration": 2700000,
+                "Confidence": 0,
+                "AccuracyScore": 94,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 2.1857923e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": ["Monotone"],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.49387014
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "umbrella",
+                "Offset": 45400000,
+                "Duration": 12000000,
+                "Confidence": 0,
+                "AccuracyScore": 91,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 2.1857923e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": ["Monotone"],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.49387014
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "and",
+                "Offset": 57700000,
+                "Duration": 4400000,
+                "Confidence": 0,
+                "AccuracyScore": 88,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 0.04371587
+                      },
+                      "MissingBreak": {
+                        "Confidence": 0.9781421
+                      },
+                      "BreakLength": 200000
+                    },
+                    "Intonation": {
+                      "ErrorTypes": ["Monotone"],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.49387014
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "keeps",
+                "Offset": 62200000,
+                "Duration": 5500000,
+                "Confidence": 0,
+                "AccuracyScore": 73,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 2.1857923e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": ["Monotone"],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.49387014
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "it",
+                "Offset": 67800000,
+                "Duration": 2300000,
+                "Confidence": 0,
+                "AccuracyScore": 100,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 2.1857923e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": ["Monotone"],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.49387014
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "safe",
+                "Offset": 70200000,
+                "Duration": 9900000,
+                "Confidence": 0,
+                "AccuracyScore": 91,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 2.1857923e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": ["Monotone"],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.49387014
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "the",
+                "Offset": 85800000,
+                "Duration": 3300000,
+                "Confidence": 0,
+                "AccuracyScore": 88,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 1.2240437
+                      },
+                      "MissingBreak": {
+                        "Confidence": 0
+                      },
+                      "BreakLength": 5600000
+                    },
+                    "Intonation": {
+                      "ErrorTypes": ["Monotone"],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.49387014
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "next",
+                "Offset": 89200000,
+                "Duration": 4900000,
+                "Confidence": 0,
+                "AccuracyScore": 97,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 2.1857923e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": ["Monotone"],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.49387014
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "day",
+                "Offset": 94200000,
+                "Duration": 4700000,
+                "Confidence": 0,
+                "AccuracyScore": 97,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 2.1857923e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": ["Monotone"],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.49387014
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "he",
+                "Offset": 99000000,
+                "Duration": 3700000,
+                "Confidence": 0,
+                "AccuracyScore": 94,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 2.1857923e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": ["Monotone"],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.49387014
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "smiles",
+                "Offset": 102800000,
+                "Duration": 13500000,
+                "Confidence": 0,
+                "AccuracyScore": 97,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 2.1857923e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": ["Monotone"],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.49387014
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "and",
+                "Offset": 116600000,
+                "Duration": 4700000,
+                "Confidence": 0,
+                "AccuracyScore": 85,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 0.04371587
+                      },
+                      "MissingBreak": {
+                        "Confidence": 0.9781421
+                      },
+                      "BreakLength": 200000
+                    },
+                    "Intonation": {
+                      "ErrorTypes": ["Monotone"],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.49387014
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "gives",
+                "Offset": 121400000,
+                "Duration": 3900000,
+                "Confidence": 0,
+                "AccuracyScore": 100,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 2.1857923e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": ["Monotone"],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.49387014
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "it",
+                "Offset": 125400000,
+                "Duration": 2100000,
+                "Confidence": 0,
+                "AccuracyScore": 100,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 2.1857923e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": ["Monotone"],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.49387014
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "back",
+                "Offset": 127600000,
+                "Duration": 3900000,
+                "Confidence": 0,
+                "AccuracyScore": 97,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 2.1857923e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": ["Monotone"],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.49387014
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "to",
+                "Offset": 131600000,
+                "Duration": 1700000,
+                "Confidence": 0,
+                "AccuracyScore": 100,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 2.1857923e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": ["Monotone"],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.49387014
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "her",
+                "Offset": 133400000,
+                "Duration": 5300000,
+                "Confidence": 0,
+                "AccuracyScore": 97,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 2.1857923e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": ["Monotone"],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.49387014
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

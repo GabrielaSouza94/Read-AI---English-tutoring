@@ -37,7 +37,11 @@
     "app/lib/test-session.ts",
     "app/lib/assessment.ts",
     "app/lib/recorder-machine.ts",
-    "app/lib/wav.ts"
+    "app/lib/wav.ts",
+    "app/lib/deepgram.ts",
+    "app/lib/azure.ts",
+    "app/lib/azure-chunks.ts",
+    "app/lib/align.ts"
   ],
   "compilerOptions": {
     "composite": true,

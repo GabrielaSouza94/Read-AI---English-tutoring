@@ -7,13 +7,13 @@
  * AZURE_SPEECH_KEY and AZURE_SPEECH_REGION come from the environment, or else from .dev.vars.
  * The key is never printed.
  */
-import { existsSync, mkdirSync, writeFileSync } from "node:fs";
+import { mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 
-import { callWithRetry, ProviderError } from "../app/lib/http";
+import { ProviderError } from "../app/lib/http";
+import { loadAzureSpeech, ssml, synthesise } from "./lib/azure-tts";
 
-const ROOT = join(import.meta.dirname, "..");
-const OUT_DIR = join(ROOT, "public", "audio");
+const OUT_DIR = join(import.meta.dirname, "..", "public", "audio");
 
 /** File name → what the voice says. Plain adult tone (TR-07). */
 export const INSTRUCTIONS = {
@@ -21,39 +21,9 @@ export const INSTRUCTIONS = {
     "Some words are highlighted. Click each one to mark it as reviewed. Then record the text again.",
 };
 
-const VOICE = "en-US-AvaNeural";
-const RATE = "-5%";
-
-const devVars = join(ROOT, ".dev.vars");
-if (!process.env.AZURE_SPEECH_KEY && existsSync(devVars)) process.loadEnvFile(devVars);
-const key = process.env.AZURE_SPEECH_KEY;
-const region = process.env.AZURE_SPEECH_REGION;
-
-const escapeXml = (text: string) =>
-  text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-
-async function synthesise(text: string): Promise<Uint8Array> {
-  const ssml = `<speak version="1.0" xml:lang="en-US"><voice name="${VOICE}"><prosody rate="${RATE}">${escapeXml(text)}</prosody></voice></speak>`;
-  const response = await callWithRetry(
-    "azure-tts",
-    `https://${region}.tts.speech.microsoft.com/cognitiveservices/v1`,
-    {
-      method: "POST",
-      headers: {
-        "Ocp-Apim-Subscription-Key": key ?? "",
-        "Content-Type": "application/ssml+xml",
-        "X-Microsoft-OutputFormat": "audio-24khz-48kbitrate-mono-mp3",
-        "User-Agent": "read-ai-instruction-audio",
-      },
-      body: ssml,
-    },
-    { timeoutMs: 20_000 },
-  );
-  return new Uint8Array(await response.arrayBuffer());
-}
-
 async function main() {
-  if (!key || !region) {
+  const account = loadAzureSpeech();
+  if (!account) {
     console.error(
       "AZURE_SPEECH_KEY and AZURE_SPEECH_REGION must be set (environment or .dev.vars).",
     );
@@ -62,7 +32,11 @@ async function main() {
   }
   mkdirSync(OUT_DIR, { recursive: true });
   for (const [file, text] of Object.entries(INSTRUCTIONS)) {
-    const audio = await synthesise(text);
+    const audio = await synthesise(
+      account,
+      ssml(text, { rate: "-5%" }),
+      "audio-24khz-48kbitrate-mono-mp3",
+    );
     writeFileSync(join(OUT_DIR, file), audio);
     console.log(`public/audio/${file}: ${audio.length} bytes`);
   }

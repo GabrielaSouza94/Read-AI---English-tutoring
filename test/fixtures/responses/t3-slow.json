@@ -1,0 +1,618 @@
+{
+  "fixtureId": "t3-slow",
+  "savedAt": "2026-11-07T13:25:52.977Z",
+  "deepgramUrl": "https://api.deepgram.com/v1/listen?model=nova-3&language=en-US&smart_format=true",
+  "deepgram": {
+    "metadata": {
+      "transaction_key": "deprecated",
+      "request_id": "01a1b62f-c514-7550-8fcb-bbfaacad495b",
+      "sha256": "78518701d7a3b3d9af2f0bcda21e24fa7dedb284d93d3b8a1ada51e52fc2834a",
+      "created": "2026-11-07T13:25:46.813Z",
+      "duration": 26.075,
+      "channels": 1,
+      "models": ["2187e11a-3532-4498-b076-81fa530bdd49"],
+      "model_info": {
+        "2187e11a-3532-4498-b076-81fa530bdd49": {
+          "name": "general-nova-3",
+          "version": "2025-07-31.0",
+          "arch": "nova-3"
+        }
+      }
+    },
+    "results": {
+      "channels": [
+        {
+          "alternatives": [
+            {
+              "transcript": "Although most of the city was asleep, The hospital's emergency department remained surprisingly busy.",
+              "confidence": 0.99902344,
+              "words": [
+                {
+                  "word": "although",
+                  "start": 0.48,
+                  "end": 1.28,
+                  "confidence": 0.99609375,
+                  "punctuated_word": "Although"
+                },
+                {
+                  "word": "most",
+                  "start": 2.1599998,
+                  "end": 2.9599998,
+                  "confidence": 0.94140625,
+                  "punctuated_word": "most"
+                },
+                {
+                  "word": "of",
+                  "start": 3.84,
+                  "end": 4.56,
+                  "confidence": 1,
+                  "punctuated_word": "of"
+                },
+                {
+                  "word": "the",
+                  "start": 5.44,
+                  "end": 6.08,
+                  "confidence": 0.99902344,
+                  "punctuated_word": "the"
+                },
+                {
+                  "word": "city",
+                  "start": 6.7999997,
+                  "end": 7.6,
+                  "confidence": 1,
+                  "punctuated_word": "city"
+                },
+                {
+                  "word": "was",
+                  "start": 8.48,
+                  "end": 9.28,
+                  "confidence": 1,
+                  "punctuated_word": "was"
+                },
+                {
+                  "word": "asleep",
+                  "start": 10.08,
+                  "end": 10.96,
+                  "confidence": 0.9941406,
+                  "punctuated_word": "asleep,"
+                },
+                {
+                  "word": "the",
+                  "start": 12.415,
+                  "end": 13.215,
+                  "confidence": 1,
+                  "punctuated_word": "The"
+                },
+                {
+                  "word": "hospital's",
+                  "start": 13.935,
+                  "end": 15.215,
+                  "confidence": 0.9863281,
+                  "punctuated_word": "hospital's"
+                },
+                {
+                  "word": "emergency",
+                  "start": 16.095001,
+                  "end": 17.295,
+                  "confidence": 0.9716797,
+                  "punctuated_word": "emergency"
+                },
+                {
+                  "word": "department",
+                  "start": 18.415,
+                  "end": 19.295,
+                  "confidence": 1,
+                  "punctuated_word": "department"
+                },
+                {
+                  "word": "remained",
+                  "start": 20.335,
+                  "end": 21.375,
+                  "confidence": 1,
+                  "punctuated_word": "remained"
+                },
+                {
+                  "word": "surprisingly",
+                  "start": 22.494999,
+                  "end": 23.855,
+                  "confidence": 0.97265625,
+                  "punctuated_word": "surprisingly"
+                },
+                {
+                  "word": "busy",
+                  "start": 24.654999,
+                  "end": 25.215,
+                  "confidence": 0.9824219,
+                  "punctuated_word": "busy."
+                }
+              ],
+              "paragraphs": {
+                "transcript": "\nAlthough most of the city was asleep, The hospital's emergency department remained surprisingly busy.",
+                "paragraphs": [
+                  {
+                    "sentences": [
+                      {
+                        "text": "Although most of the city was asleep, The hospital's emergency department remained surprisingly busy.",
+                        "start": 0.48,
+                        "end": 25.215
+                      }
+                    ],
+                    "num_words": 14,
+                    "start": 0.48,
+                    "end": 25.215
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "azure": [
+    {
+      "startSec": 0,
+      "endSec": 24.2549995,
+      "referenceText": "Although most of the city was asleep, the hospital's emergency department remained surprisingly",
+      "response": {
+        "RecognitionStatus": "Success",
+        "Offset": 3500000,
+        "Duration": 236700000,
+        "DisplayText": "Although most of the city was asleep, the hospital's emergency department remained, surprisingly.",
+        "SNR": 44.68262,
+        "NBest": [
+          {
+            "Confidence": 0.99205256,
+            "Lexical": "although most of the city was asleep the hospital's emergency department remained surprisingly",
+            "ITN": "although most of the city was asleep the hospital's emergency department remained surprisingly",
+            "MaskedITN": "although most of the city was asleep the hospital's emergency department remained surprisingly",
+            "Display": "Although most of the city was asleep, the hospital's emergency department remained, surprisingly.",
+            "AccuracyScore": 75,
+            "FluencyScore": 75,
+            "ProsodyScore": 80.2,
+            "CompletenessScore": 77,
+            "PronScore": 76.4,
+            "Words": [
+              {
+                "Word": "although",
+                "Offset": 3500000,
+                "Duration": 12500000,
+                "Confidence": 0,
+                "AccuracyScore": 91,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": ["Monotone"],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.44859555
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "most",
+                "Offset": 19100000,
+                "Duration": 12600000,
+                "Confidence": 0,
+                "AccuracyScore": 85,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 0.43820226
+                      },
+                      "MissingBreak": {
+                        "Confidence": 0
+                      },
+                      "BreakLength": 3000000
+                    },
+                    "Intonation": {
+                      "ErrorTypes": ["Monotone"],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.44859555
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "of",
+                "Offset": 37400000,
+                "Duration": 11400000,
+                "Confidence": 0,
+                "AccuracyScore": 79,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 0.8179775
+                      },
+                      "MissingBreak": {
+                        "Confidence": 0
+                      },
+                      "BreakLength": 5600000
+                    },
+                    "Intonation": {
+                      "ErrorTypes": ["Monotone"],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.44859555
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "the",
+                "Offset": 52500000,
+                "Duration": 8500000,
+                "Confidence": 0,
+                "AccuracyScore": 63,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 0.52584267
+                      },
+                      "MissingBreak": {
+                        "Confidence": 0
+                      },
+                      "BreakLength": 3600000
+                    },
+                    "Intonation": {
+                      "ErrorTypes": ["Monotone"],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.44859555
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "city",
+                "Offset": 65100000,
+                "Duration": 13300000,
+                "Confidence": 0,
+                "AccuracyScore": 97,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 0.58426964
+                      },
+                      "MissingBreak": {
+                        "Confidence": 0
+                      },
+                      "BreakLength": 4000000
+                    },
+                    "Intonation": {
+                      "ErrorTypes": ["Monotone"],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.44859555
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "was",
+                "Offset": 82500000,
+                "Duration": 12300000,
+                "Confidence": 0,
+                "AccuracyScore": 76,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 0.58426964
+                      },
+                      "MissingBreak": {
+                        "Confidence": 0
+                      },
+                      "BreakLength": 4000000
+                    },
+                    "Intonation": {
+                      "ErrorTypes": ["Monotone"],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.44859555
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "asleep",
+                "Offset": 100900000,
+                "Duration": 14200000,
+                "Confidence": 0,
+                "AccuracyScore": 91,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 0.87640446
+                      },
+                      "MissingBreak": {
+                        "Confidence": 0
+                      },
+                      "BreakLength": 6000000
+                    },
+                    "Intonation": {
+                      "ErrorTypes": ["Monotone"],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.44859555
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "the",
+                "Offset": 123300000,
+                "Duration": 8500000,
+                "Confidence": 0,
+                "AccuracyScore": 62,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 1.183146
+                      },
+                      "MissingBreak": {
+                        "Confidence": 0
+                      },
+                      "BreakLength": 8100000
+                    },
+                    "Intonation": {
+                      "ErrorTypes": ["Monotone"],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.44859555
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "hospital's",
+                "Offset": 135900000,
+                "Duration": 16700000,
+                "Confidence": 0,
+                "AccuracyScore": 94,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 0.58426964
+                      },
+                      "MissingBreak": {
+                        "Confidence": 0
+                      },
+                      "BreakLength": 4000000
+                    },
+                    "Intonation": {
+                      "ErrorTypes": ["Monotone"],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.44859555
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "emergency",
+                "Offset": 158500000,
+                "Duration": 16500000,
+                "Confidence": 0,
+                "AccuracyScore": 58,
+                "ErrorType": "Mispronunciation",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 0.847191
+                      },
+                      "MissingBreak": {
+                        "Confidence": 0
+                      },
+                      "BreakLength": 5800000
+                    },
+                    "Intonation": {
+                      "ErrorTypes": ["Monotone"],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.44859555
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "department",
+                "Offset": 180300000,
+                "Duration": 15400000,
+                "Confidence": 0,
+                "AccuracyScore": 85,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 0.7595506
+                      },
+                      "MissingBreak": {
+                        "Confidence": 0
+                      },
+                      "BreakLength": 5200000
+                    },
+                    "Intonation": {
+                      "ErrorTypes": ["Monotone"],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.44859555
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "remained",
+                "Offset": 200500000,
+                "Duration": 16100000,
+                "Confidence": 0,
+                "AccuracyScore": 46,
+                "ErrorType": "Mispronunciation",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 0.6865168
+                      },
+                      "MissingBreak": {
+                        "Confidence": 0
+                      },
+                      "BreakLength": 4700000
+                    },
+                    "Intonation": {
+                      "ErrorTypes": ["Monotone"],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.44859555
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "surprisingly",
+                "Offset": 221500000,
+                "Duration": 18700000,
+                "Confidence": 0,
+                "AccuracyScore": 42,
+                "ErrorType": "Mispronunciation",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 0.7011236
+                      },
+                      "MissingBreak": {
+                        "Confidence": 0
+                      },
+                      "BreakLength": 4800000
+                    },
+                    "Intonation": {
+                      "ErrorTypes": ["Monotone"],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.44859555
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "startSec": 24.2549995,
+      "endSec": 25.965,
+      "referenceText": "busy.",
+      "response": {
+        "RecognitionStatus": "Success",
+        "Offset": 3800000,
+        "Duration": 11100000,
+        "DisplayText": "Busy.",
+        "SNR": 39.521927,
+        "NBest": [
+          {
+            "Confidence": 0.9780602,
+            "Lexical": "busy",
+            "ITN": "busy",
+            "MaskedITN": "busy",
+            "Display": "Busy.",
+            "AccuracyScore": 90,
+            "FluencyScore": 100,
+            "ProsodyScore": 70,
+            "CompletenessScore": 100,
+            "PronScore": 86,
+            "Words": [
+              {
+                "Word": "busy",
+                "Offset": 3800000,
+                "Duration": 11100000,
+                "Confidence": 0,
+                "AccuracyScore": 90,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.5323563
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

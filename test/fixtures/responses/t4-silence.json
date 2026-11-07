@@ -1,0 +1,197 @@
+{
+  "fixtureId": "t4-silence",
+  "savedAt": "2026-11-07T13:24:32.539Z",
+  "deepgramUrl": "https://api.deepgram.com/v1/listen?model=nova-3&language=en-US&smart_format=true",
+  "deepgram": {
+    "metadata": {
+      "transaction_key": "deprecated",
+      "request_id": "01a1b62e-9e7a-7dc2-ae6f-ae3b85a49813",
+      "sha256": "f751fd7094be088dc785125e4a1a0222a17c2bd20469aa31728ca5e515ed5809",
+      "created": "2026-11-07T13:24:31.249Z",
+      "duration": 4,
+      "channels": 1,
+      "models": ["2187e11a-3532-4498-b076-81fa530bdd49"],
+      "model_info": {
+        "2187e11a-3532-4498-b076-81fa530bdd49": {
+          "name": "general-nova-3",
+          "version": "2025-07-31.0",
+          "arch": "nova-3"
+        }
+      }
+    },
+    "results": {
+      "channels": [
+        {
+          "alternatives": [
+            {
+              "transcript": "",
+              "confidence": 0,
+              "words": [],
+              "paragraphs": {
+                "transcript": "\n",
+                "paragraphs": []
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "azure": [
+    {
+      "startSec": 0,
+      "endSec": 4,
+      "referenceText": "For centuries, mapmakers have faced an unavoidable problem: representing a curved planet on a flat surface.",
+      "response": {
+        "RecognitionStatus": "Success",
+        "Offset": 0,
+        "Duration": 40000000,
+        "DisplayText": ".",
+        "SNR": 0,
+        "NBest": [
+          {
+            "Confidence": 0,
+            "Lexical": ".",
+            "ITN": ".",
+            "MaskedITN": ".",
+            "Display": ".",
+            "AccuracyScore": 0,
+            "FluencyScore": 0,
+            "CompletenessScore": 0,
+            "PronScore": 0,
+            "Words": [
+              {
+                "Word": "For",
+                "Offset": 0,
+                "Duration": 0,
+                "Confidence": 0,
+                "AccuracyScore": 0,
+                "ErrorType": "Omission"
+              },
+              {
+                "Word": "centuries",
+                "Offset": 0,
+                "Duration": 0,
+                "Confidence": 0,
+                "AccuracyScore": 0,
+                "ErrorType": "Omission"
+              },
+              {
+                "Word": "mapmakers",
+                "Offset": 0,
+                "Duration": 0,
+                "Confidence": 0,
+                "AccuracyScore": 0,
+                "ErrorType": "Omission"
+              },
+              {
+                "Word": "have",
+                "Offset": 0,
+                "Duration": 0,
+                "Confidence": 0,
+                "AccuracyScore": 0,
+                "ErrorType": "Omission"
+              },
+              {
+                "Word": "faced",
+                "Offset": 0,
+                "Duration": 0,
+                "Confidence": 0,
+                "AccuracyScore": 0,
+                "ErrorType": "Omission"
+              },
+              {
+                "Word": "an",
+                "Offset": 0,
+                "Duration": 0,
+                "Confidence": 0,
+                "AccuracyScore": 0,
+                "ErrorType": "Omission"
+              },
+              {
+                "Word": "unavoidable",
+                "Offset": 0,
+                "Duration": 0,
+                "Confidence": 0,
+                "AccuracyScore": 0,
+                "ErrorType": "Omission"
+              },
+              {
+                "Word": "problem",
+                "Offset": 0,
+                "Duration": 0,
+                "Confidence": 0,
+                "AccuracyScore": 0,
+                "ErrorType": "Omission"
+              },
+              {
+                "Word": "representing",
+                "Offset": 0,
+                "Duration": 0,
+                "Confidence": 0,
+                "AccuracyScore": 0,
+                "ErrorType": "Omission"
+              },
+              {
+                "Word": "a",
+                "Offset": 0,
+                "Duration": 0,
+                "Confidence": 0,
+                "AccuracyScore": 0,
+                "ErrorType": "Omission"
+              },
+              {
+                "Word": "curved",
+                "Offset": 0,
+                "Duration": 0,
+                "Confidence": 0,
+                "AccuracyScore": 0,
+                "ErrorType": "Omission"
+              },
+              {
+                "Word": "planet",
+                "Offset": 0,
+                "Duration": 0,
+                "Confidence": 0,
+                "AccuracyScore": 0,
+                "ErrorType": "Omission"
+              },
+              {
+                "Word": "on",
+                "Offset": 0,
+                "Duration": 0,
+                "Confidence": 0,
+                "AccuracyScore": 0,
+                "ErrorType": "Omission"
+              },
+              {
+                "Word": "a",
+                "Offset": 0,
+                "Duration": 0,
+                "Confidence": 0,
+                "AccuracyScore": 0,
+                "ErrorType": "Omission"
+              },
+              {
+                "Word": "flat",
+                "Offset": 0,
+                "Duration": 0,
+                "Confidence": 0,
+                "AccuracyScore": 0,
+                "ErrorType": "Omission"
+              },
+              {
+                "Word": "surface",
+                "Offset": 0,
+                "Duration": 0,
+                "Confidence": 0,
+                "AccuracyScore": 0,
+                "ErrorType": "Omission"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

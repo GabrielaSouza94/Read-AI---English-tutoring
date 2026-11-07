@@ -22,6 +22,7 @@
     "db:seed:production": "tsx scripts/seed.ts --env production",
     "prompt:push": "tsx scripts/push-prompt.ts",
     "audio:instructions": "tsx scripts/instruction-audio.ts",
+    "fixtures": "tsx scripts/fixtures.ts",
     "deploy:staging": "cross-env CLOUDFLARE_ENV=staging react-router build && wrangler deploy",
     "deploy:production": "cross-env CLOUDFLARE_ENV=production react-router build && wrangler deploy",
     "cf-typegen": "wrangler types",

@@ -1,0 +1,4382 @@
+{
+  "fixtureId": "t4-long",
+  "savedAt": "2026-11-07T13:24:43.290Z",
+  "deepgramUrl": "https://api.deepgram.com/v1/listen?model=nova-3&language=en-US&smart_format=true",
+  "deepgram": {
+    "metadata": {
+      "transaction_key": "deprecated",
+      "request_id": "01a1b62e-ad1d-7dc0-a1d7-995c147f83d4",
+      "sha256": "a7d723b87dabbd738bfc797aa6ed08b1be70b6b873649e01747993ee797ed0ed",
+      "created": "2026-11-07T13:24:35.183Z",
+      "duration": 58.088375,
+      "channels": 1,
+      "models": ["2187e11a-3532-4498-b076-81fa530bdd49"],
+      "model_info": {
+        "2187e11a-3532-4498-b076-81fa530bdd49": {
+          "name": "general-nova-3",
+          "version": "2025-07-31.0",
+          "arch": "nova-3"
+        }
+      }
+    },
+    "results": {
+      "channels": [
+        {
+          "alternatives": [
+            {
+              "transcript": "For centuries, mapmakers have faced an unavoidable problem, representing a curved planet on a flat surface. Every projection distorts something, whether it is the size of continents, the shape of coastlines, or the distances between cities. The familiar Mercator map, originally designed for navigation, preserves angles but dramatically exaggerates regions near the poles. Consequently, Greenland appears comparable to Africa, although Africa is many times larger. Alternative projections attempt to balance these compromises, sacrificing accuracy in one dimension to improve another. Choosing a map, therefore, is never entirely neutral. It subtly shapes how we perceive the world's geography. Thoughtful readers should ask not only what a map shows, but also what it inevitably leaves out.",
+              "confidence": 1,
+              "words": [
+                {
+                  "word": "for",
+                  "start": 0,
+                  "end": 0.48,
+                  "confidence": 1,
+                  "punctuated_word": "For"
+                },
+                {
+                  "word": "centuries",
+                  "start": 0.48,
+                  "end": 1.28,
+                  "confidence": 0.99902344,
+                  "punctuated_word": "centuries,"
+                },
+                {
+                  "word": "mapmakers",
+                  "start": 1.52,
+                  "end": 2.24,
+                  "confidence": 0.8552246,
+                  "punctuated_word": "mapmakers"
+                },
+                {
+                  "word": "have",
+                  "start": 2.24,
+                  "end": 2.56,
+                  "confidence": 1,
+                  "punctuated_word": "have"
+                },
+                {
+                  "word": "faced",
+                  "start": 2.56,
+                  "end": 2.96,
+                  "confidence": 1,
+                  "punctuated_word": "faced"
+                },
+                {
+                  "word": "an",
+                  "start": 2.96,
+                  "end": 3.28,
+                  "confidence": 1,
+                  "punctuated_word": "an"
+                },
+                {
+                  "word": "unavoidable",
+                  "start": 3.28,
+                  "end": 4.08,
+                  "confidence": 1,
+                  "punctuated_word": "unavoidable"
+                },
+                {
+                  "word": "problem",
+                  "start": 4.08,
+                  "end": 4.88,
+                  "confidence": 0.75,
+                  "punctuated_word": "problem,"
+                },
+                {
+                  "word": "representing",
+                  "start": 5.2,
+                  "end": 5.7599998,
+                  "confidence": 1,
+                  "punctuated_word": "representing"
+                },
+                {
+                  "word": "a",
+                  "start": 5.7599998,
+                  "end": 6.08,
+                  "confidence": 1,
+                  "punctuated_word": "a"
+                },
+                {
+                  "word": "curved",
+                  "start": 6.08,
+                  "end": 6.48,
+                  "confidence": 1,
+                  "punctuated_word": "curved"
+                },
+                {
+                  "word": "planet",
+                  "start": 6.48,
+                  "end": 6.96,
+                  "confidence": 1,
+                  "punctuated_word": "planet"
+                },
+                {
+                  "word": "on",
+                  "start": 6.96,
+                  "end": 7.2799997,
+                  "confidence": 1,
+                  "punctuated_word": "on"
+                },
+                {
+                  "word": "a",
+                  "start": 7.2799997,
+                  "end": 7.44,
+                  "confidence": 1,
+                  "punctuated_word": "a"
+                },
+                {
+                  "word": "flat",
+                  "start": 7.44,
+                  "end": 7.8399997,
+                  "confidence": 1,
+                  "punctuated_word": "flat"
+                },
+                {
+                  "word": "surface",
+                  "start": 7.8399997,
+                  "end": 8.639999,
+                  "confidence": 1,
+                  "punctuated_word": "surface."
+                },
+                {
+                  "word": "every",
+                  "start": 8.96,
+                  "end": 9.36,
+                  "confidence": 1,
+                  "punctuated_word": "Every"
+                },
+                {
+                  "word": "projection",
+                  "start": 9.36,
+                  "end": 9.92,
+                  "confidence": 1,
+                  "punctuated_word": "projection"
+                },
+                {
+                  "word": "distorts",
+                  "start": 9.92,
+                  "end": 10.48,
+                  "confidence": 0.9914551,
+                  "punctuated_word": "distorts"
+                },
+                {
+                  "word": "something",
+                  "start": 10.48,
+                  "end": 11.2,
+                  "confidence": 0.982666,
+                  "punctuated_word": "something,"
+                },
+                {
+                  "word": "whether",
+                  "start": 11.28,
+                  "end": 11.599999,
+                  "confidence": 1,
+                  "punctuated_word": "whether"
+                },
+                {
+                  "word": "it",
+                  "start": 11.599999,
+                  "end": 11.759999,
+                  "confidence": 1,
+                  "punctuated_word": "it"
+                },
+                {
+                  "word": "is",
+                  "start": 11.759999,
+                  "end": 11.92,
+                  "confidence": 1,
+                  "punctuated_word": "is"
+                },
+                {
+                  "word": "the",
+                  "start": 11.92,
+                  "end": 12.08,
+                  "confidence": 1,
+                  "punctuated_word": "the"
+                },
+                {
+                  "word": "size",
+                  "start": 12.08,
+                  "end": 12.4,
+                  "confidence": 1,
+                  "punctuated_word": "size"
+                },
+                {
+                  "word": "of",
+                  "start": 12.4,
+                  "end": 12.559999,
+                  "confidence": 1,
+                  "punctuated_word": "of"
+                },
+                {
+                  "word": "continents",
+                  "start": 12.559999,
+                  "end": 13.04,
+                  "confidence": 0.9995117,
+                  "punctuated_word": "continents,"
+                },
+                {
+                  "word": "the",
+                  "start": 13.425,
+                  "end": 13.665,
+                  "confidence": 1,
+                  "punctuated_word": "the"
+                },
+                {
+                  "word": "shape",
+                  "start": 13.665,
+                  "end": 13.985001,
+                  "confidence": 1,
+                  "punctuated_word": "shape"
+                },
+                {
+                  "word": "of",
+                  "start": 13.985001,
+                  "end": 14.145,
+                  "confidence": 1,
+                  "punctuated_word": "of"
+                },
+                {
+                  "word": "coastlines",
+                  "start": 14.145,
+                  "end": 15.184999,
+                  "confidence": 0.9824219,
+                  "punctuated_word": "coastlines,"
+                },
+                {
+                  "word": "or",
+                  "start": 15.345,
+                  "end": 15.505,
+                  "confidence": 1,
+                  "punctuated_word": "or"
+                },
+                {
+                  "word": "the",
+                  "start": 15.505,
+                  "end": 15.745,
+                  "confidence": 1,
+                  "punctuated_word": "the"
+                },
+                {
+                  "word": "distances",
+                  "start": 15.745,
+                  "end": 16.465,
+                  "confidence": 1,
+                  "punctuated_word": "distances"
+                },
+                {
+                  "word": "between",
+                  "start": 16.465,
+                  "end": 16.865,
+                  "confidence": 1,
+                  "punctuated_word": "between"
+                },
+                {
+                  "word": "cities",
+                  "start": 16.865,
+                  "end": 17.585,
+                  "confidence": 0.99902344,
+                  "punctuated_word": "cities."
+                },
+                {
+                  "word": "the",
+                  "start": 17.905,
+                  "end": 18.145,
+                  "confidence": 1,
+                  "punctuated_word": "The"
+                },
+                {
+                  "word": "familiar",
+                  "start": 18.145,
+                  "end": 18.625,
+                  "confidence": 0.99902344,
+                  "punctuated_word": "familiar"
+                },
+                {
+                  "word": "mercator",
+                  "start": 18.625,
+                  "end": 19.185,
+                  "confidence": 0.98461914,
+                  "punctuated_word": "Mercator"
+                },
+                {
+                  "word": "map",
+                  "start": 19.185,
+                  "end": 19.825,
+                  "confidence": 0.90893555,
+                  "punctuated_word": "map,"
+                },
+                {
+                  "word": "originally",
+                  "start": 20.145,
+                  "end": 20.625,
+                  "confidence": 1,
+                  "punctuated_word": "originally"
+                },
+                {
+                  "word": "designed",
+                  "start": 20.625,
+                  "end": 21.185,
+                  "confidence": 1,
+                  "punctuated_word": "designed"
+                },
+                {
+                  "word": "for",
+                  "start": 21.185,
+                  "end": 21.345,
+                  "confidence": 1,
+                  "punctuated_word": "for"
+                },
+                {
+                  "word": "navigation",
+                  "start": 21.345,
+                  "end": 22.224998,
+                  "confidence": 0.99853516,
+                  "punctuated_word": "navigation,"
+                },
+                {
+                  "word": "preserves",
+                  "start": 22.625,
+                  "end": 23.185001,
+                  "confidence": 0.9995117,
+                  "punctuated_word": "preserves"
+                },
+                {
+                  "word": "angles",
+                  "start": 23.185001,
+                  "end": 23.825,
+                  "confidence": 1,
+                  "punctuated_word": "angles"
+                },
+                {
+                  "word": "but",
+                  "start": 23.825,
+                  "end": 24.225,
+                  "confidence": 0.8388672,
+                  "punctuated_word": "but"
+                },
+                {
+                  "word": "dramatically",
+                  "start": 24.225,
+                  "end": 24.865,
+                  "confidence": 1,
+                  "punctuated_word": "dramatically"
+                },
+                {
+                  "word": "exaggerates",
+                  "start": 24.865,
+                  "end": 25.665,
+                  "confidence": 1,
+                  "punctuated_word": "exaggerates"
+                },
+                {
+                  "word": "regions",
+                  "start": 25.665,
+                  "end": 26.305,
+                  "confidence": 1,
+                  "punctuated_word": "regions"
+                },
+                {
+                  "word": "near",
+                  "start": 26.305,
+                  "end": 26.545,
+                  "confidence": 1,
+                  "punctuated_word": "near"
+                },
+                {
+                  "word": "the",
+                  "start": 26.545,
+                  "end": 26.705,
+                  "confidence": 1,
+                  "punctuated_word": "the"
+                },
+                {
+                  "word": "poles",
+                  "start": 26.705,
+                  "end": 27.105,
+                  "confidence": 0.99560547,
+                  "punctuated_word": "poles."
+                },
+                {
+                  "word": "consequently",
+                  "start": 27.91,
+                  "end": 28.71,
+                  "confidence": 1,
+                  "punctuated_word": "Consequently,"
+                },
+                {
+                  "word": "greenland",
+                  "start": 28.87,
+                  "end": 29.43,
+                  "confidence": 0.9995117,
+                  "punctuated_word": "Greenland"
+                },
+                {
+                  "word": "appears",
+                  "start": 29.43,
+                  "end": 29.99,
+                  "confidence": 1,
+                  "punctuated_word": "appears"
+                },
+                {
+                  "word": "comparable",
+                  "start": 29.99,
+                  "end": 30.55,
+                  "confidence": 1,
+                  "punctuated_word": "comparable"
+                },
+                {
+                  "word": "to",
+                  "start": 30.55,
+                  "end": 30.87,
+                  "confidence": 1,
+                  "punctuated_word": "to"
+                },
+                {
+                  "word": "africa",
+                  "start": 30.87,
+                  "end": 31.67,
+                  "confidence": 0.93359375,
+                  "punctuated_word": "Africa,"
+                },
+                {
+                  "word": "although",
+                  "start": 31.99,
+                  "end": 32.23,
+                  "confidence": 1,
+                  "punctuated_word": "although"
+                },
+                {
+                  "word": "africa",
+                  "start": 32.23,
+                  "end": 32.79,
+                  "confidence": 0.9980469,
+                  "punctuated_word": "Africa"
+                },
+                {
+                  "word": "is",
+                  "start": 32.79,
+                  "end": 33.19,
+                  "confidence": 1,
+                  "punctuated_word": "is"
+                },
+                {
+                  "word": "many",
+                  "start": 33.19,
+                  "end": 33.59,
+                  "confidence": 1,
+                  "punctuated_word": "many"
+                },
+                {
+                  "word": "times",
+                  "start": 33.59,
+                  "end": 33.99,
+                  "confidence": 1,
+                  "punctuated_word": "times"
+                },
+                {
+                  "word": "larger",
+                  "start": 33.99,
+                  "end": 34.63,
+                  "confidence": 1,
+                  "punctuated_word": "larger."
+                },
+                {
+                  "word": "alternative",
+                  "start": 35.03,
+                  "end": 35.67,
+                  "confidence": 0.99853516,
+                  "punctuated_word": "Alternative"
+                },
+                {
+                  "word": "projections",
+                  "start": 35.67,
+                  "end": 36.31,
+                  "confidence": 1,
+                  "punctuated_word": "projections"
+                },
+                {
+                  "word": "attempt",
+                  "start": 36.31,
+                  "end": 36.87,
+                  "confidence": 0.99902344,
+                  "punctuated_word": "attempt"
+                },
+                {
+                  "word": "to",
+                  "start": 36.87,
+                  "end": 37.11,
+                  "confidence": 1,
+                  "punctuated_word": "to"
+                },
+                {
+                  "word": "balance",
+                  "start": 37.11,
+                  "end": 37.510002,
+                  "confidence": 1,
+                  "punctuated_word": "balance"
+                },
+                {
+                  "word": "these",
+                  "start": 37.510002,
+                  "end": 37.91,
+                  "confidence": 1,
+                  "punctuated_word": "these"
+                },
+                {
+                  "word": "compromises",
+                  "start": 37.91,
+                  "end": 38.95,
+                  "confidence": 0.9838867,
+                  "punctuated_word": "compromises,"
+                },
+                {
+                  "word": "sacrificing",
+                  "start": 39.27,
+                  "end": 39.989998,
+                  "confidence": 1,
+                  "punctuated_word": "sacrificing"
+                },
+                {
+                  "word": "accuracy",
+                  "start": 39.989998,
+                  "end": 40.79,
+                  "confidence": 1,
+                  "punctuated_word": "accuracy"
+                },
+                {
+                  "word": "in",
+                  "start": 40.79,
+                  "end": 41.19,
+                  "confidence": 1,
+                  "punctuated_word": "in"
+                },
+                {
+                  "word": "one",
+                  "start": 41.19,
+                  "end": 41.510002,
+                  "confidence": 1,
+                  "punctuated_word": "one"
+                },
+                {
+                  "word": "dimension",
+                  "start": 41.510002,
+                  "end": 41.989998,
+                  "confidence": 1,
+                  "punctuated_word": "dimension"
+                },
+                {
+                  "word": "to",
+                  "start": 41.989998,
+                  "end": 42.309998,
+                  "confidence": 1,
+                  "punctuated_word": "to"
+                },
+                {
+                  "word": "improve",
+                  "start": 42.309998,
+                  "end": 42.79,
+                  "confidence": 1,
+                  "punctuated_word": "improve"
+                },
+                {
+                  "word": "another",
+                  "start": 42.79,
+                  "end": 43.19,
+                  "confidence": 1,
+                  "punctuated_word": "another."
+                },
+                {
+                  "word": "choosing",
+                  "start": 43.725002,
+                  "end": 44.205,
+                  "confidence": 0.9995117,
+                  "punctuated_word": "Choosing"
+                },
+                {
+                  "word": "a",
+                  "start": 44.205,
+                  "end": 44.365,
+                  "confidence": 1,
+                  "punctuated_word": "a"
+                },
+                {
+                  "word": "map",
+                  "start": 44.365,
+                  "end": 45.005,
+                  "confidence": 0.9926758,
+                  "punctuated_word": "map,"
+                },
+                {
+                  "word": "therefore",
+                  "start": 45.005,
+                  "end": 45.725,
+                  "confidence": 0.9970703,
+                  "punctuated_word": "therefore,"
+                },
+                {
+                  "word": "is",
+                  "start": 45.725002,
+                  "end": 45.885002,
+                  "confidence": 1,
+                  "punctuated_word": "is"
+                },
+                {
+                  "word": "never",
+                  "start": 45.885002,
+                  "end": 46.285,
+                  "confidence": 1,
+                  "punctuated_word": "never"
+                },
+                {
+                  "word": "entirely",
+                  "start": 46.285,
+                  "end": 46.925,
+                  "confidence": 1,
+                  "punctuated_word": "entirely"
+                },
+                {
+                  "word": "neutral",
+                  "start": 46.925,
+                  "end": 47.725,
+                  "confidence": 0.99194336,
+                  "punctuated_word": "neutral."
+                },
+                {
+                  "word": "it",
+                  "start": 47.885002,
+                  "end": 48.045002,
+                  "confidence": 0.99902344,
+                  "punctuated_word": "It"
+                },
+                {
+                  "word": "subtly",
+                  "start": 48.045002,
+                  "end": 48.525,
+                  "confidence": 0.9941406,
+                  "punctuated_word": "subtly"
+                },
+                {
+                  "word": "shapes",
+                  "start": 48.525,
+                  "end": 48.845,
+                  "confidence": 1,
+                  "punctuated_word": "shapes"
+                },
+                {
+                  "word": "how",
+                  "start": 48.845,
+                  "end": 49.165,
+                  "confidence": 1,
+                  "punctuated_word": "how"
+                },
+                {
+                  "word": "we",
+                  "start": 49.165,
+                  "end": 49.325,
+                  "confidence": 1,
+                  "punctuated_word": "we"
+                },
+                {
+                  "word": "perceive",
+                  "start": 49.325,
+                  "end": 49.805,
+                  "confidence": 1,
+                  "punctuated_word": "perceive"
+                },
+                {
+                  "word": "the",
+                  "start": 49.805,
+                  "end": 50.125,
+                  "confidence": 1,
+                  "punctuated_word": "the"
+                },
+                {
+                  "word": "world's",
+                  "start": 50.125,
+                  "end": 50.525,
+                  "confidence": 1,
+                  "punctuated_word": "world's"
+                },
+                {
+                  "word": "geography",
+                  "start": 50.525,
+                  "end": 51.485,
+                  "confidence": 1,
+                  "punctuated_word": "geography."
+                },
+                {
+                  "word": "thoughtful",
+                  "start": 51.805,
+                  "end": 52.285,
+                  "confidence": 0.9975586,
+                  "punctuated_word": "Thoughtful"
+                },
+                {
+                  "word": "readers",
+                  "start": 52.285,
+                  "end": 52.685,
+                  "confidence": 0.9863281,
+                  "punctuated_word": "readers"
+                },
+                {
+                  "word": "should",
+                  "start": 52.685,
+                  "end": 53.005,
+                  "confidence": 1,
+                  "punctuated_word": "should"
+                },
+                {
+                  "word": "ask",
+                  "start": 53.005,
+                  "end": 53.325,
+                  "confidence": 1,
+                  "punctuated_word": "ask"
+                },
+                {
+                  "word": "not",
+                  "start": 53.325,
+                  "end": 53.725,
+                  "confidence": 0.97509766,
+                  "punctuated_word": "not"
+                },
+                {
+                  "word": "only",
+                  "start": 53.725,
+                  "end": 53.965,
+                  "confidence": 1,
+                  "punctuated_word": "only"
+                },
+                {
+                  "word": "what",
+                  "start": 53.965,
+                  "end": 54.205,
+                  "confidence": 1,
+                  "punctuated_word": "what"
+                },
+                {
+                  "word": "a",
+                  "start": 54.205,
+                  "end": 54.365,
+                  "confidence": 1,
+                  "punctuated_word": "a"
+                },
+                {
+                  "word": "map",
+                  "start": 54.365,
+                  "end": 54.605,
+                  "confidence": 1,
+                  "punctuated_word": "map"
+                },
+                {
+                  "word": "shows",
+                  "start": 54.605,
+                  "end": 55.245,
+                  "confidence": 0.8635254,
+                  "punctuated_word": "shows,"
+                },
+                {
+                  "word": "but",
+                  "start": 55.405,
+                  "end": 55.645,
+                  "confidence": 1,
+                  "punctuated_word": "but"
+                },
+                {
+                  "word": "also",
+                  "start": 55.645,
+                  "end": 55.965,
+                  "confidence": 0.98828125,
+                  "punctuated_word": "also"
+                },
+                {
+                  "word": "what",
+                  "start": 55.965,
+                  "end": 56.205,
+                  "confidence": 0.99902344,
+                  "punctuated_word": "what"
+                },
+                {
+                  "word": "it",
+                  "start": 56.205,
+                  "end": 56.365,
+                  "confidence": 1,
+                  "punctuated_word": "it"
+                },
+                {
+                  "word": "inevitably",
+                  "start": 56.365,
+                  "end": 57.085,
+                  "confidence": 0.99902344,
+                  "punctuated_word": "inevitably"
+                },
+                {
+                  "word": "leaves",
+                  "start": 57.085,
+                  "end": 57.405,
+                  "confidence": 1,
+                  "punctuated_word": "leaves"
+                },
+                {
+                  "word": "out",
+                  "start": 57.405,
+                  "end": 57.645,
+                  "confidence": 0.9970703,
+                  "punctuated_word": "out."
+                }
+              ],
+              "paragraphs": {
+                "transcript": "\nFor centuries, mapmakers have faced an unavoidable problem, representing a curved planet on a flat surface. Every projection distorts something, whether it is the size of continents, the shape of coastlines, or the distances between cities. The familiar Mercator map, originally designed for navigation, preserves angles but dramatically exaggerates regions near the poles. Consequently, Greenland appears comparable to Africa, although Africa is many times larger. Alternative projections attempt to balance these compromises, sacrificing accuracy in one dimension to improve another.\n\nChoosing a map, therefore, is never entirely neutral. It subtly shapes how we perceive the world's geography. Thoughtful readers should ask not only what a map shows, but also what it inevitably leaves out.",
+                "paragraphs": [
+                  {
+                    "sentences": [
+                      {
+                        "text": "For centuries, mapmakers have faced an unavoidable problem, representing a curved planet on a flat surface.",
+                        "start": 0,
+                        "end": 8.639999
+                      },
+                      {
+                        "text": "Every projection distorts something, whether it is the size of continents, the shape of coastlines, or the distances between cities.",
+                        "start": 8.96,
+                        "end": 17.585
+                      },
+                      {
+                        "text": "The familiar Mercator map, originally designed for navigation, preserves angles but dramatically exaggerates regions near the poles.",
+                        "start": 17.905,
+                        "end": 27.105
+                      },
+                      {
+                        "text": "Consequently, Greenland appears comparable to Africa, although Africa is many times larger.",
+                        "start": 27.91,
+                        "end": 34.63
+                      },
+                      {
+                        "text": "Alternative projections attempt to balance these compromises, sacrificing accuracy in one dimension to improve another.",
+                        "start": 35.03,
+                        "end": 43.19
+                      }
+                    ],
+                    "num_words": 80,
+                    "start": 0,
+                    "end": 43.19
+                  },
+                  {
+                    "sentences": [
+                      {
+                        "text": "Choosing a map, therefore, is never entirely neutral.",
+                        "start": 43.725002,
+                        "end": 47.725
+                      },
+                      {
+                        "text": "It subtly shapes how we perceive the world's geography.",
+                        "start": 47.885002,
+                        "end": 51.485
+                      },
+                      {
+                        "text": "Thoughtful readers should ask not only what a map shows, but also what it inevitably leaves out.",
+                        "start": 51.805,
+                        "end": 57.645
+                      }
+                    ],
+                    "num_words": 34,
+                    "start": 43.725002,
+                    "end": 57.645
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "azure": [
+    {
+      "startSec": 0,
+      "endSec": 17.745,
+      "referenceText": "For centuries, mapmakers have faced an unavoidable problem: representing a curved planet on a flat surface. Every projection distorts something, whether it is the size of continents, the shape of coastlines, or the distances between cities.",
+      "response": {
+        "RecognitionStatus": "Success",
+        "Offset": 1500000,
+        "Duration": 174000000,
+        "DisplayText": "For centuries, mapmakers have faced an unavoidable problem representing A curved planet on a flat surface. Every projection distorts something, whether it is the size of continents, the shape of coastlines or the distances between cities.",
+        "SNR": 28.597946,
+        "NBest": [
+          {
+            "Confidence": 0.9897989,
+            "Lexical": "for centuries mapmakers have faced an unavoidable problem representing a curved planet on a flat surface every projection distorts something whether it is the size of continents the shape of coastlines or the distances between cities",
+            "ITN": "for centuries mapmakers have faced an unavoidable problem representing A curved planet on a flat surface every projection distorts something whether it is the size of continents the shape of coastlines or the distances between cities",
+            "MaskedITN": "for centuries mapmakers have faced an unavoidable problem representing a curved planet on a flat surface every projection distorts something whether it is the size of continents the shape of coastlines or the distances between cities",
+            "Display": "For centuries, mapmakers have faced an unavoidable problem representing A curved planet on a flat surface. Every projection distorts something, whether it is the size of continents, the shape of coastlines or the distances between cities.",
+            "AccuracyScore": 97,
+            "FluencyScore": 96,
+            "ProsodyScore": 90,
+            "CompletenessScore": 100,
+            "PronScore": 94.6,
+            "Words": [
+              {
+                "Word": "for",
+                "Offset": 1500000,
+                "Duration": 2600000,
+                "Confidence": 0,
+                "AccuracyScore": 97,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.78958195
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "centuries",
+                "Offset": 4200000,
+                "Duration": 7700000,
+                "Confidence": 0,
+                "AccuracyScore": 97,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 3.7656903e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.78958195
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "mapmakers",
+                "Offset": 13000000,
+                "Duration": 10100000,
+                "Confidence": 0,
+                "AccuracyScore": 94,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 0.37656906
+                      },
+                      "MissingBreak": {
+                        "Confidence": 0
+                      },
+                      "BreakLength": 1000000
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.78958195
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "have",
+                "Offset": 23200000,
+                "Duration": 2700000,
+                "Confidence": 0,
+                "AccuracyScore": 97,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 3.7656903e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.78958195
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "faced",
+                "Offset": 26000000,
+                "Duration": 4700000,
+                "Confidence": 0,
+                "AccuracyScore": 100,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 3.7656903e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.78958195
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "an",
+                "Offset": 30800000,
+                "Duration": 1900000,
+                "Confidence": 0,
+                "AccuracyScore": 100,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 3.7656903e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.78958195
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "unavoidable",
+                "Offset": 33000000,
+                "Duration": 8300000,
+                "Confidence": 0,
+                "AccuracyScore": 97,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 0.075313844
+                      },
+                      "MissingBreak": {
+                        "Confidence": 0.9623431
+                      },
+                      "BreakLength": 200000
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.78958195
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "problem",
+                "Offset": 41400000,
+                "Duration": 6700000,
+                "Confidence": 0,
+                "AccuracyScore": 97,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 3.7656903e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.78958195
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "representing",
+                "Offset": 49000000,
+                "Duration": 10300000,
+                "Confidence": 0,
+                "AccuracyScore": 97,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 0.30125526
+                      },
+                      "MissingBreak": {
+                        "Confidence": 0
+                      },
+                      "BreakLength": 800000
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.78958195
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "a",
+                "Offset": 59400000,
+                "Duration": 800000,
+                "Confidence": 0,
+                "AccuracyScore": 97,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 3.7656903e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.78958195
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "curved",
+                "Offset": 60300000,
+                "Duration": 5000000,
+                "Confidence": 0,
+                "AccuracyScore": 100,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 3.7656903e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.78958195
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "planet",
+                "Offset": 65400000,
+                "Duration": 4900000,
+                "Confidence": 0,
+                "AccuracyScore": 94,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 3.7656903e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.78958195
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "on",
+                "Offset": 70400000,
+                "Duration": 1900000,
+                "Confidence": 0,
+                "AccuracyScore": 100,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 3.7656903e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.78958195
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "a",
+                "Offset": 72400000,
+                "Duration": 900000,
+                "Confidence": 0,
+                "AccuracyScore": 100,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 3.7656903e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.78958195
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "flat",
+                "Offset": 73400000,
+                "Duration": 4900000,
+                "Confidence": 0,
+                "AccuracyScore": 97,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 3.7656903e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.78958195
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "surface",
+                "Offset": 78400000,
+                "Duration": 7700000,
+                "Confidence": 0,
+                "AccuracyScore": 97,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 3.7656903e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.78958195
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "every",
+                "Offset": 89200000,
+                "Duration": 4300000,
+                "Confidence": 0,
+                "AccuracyScore": 97,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 1.1297072
+                      },
+                      "MissingBreak": {
+                        "Confidence": 0
+                      },
+                      "BreakLength": 3000000
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.78958195
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "projection",
+                "Offset": 93600000,
+                "Duration": 5900000,
+                "Confidence": 0,
+                "AccuracyScore": 97,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 3.7656903e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.78958195
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "distorts",
+                "Offset": 99600000,
+                "Duration": 5200000,
+                "Confidence": 0,
+                "AccuracyScore": 94,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 3.7656903e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.78958195
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "something",
+                "Offset": 104900000,
+                "Duration": 7000000,
+                "Confidence": 0,
+                "AccuracyScore": 91,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 3.7656903e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.78958195
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "whether",
+                "Offset": 112200000,
+                "Duration": 3900000,
+                "Confidence": 0,
+                "AccuracyScore": 100,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 0.075313844
+                      },
+                      "MissingBreak": {
+                        "Confidence": 0.9623431
+                      },
+                      "BreakLength": 200000
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.78958195
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "it",
+                "Offset": 116200000,
+                "Duration": 900000,
+                "Confidence": 0,
+                "AccuracyScore": 100,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 3.7656903e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.78958195
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "is",
+                "Offset": 117200000,
+                "Duration": 1300000,
+                "Confidence": 0,
+                "AccuracyScore": 100,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 3.7656903e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.78958195
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "the",
+                "Offset": 118600000,
+                "Duration": 1300000,
+                "Confidence": 0,
+                "AccuracyScore": 97,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 3.7656903e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.78958195
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "size",
+                "Offset": 120000000,
+                "Duration": 3900000,
+                "Confidence": 0,
+                "AccuracyScore": 100,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 3.7656903e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.78958195
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "of",
+                "Offset": 124000000,
+                "Duration": 900000,
+                "Confidence": 0,
+                "AccuracyScore": 100,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 3.7656903e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.78958195
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "continents",
+                "Offset": 125000000,
+                "Duration": 7300000,
+                "Confidence": 0,
+                "AccuracyScore": 94,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 3.7656903e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.78958195
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "the",
+                "Offset": 133400000,
+                "Duration": 2700000,
+                "Confidence": 0,
+                "AccuracyScore": 88,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 0.37656906
+                      },
+                      "MissingBreak": {
+                        "Confidence": 0
+                      },
+                      "BreakLength": 1000000
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.78958195
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "shape",
+                "Offset": 136200000,
+                "Duration": 3500000,
+                "Confidence": 0,
+                "AccuracyScore": 97,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 3.7656903e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.78958195
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "of",
+                "Offset": 139800000,
+                "Duration": 1300000,
+                "Confidence": 0,
+                "AccuracyScore": 100,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 3.7656903e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.78958195
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "coastlines",
+                "Offset": 141200000,
+                "Duration": 8900000,
+                "Confidence": 0,
+                "AccuracyScore": 97,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 3.7656903e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.78958195
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "or",
+                "Offset": 150800000,
+                "Duration": 5000000,
+                "Confidence": 0,
+                "AccuracyScore": 100,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 0.22594145
+                      },
+                      "MissingBreak": {
+                        "Confidence": 0
+                      },
+                      "BreakLength": 600000
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.78958195
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "the",
+                "Offset": 155900000,
+                "Duration": 1200000,
+                "Confidence": 0,
+                "AccuracyScore": 97,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 3.7656903e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.78958195
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "distances",
+                "Offset": 157200000,
+                "Duration": 7100000,
+                "Confidence": 0,
+                "AccuracyScore": 97,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 3.7656903e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.78958195
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "between",
+                "Offset": 164400000,
+                "Duration": 4500000,
+                "Confidence": 0,
+                "AccuracyScore": 100,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 3.7656903e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.78958195
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "cities",
+                "Offset": 169000000,
+                "Duration": 6500000,
+                "Confidence": 0,
+                "AccuracyScore": 97,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 3.7656903e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.78958195
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "startSec": 17.745,
+      "endSec": 34.83,
+      "referenceText": "The familiar Mercator map, originally designed for navigation, preserves angles but dramatically exaggerates regions near the poles. Consequently, Greenland appears comparable to Africa, although Africa is many times larger.",
+      "response": {
+        "RecognitionStatus": "Success",
+        "Offset": 1400000,
+        "Duration": 167500000,
+        "DisplayText": "The familiar Mercator map, originally designed for navigation, preserves angles but dramatically exaggerates regions near the poles. Consequently, Greenland appears comparable to Africa, although Africa is many times larger.",
+        "SNR": 28.446375,
+        "NBest": [
+          {
+            "Confidence": 0.99179125,
+            "Lexical": "the familiar mercator map originally designed for navigation preserves angles but dramatically exaggerates regions near the poles consequently greenland appears comparable to africa although africa is many times larger",
+            "ITN": "the familiar mercator map originally designed for navigation preserves angles but dramatically exaggerates regions near the poles consequently greenland appears comparable to africa although africa is many times larger",
+            "MaskedITN": "the familiar mercator map originally designed for navigation preserves angles but dramatically exaggerates regions near the poles consequently greenland appears comparable to africa although africa is many times larger",
+            "Display": "The familiar Mercator map, originally designed for navigation, preserves angles but dramatically exaggerates regions near the poles. Consequently, Greenland appears comparable to Africa, although Africa is many times larger.",
+            "AccuracyScore": 97,
+            "FluencyScore": 96,
+            "ProsodyScore": 89.8,
+            "CompletenessScore": 100,
+            "PronScore": 94.5,
+            "Words": [
+              {
+                "Word": "the",
+                "Offset": 1400000,
+                "Duration": 2000000,
+                "Confidence": 0,
+                "AccuracyScore": 94,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.5376469
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "familiar",
+                "Offset": 3500000,
+                "Duration": 5500000,
+                "Confidence": 0,
+                "AccuracyScore": 100,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 4.057428e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.5376469
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "mercator",
+                "Offset": 9100000,
+                "Duration": 5300000,
+                "Confidence": 0,
+                "AccuracyScore": 85,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 4.057428e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.5376469
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "map",
+                "Offset": 14500000,
+                "Duration": 5700000,
+                "Confidence": 0,
+                "AccuracyScore": 100,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 4.057428e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.5376469
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "originally",
+                "Offset": 20500000,
+                "Duration": 8300000,
+                "Confidence": 0,
+                "AccuracyScore": 97,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 0.0811486
+                      },
+                      "MissingBreak": {
+                        "Confidence": 0.9594257
+                      },
+                      "BreakLength": 200000
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.5376469
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "designed",
+                "Offset": 28900000,
+                "Duration": 5500000,
+                "Confidence": 0,
+                "AccuracyScore": 100,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 4.057428e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.5376469
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "for",
+                "Offset": 34500000,
+                "Duration": 1300000,
+                "Confidence": 0,
+                "AccuracyScore": 97,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 4.057428e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.5376469
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "navigation",
+                "Offset": 35900000,
+                "Duration": 9500000,
+                "Confidence": 0,
+                "AccuracyScore": 97,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 4.057428e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.5376469
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "preserves",
+                "Offset": 48200000,
+                "Duration": 6000000,
+                "Confidence": 0,
+                "AccuracyScore": 97,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 1.0955057
+                      },
+                      "MissingBreak": {
+                        "Confidence": 0
+                      },
+                      "BreakLength": 2700000
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.5376469
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "angles",
+                "Offset": 54300000,
+                "Duration": 6300000,
+                "Confidence": 0,
+                "AccuracyScore": 100,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 4.057428e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.5376469
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "but",
+                "Offset": 61200000,
+                "Duration": 3400000,
+                "Confidence": 0,
+                "AccuracyScore": 100,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 0.20287146
+                      },
+                      "MissingBreak": {
+                        "Confidence": 0
+                      },
+                      "BreakLength": 500000
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.5376469
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "dramatically",
+                "Offset": 64700000,
+                "Duration": 6500000,
+                "Confidence": 0,
+                "AccuracyScore": 97,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 4.057428e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.5376469
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "exaggerates",
+                "Offset": 71300000,
+                "Duration": 8700000,
+                "Confidence": 0,
+                "AccuracyScore": 97,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 4.057428e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.5376469
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "regions",
+                "Offset": 80100000,
+                "Duration": 5700000,
+                "Confidence": 0,
+                "AccuracyScore": 97,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 4.057428e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.5376469
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "near",
+                "Offset": 85900000,
+                "Duration": 2500000,
+                "Confidence": 0,
+                "AccuracyScore": 100,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 4.057428e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.5376469
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "the",
+                "Offset": 88500000,
+                "Duration": 1100000,
+                "Confidence": 0,
+                "AccuracyScore": 97,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 4.057428e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.5376469
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "poles",
+                "Offset": 89700000,
+                "Duration": 6700000,
+                "Confidence": 0,
+                "AccuracyScore": 100,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 4.057428e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.5376469
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "consequently",
+                "Offset": 99700000,
+                "Duration": 10800000,
+                "Confidence": 0,
+                "AccuracyScore": 91,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 1.298377
+                      },
+                      "MissingBreak": {
+                        "Confidence": 0
+                      },
+                      "BreakLength": 3200000
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.5376469
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "greenland",
+                "Offset": 110800000,
+                "Duration": 6000000,
+                "Confidence": 0,
+                "AccuracyScore": 97,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 0.0811486
+                      },
+                      "MissingBreak": {
+                        "Confidence": 0.9594257
+                      },
+                      "BreakLength": 200000
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.5376469
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "appears",
+                "Offset": 116900000,
+                "Duration": 5500000,
+                "Confidence": 0,
+                "AccuracyScore": 97,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 4.057428e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.5376469
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "comparable",
+                "Offset": 122500000,
+                "Duration": 7100000,
+                "Confidence": 0,
+                "AccuracyScore": 88,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 4.057428e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.5376469
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "to",
+                "Offset": 129700000,
+                "Duration": 1500000,
+                "Confidence": 0,
+                "AccuracyScore": 100,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 4.057428e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.5376469
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "africa",
+                "Offset": 131300000,
+                "Duration": 6900000,
+                "Confidence": 0,
+                "AccuracyScore": 94,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 4.057428e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.5376469
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "although",
+                "Offset": 138900000,
+                "Duration": 5700000,
+                "Confidence": 0,
+                "AccuracyScore": 94,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 0.24344574
+                      },
+                      "MissingBreak": {
+                        "Confidence": 0
+                      },
+                      "BreakLength": 600000
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.5376469
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "africa",
+                "Offset": 144700000,
+                "Duration": 6500000,
+                "Confidence": 0,
+                "AccuracyScore": 94,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 4.057428e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.5376469
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "is",
+                "Offset": 151300000,
+                "Duration": 2500000,
+                "Confidence": 0,
+                "AccuracyScore": 100,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 4.057428e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.5376469
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "many",
+                "Offset": 153900000,
+                "Duration": 4300000,
+                "Confidence": 0,
+                "AccuracyScore": 100,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 4.057428e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.5376469
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "times",
+                "Offset": 158300000,
+                "Duration": 4100000,
+                "Confidence": 0,
+                "AccuracyScore": 97,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 4.057428e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.5376469
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "larger",
+                "Offset": 162500000,
+                "Duration": 6400000,
+                "Confidence": 0,
+                "AccuracyScore": 100,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 4.057428e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.5376469
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "startSec": 34.83,
+      "endSec": 58.088375,
+      "referenceText": "Alternative projections attempt to balance these compromises, sacrificing accuracy in one dimension to improve another. Choosing a map, therefore, is never entirely neutral; it subtly shapes how we perceive the world's geography. Thoughtful readers should ask not only what a map shows, but also what it inevitably leaves out.",
+      "response": {
+        "RecognitionStatus": "Success",
+        "Offset": 1300000,
+        "Duration": 228500000,
+        "DisplayText": "Alternative projections attempt to balance these compromises, sacrificing accuracy in one dimension to improve another. Choosing a map, therefore, is never entirely neutral. It subtly shapes how we perceive the world's geography. Thoughtful readers should ask not only what a map shows, but also what it inevitably leaves out.",
+        "SNR": 29.678448,
+        "NBest": [
+          {
+            "Confidence": 0.99055356,
+            "Lexical": "alternative projections attempt to balance these compromises sacrificing accuracy in one dimension to improve another choosing a map therefore is never entirely neutral it subtly shapes how we perceive the world's geography thoughtful readers should ask not only what a map shows but also what it inevitably leaves out",
+            "ITN": "alternative projections attempt to balance these compromises sacrificing accuracy in one dimension to improve another choosing a map therefore is never entirely neutral it subtly shapes how we perceive the world's geography thoughtful readers should ask not only what a map shows but also what it inevitably leaves out",
+            "MaskedITN": "alternative projections attempt to balance these compromises sacrificing accuracy in one dimension to improve another choosing a map therefore is never entirely neutral it subtly shapes how we perceive the world's geography thoughtful readers should ask not only what a map shows but also what it inevitably leaves out",
+            "Display": "Alternative projections attempt to balance these compromises, sacrificing accuracy in one dimension to improve another. Choosing a map, therefore, is never entirely neutral. It subtly shapes how we perceive the world's geography. Thoughtful readers should ask not only what a map shows, but also what it inevitably leaves out.",
+            "AccuracyScore": 98,
+            "FluencyScore": 96,
+            "ProsodyScore": 89.7,
+            "CompletenessScore": 100,
+            "PronScore": 94.7,
+            "Words": [
+              {
+                "Word": "alternative",
+                "Offset": 1300000,
+                "Duration": 7100000,
+                "Confidence": 0,
+                "AccuracyScore": 97,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.5664806
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "projections",
+                "Offset": 8500000,
+                "Duration": 6900000,
+                "Confidence": 0,
+                "AccuracyScore": 97,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 4.0381128e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.5664806
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "attempt",
+                "Offset": 15500000,
+                "Duration": 5500000,
+                "Confidence": 0,
+                "AccuracyScore": 100,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 4.0381128e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.5664806
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "to",
+                "Offset": 21100000,
+                "Duration": 1100000,
+                "Confidence": 0,
+                "AccuracyScore": 97,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 4.0381128e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.5664806
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "balance",
+                "Offset": 22300000,
+                "Duration": 5300000,
+                "Confidence": 0,
+                "AccuracyScore": 100,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 4.0381128e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.5664806
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "these",
+                "Offset": 27700000,
+                "Duration": 2500000,
+                "Confidence": 0,
+                "AccuracyScore": 100,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 4.0381128e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.5664806
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "compromises",
+                "Offset": 30300000,
+                "Duration": 10100000,
+                "Confidence": 0,
+                "AccuracyScore": 97,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 4.0381128e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.5664806
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "sacrificing",
+                "Offset": 41100000,
+                "Duration": 12100000,
+                "Confidence": 0,
+                "AccuracyScore": 94,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 0.2422868
+                      },
+                      "MissingBreak": {
+                        "Confidence": 0
+                      },
+                      "BreakLength": 600000
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.5664806
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "accuracy",
+                "Offset": 53300000,
+                "Duration": 6900000,
+                "Confidence": 0,
+                "AccuracyScore": 97,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 4.0381128e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.5664806
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "in",
+                "Offset": 60300000,
+                "Duration": 3100000,
+                "Confidence": 0,
+                "AccuracyScore": 97,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 4.0381128e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.5664806
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "one",
+                "Offset": 63500000,
+                "Duration": 2500000,
+                "Confidence": 0,
+                "AccuracyScore": 100,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 4.0381128e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.5664806
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "dimension",
+                "Offset": 66100000,
+                "Duration": 6500000,
+                "Confidence": 0,
+                "AccuracyScore": 94,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 4.0381128e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.5664806
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "to",
+                "Offset": 72700000,
+                "Duration": 1700000,
+                "Confidence": 0,
+                "AccuracyScore": 97,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 4.0381128e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.5664806
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "improve",
+                "Offset": 74500000,
+                "Duration": 5500000,
+                "Confidence": 0,
+                "AccuracyScore": 100,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 4.0381128e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.5664806
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "another",
+                "Offset": 80100000,
+                "Duration": 6300000,
+                "Confidence": 0,
+                "AccuracyScore": 97,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 4.0381128e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.5664806
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "choosing",
+                "Offset": 88900000,
+                "Duration": 5100000,
+                "Confidence": 0,
+                "AccuracyScore": 97,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 0.9691471
+                      },
+                      "MissingBreak": {
+                        "Confidence": 0
+                      },
+                      "BreakLength": 2400000
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.5664806
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "a",
+                "Offset": 94100000,
+                "Duration": 700000,
+                "Confidence": 0,
+                "AccuracyScore": 100,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 4.0381128e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.5664806
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "map",
+                "Offset": 94900000,
+                "Duration": 5700000,
+                "Confidence": 0,
+                "AccuracyScore": 100,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 4.0381128e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.5664806
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "therefore",
+                "Offset": 100900000,
+                "Duration": 6900000,
+                "Confidence": 0,
+                "AccuracyScore": 100,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 0.08076229
+                      },
+                      "MissingBreak": {
+                        "Confidence": 0.95961887
+                      },
+                      "BreakLength": 200000
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.5664806
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "is",
+                "Offset": 108100000,
+                "Duration": 2600000,
+                "Confidence": 0,
+                "AccuracyScore": 100,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 0.08076229
+                      },
+                      "MissingBreak": {
+                        "Confidence": 0.95961887
+                      },
+                      "BreakLength": 200000
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.5664806
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "never",
+                "Offset": 110800000,
+                "Duration": 4000000,
+                "Confidence": 0,
+                "AccuracyScore": 97,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 4.0381128e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.5664806
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "entirely",
+                "Offset": 114900000,
+                "Duration": 6500000,
+                "Confidence": 0,
+                "AccuracyScore": 97,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 4.0381128e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.5664806
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "neutral",
+                "Offset": 121500000,
+                "Duration": 6300000,
+                "Confidence": 0,
+                "AccuracyScore": 97,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 4.0381128e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.5664806
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "it",
+                "Offset": 129100000,
+                "Duration": 3300000,
+                "Confidence": 0,
+                "AccuracyScore": 100,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 0.48457354
+                      },
+                      "MissingBreak": {
+                        "Confidence": 0
+                      },
+                      "BreakLength": 1200000
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.5664806
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "subtly",
+                "Offset": 132500000,
+                "Duration": 3900000,
+                "Confidence": 0,
+                "AccuracyScore": 88,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 4.0381128e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.5664806
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "shapes",
+                "Offset": 136500000,
+                "Duration": 4700000,
+                "Confidence": 0,
+                "AccuracyScore": 100,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 4.0381128e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.5664806
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "how",
+                "Offset": 141300000,
+                "Duration": 1500000,
+                "Confidence": 0,
+                "AccuracyScore": 97,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 4.0381128e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.5664806
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "we",
+                "Offset": 142900000,
+                "Duration": 1700000,
+                "Confidence": 0,
+                "AccuracyScore": 97,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 4.0381128e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.5664806
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "perceive",
+                "Offset": 144700000,
+                "Duration": 6100000,
+                "Confidence": 0,
+                "AccuracyScore": 97,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 4.0381128e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.5664806
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "the",
+                "Offset": 150900000,
+                "Duration": 1500000,
+                "Confidence": 0,
+                "AccuracyScore": 97,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 4.0381128e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.5664806
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "world's",
+                "Offset": 152500000,
+                "Duration": 4300000,
+                "Confidence": 0,
+                "AccuracyScore": 97,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 4.0381128e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.5664806
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "geography",
+                "Offset": 156900000,
+                "Duration": 9100000,
+                "Confidence": 0,
+                "AccuracyScore": 100,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 4.0381128e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.5664806
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "thoughtful",
+                "Offset": 168700000,
+                "Duration": 6100000,
+                "Confidence": 0,
+                "AccuracyScore": 97,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 1.0499094
+                      },
+                      "MissingBreak": {
+                        "Confidence": 0
+                      },
+                      "BreakLength": 2600000
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.5664806
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "readers",
+                "Offset": 174900000,
+                "Duration": 3900000,
+                "Confidence": 0,
+                "AccuracyScore": 94,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 4.0381128e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.5664806
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "should",
+                "Offset": 178900000,
+                "Duration": 2300000,
+                "Confidence": 0,
+                "AccuracyScore": 97,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 4.0381128e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.5664806
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "ask",
+                "Offset": 181300000,
+                "Duration": 4100000,
+                "Confidence": 0,
+                "AccuracyScore": 97,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 4.0381128e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.5664806
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "not",
+                "Offset": 185500000,
+                "Duration": 3200000,
+                "Confidence": 0,
+                "AccuracyScore": 100,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 4.0381128e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.5664806
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "only",
+                "Offset": 189000000,
+                "Duration": 3600000,
+                "Confidence": 0,
+                "AccuracyScore": 97,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 0.08076229
+                      },
+                      "MissingBreak": {
+                        "Confidence": 0.95961887
+                      },
+                      "BreakLength": 200000
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.5664806
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "what",
+                "Offset": 192700000,
+                "Duration": 1600000,
+                "Confidence": 0,
+                "AccuracyScore": 97,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 4.0381128e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.5664806
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "a",
+                "Offset": 194400000,
+                "Duration": 400000,
+                "Confidence": 0,
+                "AccuracyScore": 97,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 4.0381128e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.5664806
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "map",
+                "Offset": 194900000,
+                "Duration": 2900000,
+                "Confidence": 0,
+                "AccuracyScore": 100,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 4.0381128e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.5664806
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "shows",
+                "Offset": 197900000,
+                "Duration": 4900000,
+                "Confidence": 0,
+                "AccuracyScore": 97,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 4.0381128e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.5664806
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "but",
+                "Offset": 203700000,
+                "Duration": 4300000,
+                "Confidence": 0,
+                "AccuracyScore": 100,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 0.32304904
+                      },
+                      "MissingBreak": {
+                        "Confidence": 0
+                      },
+                      "BreakLength": 800000
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.5664806
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "also",
+                "Offset": 208100000,
+                "Duration": 4000000,
+                "Confidence": 0,
+                "AccuracyScore": 97,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 4.0381128e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.5664806
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "what",
+                "Offset": 212200000,
+                "Duration": 1600000,
+                "Confidence": 0,
+                "AccuracyScore": 97,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 4.0381128e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.5664806
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "it",
+                "Offset": 213900000,
+                "Duration": 1100000,
+                "Confidence": 0,
+                "AccuracyScore": 100,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 4.0381128e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.5664806
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "inevitably",
+                "Offset": 215100000,
+                "Duration": 7100000,
+                "Confidence": 0,
+                "AccuracyScore": 97,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 4.0381128e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.5664806
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "leaves",
+                "Offset": 222300000,
+                "Duration": 3600000,
+                "Confidence": 0,
+                "AccuracyScore": 100,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 4.0381128e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.5664806
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Word": "out",
+                "Offset": 226000000,
+                "Duration": 3800000,
+                "Confidence": 0,
+                "AccuracyScore": 97,
+                "ErrorType": "None",
+                "Feedback": {
+                  "Prosody": {
+                    "Break": {
+                      "ErrorTypes": ["None"],
+                      "UnexpectedBreak": {
+                        "Confidence": 4.0381128e-8
+                      },
+                      "MissingBreak": {
+                        "Confidence": 1
+                      },
+                      "BreakLength": 0
+                    },
+                    "Intonation": {
+                      "ErrorTypes": [],
+                      "Monotone": {
+                        "Confidence": 0,
+                        "WordPitchSlopeConfidence": 0,
+                        "SyllablePitchDeltaConfidence": 0.5664806
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

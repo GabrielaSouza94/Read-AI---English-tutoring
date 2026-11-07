@@ -26,7 +26,7 @@ export type AzureScores = {
 
 export type AzureResult = AzureScores & { words: AzureWord[]; recognitionStatus: string };
 
-type AzureResponse = {
+export type AzureResponse = {
   RecognitionStatus: string;
   NBest?: {
     AccuracyScore: number;
@@ -92,12 +92,13 @@ export function parseAzureResponse(body: AzureResponse): AzureResult {
   };
 }
 
-export async function assessPronunciation(
+/** The raw Azure response for one request of at most 30 s (saved as a fixture by T3.8). */
+export async function fetchAssessment(
   { key, region }: { key: string; region: string },
   wav: Uint8Array<ArrayBuffer>,
   referenceText: string,
   policy: Partial<CallPolicy> & { allowLong?: boolean } = {},
-): Promise<AzureResult> {
+): Promise<AzureResponse> {
   // Azure answers 200 for longer audio but scores only about the first 30 s (T0.5), so a long
   // read would silently look incomplete. Chunk it first (azure-chunks.ts).
   if (!policy.allowLong && parseWav(wav).durationSec > AZURE_MAX_SECONDS) {
@@ -120,8 +121,17 @@ export async function assessPronunciation(
     { timeoutMs: 20_000, ...policy },
   );
   try {
-    return parseAzureResponse((await response.json()) as AzureResponse);
+    return (await response.json()) as AzureResponse;
   } catch {
     throw new ProviderError("azure", "response is not valid JSON");
   }
+}
+
+export async function assessPronunciation(
+  account: { key: string; region: string },
+  wav: Uint8Array<ArrayBuffer>,
+  referenceText: string,
+  policy: Partial<CallPolicy> & { allowLong?: boolean } = {},
+): Promise<AzureResult> {
+  return parseAzureResponse(await fetchAssessment(account, wav, referenceText, policy));
 }
